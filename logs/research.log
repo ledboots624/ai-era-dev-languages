@@ -3496,3 +3496,7 @@ AIによる生成コンテンツの性質上、情報の正確性・網羅性・
     written: 12, skipped: 11
   ⑤ render（テーマ: dark-tech）...
 compile 完了: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/site/38d77c13/index.html
+[0;32m[16:27:13 INFO][0m AI Research Agent v3.0.0
+[0;32m[16:27:13 INFO][0m Mermaid フロー図生成完了
+[0;32m[16:27:13 INFO][0m ログHTML生成完了
+[0;32m[16:27:13 INFO][0m サイト生成完了: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/index.html
