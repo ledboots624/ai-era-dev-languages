@@ -4,7 +4,7 @@
     "title": "AI時代の開発言語",
     "description": "Python+TypeScript二層アーキテクチャを中核とするAI時代のフルスタック開発言語戦略：5段階多モデル調査による信頼度付き技術選定ガイド（2026年3月）",
     "language": "ja",
-    "theme": "luxury",
+    "theme": "dark-tech",
     "site_notice": "本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。"
   },
   "pages": [
@@ -1043,5 +1043,7 @@
         }
       ]
     }
-  ]
+  ],
+  "_id": "6443ea57",
+  "_label": "AI時代の開発環境 AI"
 }

@@ -4,14 +4,13 @@
     "title": "AI時代の開発言語",
     "description": "AI開発向け言語・FW戦略レポート：Python+TypeScript二層構造が最適解（high）、LLMフレームワークはアダプターパターンで隔離、RustはTier3監視対象",
     "language": "ja",
-    "theme": "forest",
+    "theme": "standard",
     "site_notice": "本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。"
   },
   "pages": [
     {
       "id": "index",
       "title": "AI時代のシステム開発言語戦略 — 総合ガイド",
-      "description": "",
       "blocks": [
         {
           "type": "hero",
@@ -146,7 +145,6 @@
     {
       "id": "language-evaluation",
       "title": "言語別評価マトリクス — Python / TypeScript / Rust の現在地",
-      "description": "",
       "blocks": [
         {
           "type": "prose",
@@ -667,7 +665,6 @@
     {
       "id": "architecture",
       "title": "推奨アーキテクチャ詳解 — Python＋TypeScript 二層構造の設計原則",
-      "description": "",
       "blocks": [
         {
           "type": "prose",
@@ -903,7 +900,6 @@
     {
       "id": "frameworks-roadmap",
       "title": "フレームワーク選定と12か月ロードマップ — 抽象度トレードオフと実務指針",
-      "description": "",
       "blocks": [
         {
           "type": "accordion",
@@ -1051,7 +1047,6 @@
     {
       "id": "references",
       "title": "調査根拠・情報ギャップ・免責事項",
-      "description": "",
       "blocks": [
         {
           "type": "source-list",
@@ -1284,5 +1279,7 @@
         }
       ]
     }
-  ]
+  ],
+  "_id": "3468923d",
+  "_label": "AI時代の開発環境"
 }
