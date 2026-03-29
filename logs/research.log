@@ -2421,3 +2421,7 @@ LangChainが本来適している局面は、**PoC・初期検証・プロトタ
 compile 完了: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/site/AI時代の開発環境 AI/index.html
 [v2] render 実行中（テーマ: dark-tech）...
 サイト生成完了: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/site/AI時代の開発環境 AI/index.html
+[0;32m[15:36:56 INFO][0m AI Research Agent v3.0.0
+[0;32m[15:36:56 INFO][0m Mermaid フロー図生成完了
+[0;32m[15:36:56 INFO][0m ログHTML生成完了
+[0;32m[15:36:56 INFO][0m サイト生成完了: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/index.html
