@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "errors": [],
+  "warnings": [],
+  "repair_actions": [],
+  "stats": {
+    "blocks": 23,
+    "pages": 10,
+    "auto_source_lists": 8
+  },
+  "_id": "38d77c13",
+  "_label": "AI時代の開発環境 ヒアリング方式変更版"
+}

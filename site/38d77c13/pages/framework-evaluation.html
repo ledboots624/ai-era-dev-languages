@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>各フレームワークはなぜ選ばれ、なぜ見直されるのか ─ LangChain・LlamaIndex・新興FWの評価 — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774767928">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/executive-summary.html">結論</a></li>
+      
+      <li><a href="../pages/language-comparison.html">言語比較</a></li>
+      
+      <li><a href="../pages/python-dominance.html">Python</a></li>
+      
+      <li><a href="../pages/typescript-position.html">TS戦略</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定表</a></li>
+      
+      <li><a href="../pages/framework-evaluation.html" class="active">FW評価</a></li>
+      
+      <li><a href="../pages/rust-assessment.html">Rust評価</a></li>
+      
+      <li><a href="../pages/learning-roadmap.html">学習計画</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/executive-summary.html">結論</a></li>
+      
+      <li><a href="../pages/language-comparison.html">言語比較</a></li>
+      
+      <li><a href="../pages/python-dominance.html">Python</a></li>
+      
+      <li><a href="../pages/typescript-position.html">TS戦略</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定表</a></li>
+      
+      <li><a href="../pages/framework-evaluation.html">FW評価</a></li>
+      
+      <li><a href="../pages/rust-assessment.html">Rust評価</a></li>
+      
+      <li><a href="../pages/learning-roadmap.html">学習計画</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-accordion">
+  <h2>FAQ</h2>
+  
+  <details>
+    <summary>LangChainは本番環境での採用に耐えられるか？</summary>
+    <div><p>PoC・初期検証フェーズでは抽象度の高さが開発速度に直結するため有効だが、本番投入にはリスクが伴う。破壊的変更の頻度が高く、内部抽象層によるデバッグの難しさは運用フェーズで深刻なコストになりやすい。</p>
+<p>本番化の際は <strong>LlamaIndex・Instructor・直接API呼び出し</strong> など、中〜低抽象度の選択肢への移行を軸に設計を見直したい。その際、業務ロジックをフレームワークから切り離す<strong>アダプターパターン</strong>の適用が乗り換えコスト抑制の要件となる。DSPy・Pydantic AI・Agnoとの比較検証も並行して実施すべきだ。</p></div>
+  </details>
+  
+  <details>
+    <summary>RAGシステムを構築するなら、どのフレームワークを選ぶべきか？</summary>
+    <div><p>外部データベースとの統合・インデックス管理に特化した設計を持つ <strong>LlamaIndex</strong> が現時点での第一選択となる。LLMと外部ナレッジベースの連携による精度向上を主目的としたアーキテクチャであり、RAG用途での採用実績も急拡大している。</p>
+<p>実装ロードマップとしては、月2〜4のスパンでLlamaIndexを用いたRAGテンプレートを整備し、<strong>RAG品質がベースラインを達成することを本番移行の判断基準</strong>とする構成が推奨される。HaystackもRAG文脈では有力な選択肢だが、現状の評価情報ではLlamaIndexほどの詳細な検証データが揃っていない点は留意しておきたい。</p></div>
+  </details>
+  
+  <details>
+    <summary>AIエージェント開発におけるフレームワーク選定の基本方針は？</summary>
+    <div><p>最も避けるべきは<strong>単一フレームワークへの過度な依存</strong>だ。プロトタイプはLangChainの高抽象度APIで素早く仮説検証し、本番化フェーズではInstructorや直接API呼び出しへの切り替えを前提に設計しておく。</p>
+<p>AutoGen・CrewAIに代表されるマルチエージェント協調パターンは特定ユースケースへの適合度が高い一方、汎用的な採用は過剰設計になりやすい。ロードマップ上は月3〜6でDSPy・Instructorの比較検証を行い、<strong>エージェント導入は2ユースケースに絞る</strong>ことで複雑性の膨張を抑制することが推奨される。</p></div>
+  </details>
+  
+</section>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener">AutoGen公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://python.langchain.com/docs/" target="_blank" rel="noopener">LangChain公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://llamaindex.ai/" target="_blank" rel="noopener">LlamaIndex公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+{
+  "strategy": {
+    "audience": "システムエンジニア",
+    "purpose": "時代に沿った開発スキルを学習",
+    "depth": "standard",
+    "tone": "neutral",
+    "tone_detail": "",
+    "persona": "システム開発雑誌系出版社のライター",
+    "goal": "これから何を重点的に勉強するかを判断する",
+    "focus": [
+      "なぜ優れているかをみきわめる。数多くの選択肢から整理された表。"
+    ],
+    "exclude": [
+      "技術詳細"
+    ],
+    "knowledge_level": "expert",
+    "title_override": "",
+    "page_strategy": "multi_page"
+  },
+  "pages": [
+    {
+      "id": "index",
+      "purpose": "overview",
+      "title_hint": "AIシステム開発 言語・フレームワーク選定ガイド2025 ─ 今何を学ぶべきかを判断する",
+      "nav_title": "トップ",
+      "content_refs": [
+        {
+          "ref_type": "summary",
+          "ref_ids": [],
+          "ref_id": "short"
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-01",
+            "cl-07"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "navigation",
+          "ref_ids": [],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "executive-summary",
+      "purpose": "overview",
+      "title_hint": "結論と信頼度マップ ─ 投資優先度を5分で把握する",
+      "nav_title": "結論",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-04",
+            "cl-10"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "language-comparison",
+      "purpose": "analysis",
+      "title_hint": "言語選定マトリクス ─ Python・TypeScript・Rustを3軸で比較する",
+      "nav_title": "言語比較",
+      "content_refs": [
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-02"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-22",
+            "cl-12"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-06",
+            "ent-07",
+            "ent-08"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "python-dominance",
+      "purpose": "narrative",
+      "title_hint": "なぜPythonはAI開発の絶対的中心なのか ─ エコシステム慣性という構造的優位",
+      "nav_title": "Python",
+      "content_refs": [
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-04",
+            "cl-08",
+            "cl-09"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-06",
+            "ent-03"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "typescript-position",
+      "purpose": "narrative",
+      "title_hint": "TypeScriptが「第二の公用語」になった理由 ─ AI統合最前線での実務優位",
+      "nav_title": "TS戦略",
+      "content_refs": [
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-05",
+            "cl-10",
+            "cl-11"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-07",
+            "ent-05"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "framework-selection",
+      "purpose": "analysis",
+      "title_hint": "LLMフレームワーク選定表 ─ 抽象度・用途・安定性で整理した比較マトリクス",
+      "nav_title": "FW選定表",
+      "content_refs": [
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-03"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-24",
+            "cl-06"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-09",
+            "ent-10",
+            "ent-14"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "framework-evaluation",
+      "purpose": "assessment",
+      "title_hint": "各フレームワークはなぜ選ばれ、なぜ見直されるのか ─ LangChain・LlamaIndex・新興FWの評価",
+      "nav_title": "FW評価",
+      "content_refs": [
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-15",
+            "cl-16",
+            "cl-17",
+            "cl-18"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-02",
+            "faq-05",
+            "faq-07"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "rust-assessment",
+      "purpose": "assessment",
+      "title_hint": "Rustは本当に学ぶべきか ─「将来有望」の正体と現時点での採用判断基準",
+      "nav_title": "Rust評価",
+      "content_refs": [
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-03",
+            "cl-13",
+            "cl-14"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-03"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-08"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "learning-roadmap",
+      "purpose": "assessment",
+      "title_hint": "12か月学習ロードマップ ─ 今すぐ着手すべき技術とゲート条件付きの将来投資",
+      "nav_title": "学習計画",
+      "content_refs": [
+        {
+          "ref_type": "timeline",
+          "ref_ids": [
+            "tl-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-05"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-05"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "action",
+          "ref_ids": [
+            "act-06"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "references",
+      "purpose": "references",
+      "title_hint": "調査品質・情報ギャップ・参考文献",
+      "nav_title": "参考文献",
+      "content_refs": [
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-04",
+            "cmp-06"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "quality_gaps",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "all_sources",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "disclaimer",
+          "ref_ids": [],
+          "ref_id": ""
+        }
+      ]
+    }
+  ],
+  "presentation_rules": {
+    "prefer_table_for_comparisons": true,
+    "prefer_timeline_for_sequences": true,
+    "prefer_cards_for_claims": true,
+    "max_blocks_per_page": 8,
+    "auto_source_list": true,
+    "auto_toc": false,
+    "claim_exposure": {
+      "index": "summary",
+      "detail_pages": "full"
+    }
+  },
+  "_id": "38d77c13",
+  "_label": "AI時代の開発環境 ヒアリング方式変更版"
+}
