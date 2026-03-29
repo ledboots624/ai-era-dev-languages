@@ -1,0 +1,36 @@
+{
+  "status": "warning",
+  "errors": [],
+  "warnings": [
+    {
+      "code": "max_blocks_exceeded",
+      "message": "page 'architecture' のブロック数 14 が上限 8 を超過"
+    },
+    {
+      "code": "max_blocks_exceeded",
+      "message": "page 'frameworks' のブロック数 9 が上限 8 を超過"
+    }
+  ],
+  "repair_actions": [
+    {
+      "code": "truncated_blocks",
+      "target": "13 blocks",
+      "result": "7 blocks"
+    },
+    {
+      "code": "truncated_blocks",
+      "target": "8 blocks",
+      "result": "7 blocks"
+    },
+    {
+      "code": "merged_consecutive_prose",
+      "target": "frameworks",
+      "result": "merged"
+    }
+  ],
+  "stats": {
+    "blocks": 22,
+    "pages": 5,
+    "auto_source_lists": 4
+  }
+}

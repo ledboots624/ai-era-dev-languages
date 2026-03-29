@@ -1,0 +1,21 @@
+{
+  "context_type": "research_scope",
+  "topic": "AI時代の開発言語",
+  "description": "AI時代の開発言語（フルスタックエンジニアが今後AIを使った開発を効率よく進めて行くための先端開発技術の知識収集）",
+  "language": "ja",
+  "mode": "full",
+  "data": {
+    "purpose": "フルスタックエンジニアが今後AIを使った開発を効率よく進めて行くための先端開発技術の知識収集",
+    "focus": [
+      "AIに最適化された言語やフレームワークを中心に調査"
+    ]
+  },
+  "theme": "tech",
+  "presentation": {
+    "enabled": true,
+    "type": "技術比較マトリクス型",
+    "audience": "フルスタックエンジニア（実務経験3年以上）",
+    "focus": "AI開発の現状概観, 言語別AI対応度マトリクス, Python/TypeScript/Rust比較, LLM統合フレームワーク調査, エージェント開発ツール比較, 実装パターンカタログ, 採用ロードマップ",
+    "pages": 25
+  }
+}

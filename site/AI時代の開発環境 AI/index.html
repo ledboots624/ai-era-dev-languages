@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI時代のSEが今すぐ学ぶべき技術スタック — 2026年版ガイド — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="./css/theme.css?v=1774749656">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="./index.html" class="active">トップ</a></li>
+      
+      <li><a href="./pages/architecture.html">アーキテクチャ</a></li>
+      
+      <li><a href="./pages/frameworks.html">フレームワーク</a></li>
+      
+      <li><a href="./pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="./pages/references.html">参考資料</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="./index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="./pages/architecture.html">アーキテクチャ</a></li>
+      
+      <li><a href="./pages/frameworks.html">フレームワーク</a></li>
+      
+      <li><a href="./pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="./pages/references.html">参考資料</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-hero">
+  <h1>AI時代のSEが今すぐ学ぶべき技術スタック — 2026年版ガイド</h1>
+  <div><p>Python × TypeScript の二層アーキテクチャを軸に、LLM統合・業務ロジック設計・将来言語選定まで。多モデル調査による信頼度付きの技術選定指針をエンジニア目線で整理した。</p></div>
+</section>
+<section class="block block-cards">
+  
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>Python × TypeScript の二層構成が現場の最適解</h3>
+      <div><p>AI機能の実装コアには <strong>Python</strong>、フロントエンド統合・API連携には <strong>TypeScript</strong> という役割分担が、今もっとも現実的な構成です。OpenAI SDKを含む主要LLMのクライアントライブラリはPythonファーストで提供されており、「まずPythonで動かす」が最短ルートになっています。一方でTypeScriptは静的型付けによる安全性とJavaScriptエコシステムとの互換性から、AI統合Webアプリの開発速度と品質を両立できます。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>PythonがAI領域で強いのは「言語仕様」ではなく「エコシステム慣性」</h3>
+      <div><p>Pythonが型安全性や実行速度で他言語に劣ることは事実です。それでもAI/ML分野では当面Pythonが主役であり続けるでしょう。理由は <strong>NumPy → SciPy → Pandas → PyTorch/TensorFlow</strong> と積み上がってきた連鎖的エコシステムにあります。この「ネットワーク効果」は短中期では容易に崩れません。SEとしては言語の好みより「エコシステムの重力」を優先する判断が求められます。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>PyTorch・TensorFlow・Transformers — Pythonで揃う主要MLライブラリ</h3>
+      <div><p>実務でAIを扱う上で最低限押さえておきたいライブラリが、Pythonには一通り揃っています。研究から本番まで対応する <strong>PyTorch</strong>、Google発でエンタープライズ実績の厚い <strong>TensorFlow</strong>、そしてHugging Faceの <strong>Transformers</strong> ライブラリ。フルスタックの観点では「Pythonでモデル開発 → TypeScriptでWeb統合 → Rustで高性能推論」という役割分担が推奨ロードマップの一例として示されており、習得順序の目安になります。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>AI出力の「無批判受け入れ」が最大のリスク</h3>
+      <div><p>AIツールの調査結果をそのまま信用するのは危険です。実際にある調査の検証プロセスでは、<strong>架空URLが5件・自己参照バイアスが6件・分類誤りが3件</strong>検出され、修正前後で「高信頼度」と評価していた情報の割合が 55% → 35% に低下しました。複数モデルによるクロスバリデーションが有効であることも示されています。「ソースが本当に実在するか確認する」「バイアスを識別する」スキルは、AI時代のSEには必須の技術リテラシーです。</p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-nav">
+  <div class="block-nav__grid">
+    
+    <a href="./pages/architecture.html" class="block-nav__link">
+      <span class="block-nav__title">アーキテクチャ</span>
+      
+    </a>
+    
+    <a href="./pages/frameworks.html" class="block-nav__link">
+      <span class="block-nav__title">フレームワーク</span>
+      
+    </a>
+    
+    <a href="./pages/roadmap.html" class="block-nav__link">
+      <span class="block-nav__title">ロードマップ</span>
+      
+    </a>
+    
+    <a href="./pages/references.html" class="block-nav__link">
+      <span class="block-nav__title">参考資料</span>
+      
+    </a>
+    
+  </div>
+</section>
+  </main>
+  <footer class="container">
+    <small>Python+TypeScript二層アーキテクチャを中核とするAI時代のフルスタック開発言語戦略：5段階多モデル調査による信頼度付き技術選定ガイド（2026年3月）</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

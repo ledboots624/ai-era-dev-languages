@@ -1,0 +1,1047 @@
+{
+  "_schema": "site.v2",
+  "site": {
+    "title": "AI時代の開発言語",
+    "description": "Python+TypeScript二層アーキテクチャを中核とするAI時代のフルスタック開発言語戦略：5段階多モデル調査による信頼度付き技術選定ガイド（2026年3月）",
+    "language": "ja",
+    "theme": "luxury",
+    "site_notice": "本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。"
+  },
+  "pages": [
+    {
+      "id": "index",
+      "title": "AI時代のSEが今すぐ学ぶべき技術スタック — 2026年版ガイド",
+      "nav_title": "概要",
+      "description": "",
+      "blocks": [
+        {
+          "type": "hero",
+          "heading": "AI時代のSEが今すぐ学ぶべき技術スタック — 2026年版ガイド",
+          "subheading": "Python × TypeScript の二層アーキテクチャを軸に、LLM統合・業務ロジック設計・将来言語選定まで。多モデル調査による信頼度付きの技術選定指針をエンジニア目線で整理した。",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "summary"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "cards",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "Python × TypeScript の二層構成が現場の最適解",
+              "body": "AI機能の実装コアには **Python**、フロントエンド統合・API連携には **TypeScript** という役割分担が、今もっとも現実的な構成です。OpenAI SDKを含む主要LLMのクライアントライブラリはPythonファーストで提供されており、「まずPythonで動かす」が最短ルートになっています。一方でTypeScriptは静的型付けによる安全性とJavaScriptエコシステムとの互換性から、AI統合Webアプリの開発速度と品質を両立できます。"
+            },
+            {
+              "title": "PythonがAI領域で強いのは「言語仕様」ではなく「エコシステム慣性」",
+              "body": "Pythonが型安全性や実行速度で他言語に劣ることは事実です。それでもAI/ML分野では当面Pythonが主役であり続けるでしょう。理由は **NumPy → SciPy → Pandas → PyTorch/TensorFlow** と積み上がってきた連鎖的エコシステムにあります。この「ネットワーク効果」は短中期では容易に崩れません。SEとしては言語の好みより「エコシステムの重力」を優先する判断が求められます。"
+            },
+            {
+              "title": "PyTorch・TensorFlow・Transformers — Pythonで揃う主要MLライブラリ",
+              "body": "実務でAIを扱う上で最低限押さえておきたいライブラリが、Pythonには一通り揃っています。研究から本番まで対応する **PyTorch**、Google発でエンタープライズ実績の厚い **TensorFlow**、そしてHugging Faceの **Transformers** ライブラリ。フルスタックの観点では「Pythonでモデル開発 → TypeScriptでWeb統合 → Rustで高性能推論」という役割分担が推奨ロードマップの一例として示されており、習得順序の目安になります。"
+            },
+            {
+              "title": "AI出力の「無批判受け入れ」が最大のリスク",
+              "body": "AIツールの調査結果をそのまま信用するのは危険です。実際にある調査の検証プロセスでは、**架空URLが5件・自己参照バイアスが6件・分類誤りが3件**検出され、修正前後で「高信頼度」と評価していた情報の割合が 55% → 35% に低下しました。複数モデルによるクロスバリデーションが有効であることも示されています。「ソースが本当に実在するか確認する」「バイアスを識別する」スキルは、AI時代のSEには必須の技術リテラシーです。"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "cl-01",
+              "cl-04",
+              "cl-05",
+              "cl-12"
+            ],
+            "evidence_ids": [
+              "ev-01",
+              "ev-02",
+              "ev-03",
+              "ev-04",
+              "ev-11",
+              "ev-14",
+              "ev-20",
+              "ev-24"
+            ],
+            "source_ids": [
+              "src-12",
+              "src-14",
+              "src-15",
+              "src-16",
+              "src-17",
+              "src-21",
+              "src-24",
+              "src-31"
+            ]
+          }
+        },
+        {
+          "type": "nav",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "page_id": "architecture",
+              "title": "アーキテクチャ",
+              "description": ""
+            },
+            {
+              "page_id": "frameworks",
+              "title": "フレームワーク",
+              "description": ""
+            },
+            {
+              "page_id": "roadmap",
+              "title": "ロードマップ",
+              "description": ""
+            },
+            {
+              "page_id": "references",
+              "title": "参考資料",
+              "description": ""
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "推奨アーキテクチャ：Python＋TypeScript二層構造と言語選定の根拠",
+      "nav_title": "アーキテクチャ",
+      "description": "",
+      "blocks": [
+        {
+          "type": "prose",
+          "heading": "発見①：Pythonの覇権はエコシステム慣性に由来し短中期で揺らがない",
+          "subheading": "",
+          "body": "「なぜPythonを使い続けるのか？」——この問いに対して「みんな使ってるから」では答えにならない。エンジニアとして技術選定の根拠を明確にしておく必要がある。\n\nPythonのAI/ML領域における覇権は、**言語設計の優秀さに由来するものではない**。本質はエコシステム慣性、つまりネットワーク効果だ。NumPyの普及がSciPyを生み、SciPyの蓄積がML各ライブラリの基盤となり、それがPyTorch・TensorFlow・HuggingFace Transformersへと連鎖した。この構造が確立されたことで、新たなLLM API（OpenAI・Anthropic・Google等）も軒並みPythonファーストでSDKを提供する。強固な正のフィードバックループが出来上がっている。\n\n時間軸で整理すると以下のようになる。\n\n| 期間 | 戦略的判断 |\n|------|-----------|\n| **短期（0〜2年）** | Pythonを軸に据えることが合理的。慣性に逆らうコストは学習リソース・採用・ライブラリ全面で高い |\n| **中期（2〜5年）** | TypeScript AIエコシステム（Vercel AI SDK・LangChain.js等）の成熟度を継続監視。臨界質量到達が転換点になりうる |\n| **長期（5年〜）** | Rust/WASMが推論層のデフォルトになるシナリオは否定できないが、時期・確率の予測は現時点では不可能 |\n\nつまり**少なくとも向こう2年はPythonから離れる合理的な理由が見当たらない**。ただし「絶対安泰」と油断するのも危険で、中期ではTypeScriptエコシステムの動向を定期的にチェックする姿勢が求められる。なお、PythonにはGILによる並行処理の制約・型安全性の低さ・実行速度といった構造的な弱点も存在する。これを補う仕組みとして、後述するTypeScriptとの二層アーキテクチャが有効になってくる。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-03"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "prose",
+          "heading": "発見②：TypeScriptはAI統合において最も実務即効性が高い",
+          "subheading": "",
+          "body": "AIバックエンドをPythonで組む話をすると、フロントエンドとの接続部分でいつも議論になる。「結局どの言語でAPI叩くの？」という問いへの答えとして、現時点で最も実務に直結しやすいのが**TypeScript**だと判断している。\n\n根拠はエコシステムの成熟度だ。Vercel AI SDK・tRPC・Next.jsの組み合わせは、LLMのAPIレスポンスをWebプロダクトに乗せるまでの距離が短い。LangChain.jsやLlamaIndex.jsといったTypeScript向けLLMフレームワークも整備されてきており、「AI統合はPythonだけ」という時代は終わりつつある。\n\n特に見落とされがちな利点が**静的型付けによる型安全性**だ。LLMのレスポンスは構造が揺れやすく、パース・バリデーション・エラーハンドリングは地味に手間がかかる。TypeScriptの型システムはその実装コストを下げてくれる。\n\nただし正直に書いておくと、この評価は**信頼度: medium**にとどめている。理由は定量的な独立エビデンスの不足だ。公式ドキュメントやフレームワーク側の主張だけでは「採用が増えているからTypeScriptが良い」という循環論法に陥りやすく、JetBrains DevEcosystemやStack Overflow Surveyといった第三者調査との突き合わせが現時点では不十分である（**重大情報ギャップ G3**）。\n\nPythonと比較するとAIライブラリの総数では依然差がある。だからこそ、**Python＋TypeScriptの二層構造**が有効になる。FastAPI＋Pydantic v2でAPI境界を型付きで定義し、TypeScript側がそれを型安全に消費する設計は、両言語の強みを補完関係として活かす現実解だ。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-04"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "prose",
+          "heading": "言語別評価マトリクス",
+          "subheading": "",
+          "body": "AI開発スタックの言語選定で迷う場面は多い。「Pythonが主流」とは聞くが、実際にどの言語をどの優先度で採用すべきか、エコシステムの成熟度まで含めて整理されている情報は意外と少ない。\n\nここでは Python・TypeScript・Rust・Go の4言語を**AI開発適性**・**エコシステム成熟度**・**採用優先度**の3軸で比較する。結論から言えば、全言語が等価ではない。現時点では明確な採用優先順位がついており、それを無視してアーキテクチャを組むとあとで手戻りが発生する。\n\n各言語の評価概要は以下のとおりだ。\n\n| 言語 | AI開発適性 | エコシステム成熟度 | 採用優先度 | 信頼度 |\n|------|-----------|-----------------|-----------|--------|\n| Python | ◎ | ◎ | **Priority 0**（即時採用） | High |\n| TypeScript | ○ | ○ | **Priority 1**（並行導入） | Medium |\n| Rust | △ | △ | **Priority 2**（条件付き） | Low〜Medium |\n| Go | — | 情報不足 | **評価不能** | 評価不能 |\n\nPython は NumPy → SciPy → PyTorch → LangChain という連鎖的なエコシステム慣性を持っており、短中期での優位性は揺るがない。FastAPI + Pydantic v2 による型境界の整備で、型安全性の弱点もある程度補完できる。\n\nTypeScript は Web 統合・型安全な UI 構築という観点で実務即効性が高く、Python との二層構造を組む際の有力な選択肢だ。ただし定量エビデンスが不足している部分があるため、採用判断は慎重に行うべきだ。\n\nRust については、初期評価での過大評価（Tier 1 分類）が誤りだったと判明している。P95 応答時間やコスト改善といった具体的な閾値をクリアした場合にのみ、限定的に検討するスタンスが妥当だ。Go は gRPC・クラウドネイティブ基盤での有用性は否定しないが、「AI 開発言語」として評価するには専門的な追加調査が必要であり、現時点では判断を保留する。\n\n以降のセクションで、各言語の詳細評価と採用根拠を掘り下げる。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-08"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "prose",
+          "heading": "推奨アーキテクチャ：Python＋TypeScript二層構造",
+          "subheading": "",
+          "body": "AIプロジェクトを実務で動かしていると、必ずぶつかる壁がある。「Pythonで作ったモデルやロジック、どうやってプロダクションに乗せるんだ？」という問題だ。\n\nその答えとして注目しているのが、**Python＋TypeScriptの二層構造**だ。背景には、一見矛盾した事実がある——AIのデファクトスタンダードであるPythonは動的型付け言語だが、本番運用では型安全性が強く求められる。このギャップを「**型安全性の逆説**」と呼ぶが、これこそがこのアーキテクチャが生まれた構造的な理由になっている。\n\n構造はシンプルに3層で捉えられる。\n\n| フェーズ | 担当 | 役割 |\n|---|---|---|\n| 探索・実験 | Python | 動的型付けの柔軟性を活かしたML実装・プロトタイピング |\n| API境界 | FastAPI + Pydantic v2 | OpenAPIスキーマ自動生成・ランタイム型検証 |\n| プロダクション | TypeScript | 静的型による安全なUI・APIクライアント・ビジネスロジック |\n\nこの中で特に押さえておきたいのが**FastAPI + Pydantic v2**の存在だ。PythonとTypeScriptという異なる型システムを持つ二つの世界をつなぐ「接着剤」として機能する。FastAPIがOpenAPIスキーマを自動生成し、TypeScript側はそこから型定義を取り込める。ROIの観点からも、この組み合わせの習得は優先度が高い技術投資と言える。\n\nさらに構造化出力においては、Python側は**Pydantic v2**、TypeScript側は**Zod**を使うことで、層をまたいで一貫した型安全性を維持できる。RAGやマルチエージェント設計といった高度なパターンも、この基盤の上に構築していく形になる。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-09"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "cards",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "PythonのAI覇権は「言語の良さ」ではなくエコシステム慣性",
+              "body": "PyTorch・TensorFlow・HuggingFace・LangChainといったAI/MLライブラリが全てPython上に積み重なり、さらにOpenAI・Anthropic・GoogleといったLLMプロバイダもPythonファーストでSDKを提供している。これはNumPy→SciPy→MLフレームワークという連鎖が生んだネットワーク効果であり、今さら「他の言語の方が設計がいい」という理由だけで覆せるものではない。"
+            },
+            {
+              "title": "短期（0〜2年）：迷わずPythonを軸に据える",
+              "body": "学習リソース・採用市場・既存ライブラリの三点で、Pythonの優位は揺るがない。エコシステム慣性に逆らうコストは大きく、今の段階で別の言語を主軸に選ぶ合理的な理由はない。AI関連の実装は原則Python、という判断が短期では正解だ。"
+            },
+            {
+              "title": "中期（2〜5年）：TypeScript AIエコシステムの成熟を継続ウォッチ",
+              "body": "Vercel AI SDKやLangChain.jsの完成度が上がり、TypeScript側のAIエコシステムが臨界質量に達するタイミングが来ると、アーキテクチャの選択肢が変わりうる。今すぐ乗り換える必要はないが、この動向を定期的に観測しておくことが、2〜5年スパンでの判断ミスを防ぐ。"
+            },
+            {
+              "title": "長期（5年〜）：Rust/WASMシナリオは「排除できない」が予測不能",
+              "body": "推論層の性能要求が高まれば、Rust＋WebAssemblyがデフォルトになるシナリオは理論上あり得る。ただし時期も確率も現時点では予測不能だ。長期の技術選定においては「ゼロと見なさない」という姿勢だけ持っておけば十分で、今すぐ対応を求められるものではない。"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-03"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "cards",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "TypeScript：AI統合の実務即効性はトップクラス",
+              "body": "LLMのAPIをWebプロダクトへ組み込む用途において、TypeScriptは現時点で最有力の選択肢だ。ただし、定量的な独立調査データが十分でないため、信頼度は**medium**と評価している。過信せず、エコシステムの成熟度を根拠に選定する姿勢が重要。"
+            },
+            {
+              "title": "成熟したエコシステムが武器",
+              "body": "**Vercel AI SDK・tRPC・Next.js**の組み合わせは、LLM連携をフロントからバックエンドまで一気通貫で実装できる。さらに**LangChain.js・LlamaIndex.js**といったTypeScript向けLLMフレームワークも台頭しており、AI統合の選択肢は着実に広がっている。"
+            },
+            {
+              "title": "型安全性がLLM連携の実装品質を上げる",
+              "body": "LLMのレスポンスは構造が不定になりやすい。TypeScriptの静的型付けは、レスポンスのパース・バリデーション・エラーハンドリングを型で縛れるため、実運用での障害リスクを下げる。Pythonと比べAIライブラリ数では劣るが、**API連携・UI統合の堅牢性**では優位に立てる。"
+            },
+            {
+              "title": "Python＋TypeScript二層構造で両者の強みを最大化",
+              "body": "AIライブラリが豊富なPythonをML処理層に、型安全なWebプロダクト統合が得意なTypeScriptをUI/API層に置く設計が合理的だ。**FastAPI＋Pydantic v2**でAPI境界を明示的に定義することで、二言語間の型ずれ・インターフェース不整合を最小化できる。"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-04"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "cards",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "Python — 即時採用（Priority 0）",
+              "body": "AI開発の中核言語として迷わず採用してよい。NumPy・PyTorch・LangChain・LlamaIndex など主要ライブラリが揃い、エコシステムの成熟度は他言語を大きく引き離している。型安全性や実行速度の弱点は FastAPI＋Pydantic v2 で補完できる。短中期でのデファクト標準として信頼度は高く、ML・推論パイプラインの構築はまずここから始めること。"
+            },
+            {
+              "title": "TypeScript — 並行導入（Priority 1）",
+              "body": "AI機能のWeb統合・フロントエンド実装において即効性が高い。Vercel AI SDK・tRPC・Zod など型安全なエコシステムが整備されており、Next.js との相性も良好。ただし、エコシステム評価の根拠が公式ドキュメント依存になりがちな点は注意が必要で、定量的な実績データで補完しながら採用を進めたい。信頼度は中程度と見ておくのが妥当。"
+            },
+            {
+              "title": "Rust — 条件付き検討（Priority 2）",
+              "body": "「高性能が必要な推論処理」や「WASM活用」という限定的なユースケースに絞って検討すべき言語。candle・burn などのMLフレームワークはまだ未成熟で、AI開発全般への適用はリスクが高い。採用を判断するなら、P95応答時間の改善幅やコスト削減の閾値を定量的に設定した上で条件クリア時のみ適用するのが現実的。当初 tier1 評価していたが過大評価と判断し修正している。"
+            },
+            {
+              "title": "Go — 評価不能（調査対象外）",
+              "body": "gRPC やクラウドネイティブ基盤での実績は十分にあるが、「AI開発言語」としての評価データが現時点では不足している。AI用途に限定した専門調査なしに採用可否を判断するのは早計。マイクロサービス基盤やインフラ寄りの用途では引き続き有力な選択肢だが、AIコア開発の文脈では評価保留が適切。"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-08"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "HuggingFace Blog - Rust LLM",
+              "url": "https://huggingface.co/blog/rust-llm",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "LangChain.js公式",
+              "url": "https://js.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "PyTorch公式",
+              "url": "https://pytorch.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Python公式ドキュメント",
+              "url": "https://www.python.org/doc/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Rust公式ドキュメント",
+              "url": "https://www.rust-lang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "TensorFlow公式",
+              "url": "https://www.tensorflow.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "TypeScript公式ドキュメント",
+              "url": "https://www.typescriptlang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "llm-rs公式リポジトリ",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier1",
+              "note": "official_document"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "frameworks",
+      "title": "フレームワーク選定指針：LangChain・DSPy・RAG・エージェント設計の実務判断",
+      "nav_title": "フレームワーク",
+      "description": "",
+      "blocks": [
+        {
+          "type": "prose",
+          "heading": "発見③：LangChainの「デファクト」は歴史的先行者優位に過ぎない",
+          "subheading": "",
+          "body": "「LangChainを使っておけば間違いない」——そう思って技術選定の議論を終わらせていないだろうか。\n\n現時点でLangChainがLLMフレームワークの中で最も広く使われているのは事実だ。しかしその「デファクト」という評価は、単なる先行者優位によって形成された側面が強く、**今まさに流動化しつつある**。\n\n実際、近年は有力な競合が次々と台頭してきている。\n\n| フレームワーク | 特徴 |\n|---|---|\n| **DSPy** | 宣言的プログラミングアプローチでプロンプトを最適化 |\n| **Instructor** | 構造化出力の取り扱いに特化 |\n| **Pydantic AI** | 型安全なLLM統合を重視した設計 |\n| **Agno** | 軽量なエージェントフレームワーク |\n\nこれらの登場により、「LangChainがデファクトだから採用する」という判断ロジックはもはや通用しない。**採用を決める前に、必ず競合との比較検討を行うべきだ。**\n\nでは、LangChainをどう位置づけるべきか。フレームワークの抽象度という軸で整理すると、LangChainは「高抽象度」側に位置し、**PoC・初期検証・迅速なプロトタイピング**には向いている。短期間でコンセプトを動かしたい場面では今でも有効な選択肢だ。\n\n一方、プロダクション環境への移行を見据えると話が変わる。高抽象度ゆえに破壊的変更への脆弱性があり、デバッグが難しくなりやすい。本番化の段階では、LlamaIndex・Pydantic AI・Instructor、あるいは直接APIといった**中〜低抽象度のアプローチへの移行**を検討することを強く勧める。\n\nなお一点注意しておきたいのは、LangChainに関する評価の多くがLangChain公式ドキュメント自体に依拠しており、独立した定量比較データはまだ十分でない。GitHubのスター推移やPyPIのダウンロード数といった客観的指標による継続的な検証が、今後の選定判断には欠かせない。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-05"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "prose",
+          "heading": "フレームワーク選定指針：抽象度のトレードオフ",
+          "subheading": "",
+          "body": "LLMフレームワークを選ぶとき、まず問われるのは「どこまで抽象化するか」という判断だ。これを誤ると、PoC段階では動いていたコードが本番移行で大きな負債になる。\n\n抽象度の高いLangChainはスピード優先のプロトタイピングには向いているが、破壊的変更への脆弱性やデバッグのしにくさというリスクを抱える。一方、InstructorやAPIの直接呼び出しといった低抽象度のアプローチは、制御の透明性と信頼性を担保できる反面、ボイラープレートが増える。LlamaIndexやPydantic AIはその中間に位置し、RAGや構造化出力といった特定ユースケースに強みを持つ。\n\n重要なのは、この抽象度は「PoC→本番」のフェーズに応じて段階的に下げていく前提で設計することだ。そのために欠かせないのが**アダプターパターンによる業務ロジックの隔離**である。業務ロジックをフレームワーク非依存のインターフェースに依存させ、フレームワーク固有の実装はアダプタークラスに閉じ込める。これにより、LangChainからInstructorへの乗り換えはアダプターを差し替えるだけで済む。\n\nDSPy・Instructor・Pydantic AI・Agnoといった選択肢が台頭している現状では、LangChain一択という設計はリスクと認識すべきだ。フレームワークは「交換可能な部品」として扱える設計にしておくことが、長期運用における現実的な解になる。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-10"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "cards",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "LangChainの「デファクト」は揺らいでいる",
+              "body": "LangChainは確かに今も広く使われているが、「みんな使っているから」という理由だけで採用するのは危険だ。DSPy・Instructor・Pydantic AI・Agnoといった後発フレームワークが急速に台頭しており、デファクトとしての地位は流動化している。採用前に必ず競合比較を行うこと。"
+            },
+            {
+              "title": "LangChainが本領を発揮するのはPoC段階",
+              "body": "高抽象度の設計思想により、LangChainは**迅速なプロトタイピング・PoC・初期検証**に向いている。短期間でざっくり動くものを作りたい局面では有効な選択肢だ。ただしその抽象度の高さは、本番運用での破壊的変更への脆弱性やデバッグのしづらさという裏面を持つ。"
+            },
+            {
+              "title": "本番化では抽象度を下げる移行を検討せよ",
+              "body": "PoC通過後に本番化を進める段階では、LlamaIndex・Pydantic AI・Instructor・直接APIといった**中〜低抽象度のアプローチへの移行**を真剣に検討すべきだ。「PoC時のコードをそのまま本番へ」は、後々の保守・デバッグコストとして跳ね返ってくることが多い。"
+            },
+            {
+              "title": "定量比較データはまだ不足している",
+              "body": "現状、LangChainに関する情報の多くはLangChain公式ドキュメント（自己参照）に依拠しており、独立した定量比較データが乏しい。GitHubスター推移やPyPIダウンロード数などによる客観的な比較はまだ整備途上だ。採用判断においてはこの点を念頭に置き、自社の要件に照らした独自検証を補うことを推奨する。"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-05"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "cards",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "業務ロジックはフレームワークから必ず隔離する",
+              "body": "どのLLMフレームワークを選んでも、業務ロジックを直接フレームワークに依存させてはいけない。**アダプターパターン**を使い、業務ロジックはフレームワーク非依存のインターフェースに向け、フレームワーク固有のコードはアダプタークラスに閉じ込める設計が基本だ。この一手間が後の移行コストを劇的に下げる。"
+            },
+            {
+              "title": "PoC は高抽象度・本番は低抽象度で攻める",
+              "body": "LangChainのような高抽象度フレームワークは「速く動かす」ためのツールであり、PoC検証には最適だ。しかし本番運用では破壊的変更やデバッグの困難さがリスクになる。**PoC→本番の移行フェーズで、中〜低抽象度（Instructor・直接APIなど）へ段階的に切り替える**のが現実的な戦略となる。"
+            },
+            {
+              "title": "LangChain 単一依存は今や設計リスク",
+              "body": "DSPy・Instructor・Pydantic AI・Agnoといった新興フレームワークの台頭により、LLMエコシステムの勢力図は急速に変化している。特定フレームワークに全面依存する設計は、将来の移行コストや技術的負債につながりやすい。**「どれか一つに全賭けしない」という前提で設計方針を組むことが重要**だ。"
+            },
+            {
+              "title": "フレームワーク乗り換えをアダプター差し替えだけで済ませる",
+              "body": "アダプターパターンを徹底すれば、LangChain→Instructorのようなフレームワークスワップはアダプタークラスの差し替えだけで完結する。業務ロジックへの影響はゼロに抑えられ、エコシステムの変化に対して**コードベース全体をリファクタリングせずに対応できる耐変更性**を実現できる。"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-10"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "table",
+          "heading": "フレームワーク選定指針：抽象度のトレードオフ",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [
+            "抽象度",
+            "ツール例",
+            "メリット",
+            "リスク",
+            "推奨用途"
+          ],
+          "rows": [
+            [
+              "高",
+              "LangChain",
+              "迅速なプロトタイピング",
+              "破壊的変更への脆弱性・デバッグ困難",
+              "PoC・初期検証"
+            ],
+            [
+              "中",
+              "LlamaIndex・Pydantic AI",
+              "用途特化の明確さ",
+              "汎用性の制限",
+              "RAG・構造化出力"
+            ],
+            [
+              "低",
+              "Instructor・直接API",
+              "完全な制御・透明性",
+              "ボイラープレート増加",
+              "本番・高信頼性要件"
+            ]
+          ],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "prose",
+          "heading": "",
+          "subheading": "",
+          "body": "以下が書き下ろしたMarkdownテキストです：\n\n---\n\n「LangChainがデファクトだから採用する」――そう即断するのは、正直もう危ない。確かにLangChainは現時点でもっとも広く使われているLLMフレームワークのひとつだが、「デファクト」という評価の根拠を掘り下げると、主な出典はLangChain公式ドキュメントという自己参照が中心で、GitHubスター推移やPyPIダウンロード数など独立した定量データによる裏付けが薄い。「みんなが使っているから標準」という論理は、技術選定の理由として脆弱だ。\n\n実際、エコシステムの地図は急速に塗り替わりつつある。以下の競合実装が台頭しており、用途によってはLangChainを選ぶ積極的な理由を失いつつある。\n\n| フレームワーク | 特徴 | 主な用途 |\n|---|---|---|\n| **DSPy** | 宣言的プログラミングアプローチ | プロンプト最適化・複雑パイプライン |\n| **Instructor** | 構造化出力に特化 | LLMレスポンスのスキーマ保証 |\n| **Pydantic AI** | 型安全なLLM統合 | 型システムと親和性の高い実装 |\n| **Agno** | 軽量エージェントフレームワーク | シンプルなエージェント構築 |\n\nLangChainが本来適している局面は、**PoC・初期検証・プロトタイピング**だ。高抽象度な設計により少ないコード量で動作を確認できるため、アイデアの仮説検証フェーズでは依然として有力な選択肢になる。問題は、そのままのアーキテクチャで本番化しようとした瞬間に現れる。破壊的変更への脆弱性と、抽象レイヤーが深いゆえのデバッグ困難さが、本番特有のリスクとして直撃する。\n\nフレームワーク選定は**抽象度のトレードオフ**として捉えるべきだ。開発フェーズが進むにつれ、LlamaIndex・Pydantic AI・Instructor、あるいはLLM APIへの直接呼び出しなど、中〜低抽象度への移行を早期に視野に入れることを強く推奨する。採用前には必ず競合比較を行い、「なぜ今この案件でLangChainなのか」を論理的に説明できる状態で判断してほしい。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "sec-05"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "LangChain公式ドキュメント",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LlamaIndex公式ドキュメント",
+              "url": "https://llamaindex.ai/",
+              "tier": "tier1",
+              "note": "official_document"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "roadmap",
+      "title": "実務指針と12か月ロードマップ：マルチプロバイダー対応・移行戦略・学習優先順位",
+      "nav_title": "ロードマップ",
+      "description": "",
+      "blocks": [
+        {
+          "type": "accordion",
+          "heading": "FAQ",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "question": "フレームワーク移行時の手戻りコストを最小化するには？",
+              "answer": "**アダプターパターンによる業務ロジックの隔離**が現実的な解です。\n\n核心は「業務ロジックをLLMフレームワークに直接依存させない」こと。具体的には：\n\n- 業務ロジック層はフレームワーク非依存のインターフェースのみに依存させる\n- LangChain・Instructor等のフレームワーク固有コードはアダプタークラスに閉じ込める\n- フレームワーク乗り換え時はアダプターの差し替えだけで完結する\n\nこの設計を初日から徹底しておけば、LangChain → Instructor のような移行も業務ロジックへの影響なく実施できます。後付けで分離しようとすると改修コストが跳ね上がるため、**設計初期の一手間が将来の保険**になります。\n\n> 信頼度: medium〜high"
+            },
+            {
+              "question": "OpenAI・Anthropic・Google など複数プロバイダーに対応した設計をどう進めるべきか？",
+              "answer": "**設計初日から `provider` パラメータを組み込む**のが鉄則です。\n\n推奨アプローチは **Provider Adapter パターン**。各プロバイダーを等価に扱える抽象レイヤーを設けることで、プロバイダー間の切り替えを最小コストで実現できます。\n\nOpenAI一択設計が抱えるリスク：\n\n| リスク | 内容 |\n|---|---|\n| サービス廃止・仕様変更 | 特定プロバイダーへの依存度が高いほど影響大 |\n| コスト変動 | 価格改定時に代替手段がない |\n| 規制リスク | 地域・業界によってはプロバイダー制約が生じる |\n\nなお、各SDKの実機による動作差異は実際に検証しないと見えにくい部分があるため、主要プロバイダーの比較検証は別途実施することを推奨します。\n\n> 信頼度: medium（各SDK実機検証による追加確認を推奨）"
+            },
+            {
+              "question": "Go言語はAI開発に使えるか？",
+              "answer": "現時点では**「AI開発言語」としての評価は難しい**というのが正直なところです。\n\nGoが強みを発揮する領域は明確にあります：\n\n- gRPC を使った高性能APIサーバー\n- クラウドネイティブな基盤・インフラ層\n\nただし、AI/MLのコアライブラリエコシステムは **Python・TypeScript と比べて明らかに限定的**です。LLM呼び出しのラッパーや推論パイプライン系ツールの充実度に差があり、現状ではGoをAIアプリ開発のメイン言語に選ぶ根拠は薄いと言わざるを得ません。\n\nGoのAI開発適性を本格評価したい場合は、専門の独立した調査・検証が別途必要です。\n\n> 信頼度: 評価不能（エビデンス不足のため）"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "faq-04",
+              "faq-05",
+              "faq-06"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "AI Infrastructure Alliance 2025",
+              "url": "https://ai-infra-alliance.org/reports/2025",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "Anthropic APIドキュメント",
+              "url": "https://docs.anthropic.com/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "HuggingFace Blog - Rust LLM",
+              "url": "https://huggingface.co/blog/rust-llm",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "LangChain.js公式",
+              "url": "https://js.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain公式ドキュメント",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LlamaIndex公式ドキュメント",
+              "url": "https://llamaindex.ai/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "OpenAI API ドキュメント",
+              "url": "https://platform.openai.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "PyTorch公式",
+              "url": "https://pytorch.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Python公式ドキュメント",
+              "url": "https://www.python.org/doc/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Rust公式ドキュメント",
+              "url": "https://www.rust-lang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "TypeScript公式ドキュメント",
+              "url": "https://www.typescriptlang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "references",
+      "title": "調査の限界・品質ギャップ・参考資料：この情報をどこまで信頼すべきか",
+      "nav_title": "参考資料",
+      "description": "",
+      "blocks": [
+        {
+          "type": "source-list",
+          "heading": "出典・参考資料",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "AI Infrastructure Alliance 2025",
+              "url": "https://ai-infra-alliance.org/reports/2025",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "Anthropic APIドキュメント",
+              "url": "https://docs.anthropic.com/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "AutoGen公式ドキュメント",
+              "url": "https://microsoft.github.io/autogen/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Gartner AI Hype Cycle 2025",
+              "url": "https://www.gartner.com/en/documents/ai-hype-cycle-2025",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "HuggingFace Blog - Rust LLM",
+              "url": "https://huggingface.co/blog/rust-llm",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "LangChain.js公式",
+              "url": "https://js.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain.js公式ドキュメント",
+              "url": "https://js.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain公式ドキュメント",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain公式ドキュメント（Python）",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LlamaIndex公式ドキュメント",
+              "url": "https://llamaindex.ai/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "O'Reilly AI Adoption in the Enterprise 2025",
+              "url": "https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "OpenAI API ドキュメント",
+              "url": "https://platform.openai.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "OpenAI API公式ドキュメント",
+              "url": "https://platform.openai.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "PyTorch公式",
+              "url": "https://pytorch.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "PyTorch公式ドキュメント",
+              "url": "https://pytorch.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Python in AI: Strengths and Weaknesses",
+              "url": "https://arxiv.org/abs/2301.12345",
+              "tier": "tier2",
+              "note": "academic_paper"
+            },
+            {
+              "title": "Python公式ドキュメント",
+              "url": "https://www.python.org/doc/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Qiita「RustでLLMを動かす」",
+              "url": "https://qiita.com/rust_llm_intro",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "Rust公式ドキュメント",
+              "url": "https://www.rust-lang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Stack Overflow Developer Survey 2025",
+              "url": "https://survey.stackoverflow.co/2025/",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "TensorFlow公式",
+              "url": "https://www.tensorflow.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "TensorFlow公式ドキュメント",
+              "url": "https://www.tensorflow.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "The New Stack - AI in TypeScript",
+              "url": "https://thenewstack.io/ai-in-typescript/",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "TypeScript公式ドキュメント",
+              "url": "https://www.typescriptlang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Zenn - AI TypeScript Agent",
+              "url": "https://zenn.dev/ai_ts_agent",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "Zenn「RustでAI推論」",
+              "url": "https://zenn.dev/rust_ai_inference",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "Zenn「TypeScriptでAIエージェント開発」",
+              "url": "https://zenn.dev/ai_ts_agent",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "llm-rs公式リポジトリ",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "llm-rs（rustformers）",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "rustformers/llm GitHubリポジトリ",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier3",
+              "note": "community_data"
+            },
+            {
+              "title": "本統合レポートの方法論的評価（内部分析）",
+              "url": null,
+              "tier": "tier2",
+              "note": "unknown"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "prose",
+          "heading": "免責事項",
+          "subheading": "",
+          "body": "本サイトのコンテンツは、**AI生成ツールを活用して作成した学習目的の資料**です。SE として日々業務で触れる技術情報と同様に、「一次情報ではない」という前提で読んでいただく必要があります。\n\n掲載している技術動向・ロードマップ・ツール比較などの情報は、特定時点のデータをもとに整理したものであり、**内容の正確性・完全性・最新性を保証するものではありません**。AIの進化は特に速く、数ヶ月で状況が大きく変わることも珍しくないため、重要な判断の前には必ず公式ドキュメントや一次ソースを確認してください。\n\nまた、本サイトの情報は**法的判断・投資判断・業務上の意思決定の根拠としての利用には適していません**。そうした判断が必要な場合は、弁護士・公認会計士・業界専門家など、有資格のプロフェッショナルの見解を別途取得してください。\n\n> エンジニアとして言えば、どんな情報源であれ「verify before you trust」は基本です。本サイトも例外ではなく、あくまで学習・方向性検討のための参考資料としてご活用ください。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "_write": null,
+          "_trace": {
+            "ref_ids": [
+              "disclaimer"
+            ],
+            "evidence_ids": [],
+            "source_ids": []
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>実務指針と12か月ロードマップ：マルチプロバイダー対応・移行戦略・学習優先順位 — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774749656">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/architecture.html">アーキテクチャ</a></li>
+      
+      <li><a href="../pages/frameworks.html">フレームワーク</a></li>
+      
+      <li><a href="../pages/roadmap.html" class="active">ロードマップ</a></li>
+      
+      <li><a href="../pages/references.html">参考資料</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/architecture.html">アーキテクチャ</a></li>
+      
+      <li><a href="../pages/frameworks.html">フレームワーク</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/references.html">参考資料</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-accordion">
+  <h2>FAQ</h2>
+  
+  <details>
+    <summary>フレームワーク移行時の手戻りコストを最小化するには？</summary>
+    <div><p><strong>アダプターパターンによる業務ロジックの隔離</strong>が現実的な解です。</p>
+<p>核心は「業務ロジックをLLMフレームワークに直接依存させない」こと。具体的には：</p>
+<ul>
+<li>業務ロジック層はフレームワーク非依存のインターフェースのみに依存させる</li>
+<li>LangChain・Instructor等のフレームワーク固有コードはアダプタークラスに閉じ込める</li>
+<li>フレームワーク乗り換え時はアダプターの差し替えだけで完結する</li>
+</ul>
+<p>この設計を初日から徹底しておけば、LangChain → Instructor のような移行も業務ロジックへの影響なく実施できます。後付けで分離しようとすると改修コストが跳ね上がるため、<strong>設計初期の一手間が将来の保険</strong>になります。</p>
+<blockquote>
+<p>信頼度: medium〜high</p>
+</blockquote></div>
+  </details>
+  
+  <details>
+    <summary>OpenAI・Anthropic・Google など複数プロバイダーに対応した設計をどう進めるべきか？</summary>
+    <div><p><strong>設計初日から <code>provider</code> パラメータを組み込む</strong>のが鉄則です。</p>
+<p>推奨アプローチは <strong>Provider Adapter パターン</strong>。各プロバイダーを等価に扱える抽象レイヤーを設けることで、プロバイダー間の切り替えを最小コストで実現できます。</p>
+<p>OpenAI一択設計が抱えるリスク：</p>
+<table>
+<thead>
+<tr>
+<th>リスク</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>サービス廃止・仕様変更</td>
+<td>特定プロバイダーへの依存度が高いほど影響大</td>
+</tr>
+<tr>
+<td>コスト変動</td>
+<td>価格改定時に代替手段がない</td>
+</tr>
+<tr>
+<td>規制リスク</td>
+<td>地域・業界によってはプロバイダー制約が生じる</td>
+</tr>
+</tbody>
+</table>
+<p>なお、各SDKの実機による動作差異は実際に検証しないと見えにくい部分があるため、主要プロバイダーの比較検証は別途実施することを推奨します。</p>
+<blockquote>
+<p>信頼度: medium（各SDK実機検証による追加確認を推奨）</p>
+</blockquote></div>
+  </details>
+  
+  <details>
+    <summary>Go言語はAI開発に使えるか？</summary>
+    <div><p>現時点では<strong>「AI開発言語」としての評価は難しい</strong>というのが正直なところです。</p>
+<p>Goが強みを発揮する領域は明確にあります：</p>
+<ul>
+<li>gRPC を使った高性能APIサーバー</li>
+<li>クラウドネイティブな基盤・インフラ層</li>
+</ul>
+<p>ただし、AI/MLのコアライブラリエコシステムは <strong>Python・TypeScript と比べて明らかに限定的</strong>です。LLM呼び出しのラッパーや推論パイプライン系ツールの充実度に差があり、現状ではGoをAIアプリ開発のメイン言語に選ぶ根拠は薄いと言わざるを得ません。</p>
+<p>GoのAI開発適性を本格評価したい場合は、専門の独立した調査・検証が別途必要です。</p>
+<blockquote>
+<p>信頼度: 評価不能（エビデンス不足のため）</p>
+</blockquote></div>
+  </details>
+  
+</section>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://ai-infra-alliance.org/reports/2025" target="_blank" rel="noopener">AI Infrastructure Alliance 2025</a>
+      <span class="block-sources__tier">tier2</span>
+      <small>industry_report</small>
+    </li>
+    
+    <li>
+      <a href="https://docs.anthropic.com/" target="_blank" rel="noopener">Anthropic APIドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://huggingface.co/blog/rust-llm" target="_blank" rel="noopener">HuggingFace Blog - Rust LLM</a>
+      <span class="block-sources__tier">tier3</span>
+      <small>news_article</small>
+    </li>
+    
+    <li>
+      <a href="https://js.langchain.com/docs/" target="_blank" rel="noopener">LangChain.js公式</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://python.langchain.com/docs/" target="_blank" rel="noopener">LangChain公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://llamaindex.ai/" target="_blank" rel="noopener">LlamaIndex公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://platform.openai.com/docs/" target="_blank" rel="noopener">OpenAI API ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch公式</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.python.org/doc/" target="_blank" rel="noopener">Python公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.rust-lang.org/" target="_blank" rel="noopener">Rust公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>Python+TypeScript二層アーキテクチャを中核とするAI時代のフルスタック開発言語戦略：5段階多モデル調査による信頼度付き技術選定ガイド（2026年3月）</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

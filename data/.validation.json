@@ -1,0 +1,23 @@
+{
+  "validated_at": "2026-03-28T19:46:48.724003",
+  "result": "PARTIAL",
+  "total_claims": 65,
+  "claims_without_evidence": 0,
+  "evidence_without_source": 1,
+  "claims_without_confidence": 0,
+  "confidence_distribution": {
+    "high": 34,
+    "medium": 28,
+    "low": 3
+  },
+  "reliability_tier_distribution": {
+    "tier1": 45,
+    "tier2": 13,
+    "tier3": 7,
+    "tier4": 0
+  },
+  "primary_source": {
+    "true": 45,
+    "false": 20
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "strategy": {
+    "audience": "システムエンジニア",
+    "purpose": "近年AI成長加速に置いていかれないよう、何を学ぶべきかの指針を知る。表やなど多用し見やすくて整理されたサイトを目指す。",
+    "depth": "standard",
+    "tone": "technical",
+    "tone_detail": "",
+    "persona": "現役システムエンジニア",
+    "page_strategy": "multi_page"
+  },
+  "pages": [
+    {
+      "id": "index",
+      "purpose": "overview",
+      "title_hint": "AI時代のSEが今すぐ学ぶべき技術スタック — 2026年版ガイド",
+      "nav_title": "概要",
+      "content_refs": [
+        {
+          "ref_type": "summary",
+          "ref_ids": [],
+          "ref_id": "short"
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-01",
+            "cl-04",
+            "cl-05",
+            "cl-12"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "navigation",
+          "ref_ids": [],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "purpose": "analysis",
+      "title_hint": "推奨アーキテクチャ：Python＋TypeScript二層構造と言語選定の根拠",
+      "nav_title": "アーキテクチャ",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-03",
+            "sec-04",
+            "sec-08",
+            "sec-09"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-01",
+            "cl-06",
+            "cl-07",
+            "cl-14",
+            "cl-15"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-02"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-09",
+            "ent-10",
+            "ent-12",
+            "ent-13"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "frameworks",
+      "purpose": "analysis",
+      "title_hint": "フレームワーク選定指針：LangChain・DSPy・RAG・エージェント設計の実務判断",
+      "nav_title": "フレームワーク",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-05",
+            "sec-10"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-09",
+            "cl-10",
+            "cl-16",
+            "cl-17",
+            "cl-18",
+            "cl-20"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-03"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-02",
+            "faq-08",
+            "faq-10"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-14",
+            "ent-15",
+            "ent-16",
+            "ent-17",
+            "ent-18",
+            "ent-19"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "roadmap",
+      "purpose": "assessment",
+      "title_hint": "実務指針と12か月ロードマップ：マルチプロバイダー対応・移行戦略・学習優先順位",
+      "nav_title": "ロードマップ",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-11",
+            "sec-12"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "timeline",
+          "ref_ids": [
+            "tl-01",
+            "tl-02"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-02",
+            "cl-19"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-09"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-04",
+            "faq-05",
+            "faq-06"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "references",
+      "purpose": "references",
+      "title_hint": "調査の限界・品質ギャップ・参考資料：この情報をどこまで信頼すべきか",
+      "nav_title": "参考資料",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-13",
+            "sec-14"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-12",
+            "cl-13",
+            "cl-22"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-04",
+            "cmp-05",
+            "cmp-06"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "action",
+          "ref_ids": [
+            "act-01",
+            "act-02",
+            "act-03",
+            "act-07",
+            "act-08"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "quality_gaps",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "all_sources",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "disclaimer",
+          "ref_ids": [],
+          "ref_id": ""
+        }
+      ]
+    }
+  ],
+  "presentation_rules": {
+    "prefer_table_for_comparisons": true,
+    "prefer_timeline_for_sequences": true,
+    "prefer_cards_for_claims": true,
+    "max_blocks_per_page": 8,
+    "auto_source_list": true,
+    "auto_toc": false,
+    "claim_exposure": {
+      "index": "summary",
+      "detail_pages": "full"
+    }
+  }
+}

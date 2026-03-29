@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- ティア1: 公式・標準化団体 -->
+        <mxCell id="2" value="Tier 1（公式・標準化）" style="rounded=1;fillColor=#4472C4;fontColor=#FFFFFF;fontSize=16;fontStyle=1;strokeColor=#2F528F;" vertex="1" parent="1">
+          <mxGeometry x="80" y="60" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="3" value="Python公式ドキュメント" style="ellipse;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F528F;" vertex="1" parent="1">
+          <mxGeometry x="60" y="140" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="4" value="PyTorch公式" style="ellipse;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F528F;" vertex="1" parent="1">
+          <mxGeometry x="200" y="140" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="5" value="TypeScript公式" style="ellipse;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F528F;" vertex="1" parent="1">
+          <mxGeometry x="60" y="200" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="6" value="Rust公式" style="ellipse;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F528F;" vertex="1" parent="1">
+          <mxGeometry x="200" y="200" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="7" value="LangChain公式" style="ellipse;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F528F;" vertex="1" parent="1">
+          <mxGeometry x="130" y="260" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <!-- ティア2: 企業・学術 -->
+        <mxCell id="8" value="Tier 2（企業・学術）" style="rounded=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=16;fontStyle=1;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="420" y="60" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="9" value="Gartner AI Hype Cycle" style="ellipse;fillColor=#70AD47;fontColor=#FFFFFF;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="140" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="10" value="Stack Overflow調査" style="ellipse;fillColor=#70AD47;fontColor=#FFFFFF;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="560" y="140" width="140" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="11" value="O’Reilly AI Adoption" style="ellipse;fillColor=#70AD47;fontColor=#FFFFFF;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="400" y="200" width="140" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="12" value="学術論文（arXiv）" style="ellipse;fillColor=#70AD47;fontColor=#FFFFFF;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="560" y="200" width="140" height="40" as="geometry"/>
+        </mxCell>
+        <!-- ティア3: 業界記事・技術ブログ -->
+        <mxCell id="13" value="Tier 3（業界記事・ブログ）" style="rounded=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=16;fontStyle=1;strokeColor=#A34A13;" vertex="1" parent="1">
+          <mxGeometry x="760" y="60" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="14" value="The New Stack" style="ellipse;fillColor=#ED7D31;fontColor=#FFFFFF;strokeColor=#A34A13;" vertex="1" parent="1">
+          <mxGeometry x="780" y="140" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="15" value="Zenn記事" style="ellipse;fillColor=#ED7D31;fontColor=#FFFFFF;strokeColor=#A34A13;" vertex="1" parent="1">
+          <mxGeometry x="920" y="140" width="120" height="40" as="geometry"/>
+        </mxCell>
+        <!-- ティア4: コミュニティ・SNS（該当なし） -->
+        <mxCell id="16" value="Tier 4（コミュニティ/SNS）" style="rounded=1;fillColor=#CCCCCC;fontColor=#666666;fontSize=16;fontStyle=1;strokeColor=#888888;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="60" width="180" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="17" value="（該当なし）" style="ellipse;fillColor=#CCCCCC;fontColor=#666666;strokeColor=#888888;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="140" width="100" height="40" as="geometry"/>
+        </mxCell>
+        <!-- 信頼度凡例 -->
+        <mxCell id="18" value="信頼度凡例" style="rounded=1;fillColor=#FFFFFF;fontColor=#000000;fontSize=12;strokeColor=#888888;" vertex="1" parent="1">
+          <mxGeometry x="60" y="340" width="320" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="19" value="■ High（青）" style="text;fillColor=none;fontColor=#4472C4;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="80" y="370" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="20" value="■ Medium（緑）" style="text;fillColor=none;fontColor=#70AD47;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="180" y="370" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="21" value="■ Low（オレンジ）" style="text;fillColor=none;fontColor=#ED7D31;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="300" y="370" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <!-- エッジ: ティア1 -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="2" target="3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="2" target="4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="2" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="2" target="6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="2" target="7">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- エッジ: ティア2 -->
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#70AD47;" edge="1" parent="1" source="8" target="9">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#70AD47;" edge="1" parent="1" source="8" target="10">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#70AD47;" edge="1" parent="1" source="8" target="11">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#70AD47;" edge="1" parent="1" source="8" target="12">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- エッジ: ティア3 -->
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#ED7D31;" edge="1" parent="1" source="13" target="14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#ED7D31;" edge="1" parent="1" source="13" target="15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- エッジ: ティア4 -->
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#CCCCCC;" edge="1" parent="1" source="16" target="17">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

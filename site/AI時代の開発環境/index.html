@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI時代のシステム開発言語戦略 — 総合ガイド — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="./css/theme.css?v=1774744947">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="./index.html" class="active">トップ</a></li>
+      
+      <li><a href="./pages/language-evaluation.html">言語別評価マトリクス — Python / TypeScript / Rust の現在地</a></li>
+      
+      <li><a href="./pages/architecture.html">推奨アーキテクチャ詳解 — Python＋TypeScript 二層構造の設計原則</a></li>
+      
+      <li><a href="./pages/frameworks-roadmap.html">フレームワーク選定と12か月ロードマップ — 抽象度トレードオフと実務指針</a></li>
+      
+      <li><a href="./pages/references.html">調査根拠・情報ギャップ・免責事項</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="./index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="./pages/language-evaluation.html">言語別評価マトリクス — Python / TypeScript / Rust の現在地</a></li>
+      
+      <li><a href="./pages/architecture.html">推奨アーキテクチャ詳解 — Python＋TypeScript 二層構造の設計原則</a></li>
+      
+      <li><a href="./pages/frameworks-roadmap.html">フレームワーク選定と12か月ロードマップ — 抽象度トレードオフと実務指針</a></li>
+      
+      <li><a href="./pages/references.html">調査根拠・情報ギャップ・免責事項</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-hero">
+  <h1>AI時代の開発言語を、いま選び直す</h1>
+  <div><p>Python × TypeScript の二層構造が次世代開発の基盤となりつつある。LLMフレームワークの乱立、Rustの台頭——複数モデルによる多角的分析をもとに、現役エンジニアが今から備えるべき言語・アーキテクチャ戦略を整理する。</p></div>
+</section>
+<section class="block block-cards">
+  
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>AI開発の最適アーキテクチャ：Python＋TypeScriptの二層構造</h3>
+      <div><p>現時点でのAI開発における言語戦略は、<strong>PythonをAIコア層</strong>、<strong>TypeScriptを統合・UI層</strong>に据えた二層アーキテクチャが最適解だ。PythonはLLM統合やMLライブラリ群との親和性で他の追随を許さず、TypeScript側ではVercel AI SDK・tRPC・Next.jsといった成熟したエコシステムが型安全なエージェント開発を支える。LLMやAIエージェントの実用化が加速する中、<strong>型安全性・実行パフォーマンス・エコシステムの充実度</strong>が言語選定の核心的評価軸となっている。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>Pythonの優位性は「慣性」にある——短中期での代替は非現実的</h3>
+      <div><p>PythonがAI/ML分野で揺るぎない地位を保つ理由は、単なる人気ではなく<strong>エコシステム慣性</strong>にある。NumPy→SciPy→各種MLフレームワークへと連鎖するネットワーク効果により、乗り換えコストは年々増大している。一方で、型安全性や実行速度といった弱点も無視できない。Pythonの強みと限界を正確に把握した上で、システム全体の設計に組み込むことが実務エンジニアには求められる。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>PyTorch・TensorFlow・Transformers——AIライブラリの事実上の標準語</h3>
+      <div><p>AIシステム開発において、Pythonは<strong>デファクトスタンダード</strong>の地位を確立している。PyTorch・TensorFlow（いずれもPythonファースト設計）・Transformersといった主要ライブラリが一挙に揃う環境は、他言語では現状再現できない。モデル開発からファインチューニング、推論パイプライン構築まで、Pythonを軸とした技術スタックを習得しておくことは、今後のAI開発参入における最低限の前提条件といえる。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>TypeScriptがAIアプリ開発の「フロントエンド」を担い始めている</h3>
+      <div><p>AIをWebサービスやクラウドに統合する文脈では、TypeScriptの存在感が急速に高まっている。<strong>LangChain.js</strong>をはじめとするTypeScript向けLLM統合フレームワークの登場により、フロントエンドエンジニアもAIアプリ開発に直接参加できる土台が整いつつある。型システムによる安全性確保は、エージェント開発のような複雑な非同期処理においても有効に働く。実務での採用事例も増加しており、バックエンド一辺倒だったAI開発の分業構造が変わりつつある。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>AIの出力を鵜呑みにしない——バリデーション能力こそAI時代のコアスキル</h3>
+      <div><p>AI調査結果の無批判な受け入れは、現代エンジニアにとって最大のリスクのひとつだ。実際に批判的再検証を行った事例では、<strong>架空URL・自己参照バイアス・分類誤り</strong>が複数検出され、「高信頼度」とされた情報の割合が55%から35%へと大幅に低下した。AIツールを使いこなすスキルと同等に、<strong>AIの出力を検証するスキル</strong>——ソースの実在確認、バイアスの識別、主張の論拠評価——が、AI時代のエンジニアには不可欠な素養となっている。</p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-nav">
+  <div class="block-nav__grid">
+    
+    <a href="./pages/language-evaluation.html" class="block-nav__link">
+      言語別評価マトリクス — Python / TypeScript / Rust の現在地
+    </a>
+    
+    <a href="./pages/architecture.html" class="block-nav__link">
+      推奨アーキテクチャ詳解 — Python＋TypeScript 二層構造の設計原則
+    </a>
+    
+    <a href="./pages/frameworks-roadmap.html" class="block-nav__link">
+      フレームワーク選定と12か月ロードマップ — 抽象度トレードオフと実務指針
+    </a>
+    
+    <a href="./pages/references.html" class="block-nav__link">
+      調査根拠・情報ギャップ・免責事項
+    </a>
+    
+  </div>
+</section>
+  </main>
+  <footer class="container">
+    <small>AI開発向け言語・FW戦略レポート：Python+TypeScript二層構造が最適解（high）、LLMフレームワークはアダプターパターンで隔離、RustはTier3監視対象</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="800" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- ヘッダー -->
+        <mxCell id="2" value="主張の信頼度 × 信頼性ティア ヒートマップ" style="text;html=1;fontSize=18;fontColor=#4472C4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="400" height="40" as="geometry"/>
+        </mxCell>
+        <!-- ティア列ラベル -->
+        <mxCell id="3" value="ティア1（公式・標準）" style="text;html=1;fontSize=14;fontColor=#4472C4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="150" y="80" width="120" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="4" value="ティア2（企業・論文）" style="text;html=1;fontSize=14;fontColor=#70AD47;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="120" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="5" value="ティア3（業界記事）" style="text;html=1;fontSize=14;fontColor=#ED7D31;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="80" width="120" height="30" as="geometry"/>
+        </mxCell>
+        <!-- 信頼度行ラベル -->
+        <mxCell id="6" value="High（高）" style="text;html=1;fontSize=14;fontColor=#4472C4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="130" width="100" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="7" value="Medium（中）" style="text;html=1;fontSize=14;fontColor=#70AD47;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="200" width="100" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="8" value="Low（低）" style="text;html=1;fontSize=14;fontColor=#ED7D31;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="20" y="270" width="100" height="40" as="geometry"/>
+        </mxCell>
+        <!-- ヒートマップセル（High） -->
+        <mxCell id="9" value="34件&#10;例: PythonはAI分野で圧倒的優位" style="shape=rectangle;rounded=1;fillColor=#4472C4;strokeColor=#4472C4;fontColor=#FFFFFF;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="150" y="130" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="10" value="12件&#10;例: Pythonの優位性はネットワーク効果" style="shape=rectangle;rounded=1;fillColor=#70AD47;strokeColor=#70AD47;fontColor=#FFFFFF;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="300" y="130" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="11" value="3件&#10;例: Rustの現時点での実務優位性" style="shape=rectangle;rounded=1;fillColor=#ED7D31;strokeColor=#ED7D31;fontColor=#FFFFFF;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="450" y="130" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <!-- ヒートマップセル（Medium） -->
+        <mxCell id="12" value="20件&#10;例: TypeScriptのAI統合普及" style="shape=rectangle;rounded=1;fillColor=#A9D18E;strokeColor=#70AD47;fontColor=#333333;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="150" y="200" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="13" value="10件&#10;例: LLMフレームワークの交換可能設計" style="shape=rectangle;rounded=1;fillColor=#B4C6E7;strokeColor=#4472C4;fontColor=#333333;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="300" y="200" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="14" value="5件&#10;例: 業界記事によるTypeScript評価" style="shape=rectangle;rounded=1;fillColor=#F8CBAD;strokeColor=#ED7D31;fontColor=#333333;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="450" y="200" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <!-- ヒートマップセル（Low） -->
+        <mxCell id="15" value="0件" style="shape=rectangle;rounded=1;fillColor=#D9D9D9;strokeColor=#4472C4;fontColor=#333333;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="150" y="270" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="16" value="1件&#10;例: RustのPoC導入推奨" style="shape=rectangle;rounded=1;fillColor=#FFE699;strokeColor=#70AD47;fontColor=#333333;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="300" y="270" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="17" value="2件&#10;例: TypeScriptの将来性推測" style="shape=rectangle;rounded=1;fillColor=#FFD966;strokeColor=#ED7D31;fontColor=#333333;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="450" y="270" width="120" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 凡例 -->
+        <mxCell id="18" value="凡例:&#10;セル色=信頼性ティア&#10;セル内数字=主張数&#10;例=代表的主張" style="text;html=1;fontSize=12;fontColor=#333333" vertex="1" parent="1">
+          <mxGeometry x="600" y="80" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <!-- 装飾: 枠線 -->
+        <mxCell id="19" style="shape=rectangle;rounded=1;strokeColor=#4472C4;strokeWidth=2;fillColor=none" vertex="1" parent="1">
+          <mxGeometry x="140" y="120" width="440" height="220" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

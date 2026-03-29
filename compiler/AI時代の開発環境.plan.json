@@ -1,0 +1,257 @@
+{
+  "strategy": {
+    "audience": "現役システムエンジニア",
+    "purpose": "AIの成長や普及と共に今後変化するであろう開発環境の常識を、いち早くキャッチし時代に沿ったスキルを事前に学習し備えることを目的とする。",
+    "depth": "detailed",
+    "tone": "technical",
+    "tone_detail": "",
+    "persona": "システム開発系出版社の執筆者と現役エンジニアの共同",
+    "page_strategy": "multi_page"
+  },
+  "pages": [
+    {
+      "id": "index",
+      "purpose": "overview",
+      "title_hint": "AI時代のシステム開発言語戦略 — 総合ガイド",
+      "content_refs": [
+        {
+          "ref_type": "summary",
+          "ref_ids": [],
+          "ref_id": "short"
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-01",
+            "cl-04",
+            "cl-05",
+            "cl-07",
+            "cl-14"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "navigation",
+          "ref_ids": [],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "language-evaluation",
+      "purpose": "analysis",
+      "title_hint": "言語別評価マトリクス — Python / TypeScript / Rust の現在地",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-03",
+            "sec-04"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-02"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-06",
+            "ent-07",
+            "ent-08"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-03",
+            "cl-06",
+            "cl-09",
+            "cl-10"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-03",
+            "faq-09"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "purpose": "analysis",
+      "title_hint": "推奨アーキテクチャ詳解 — Python＋TypeScript 二層構造の設計原則",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-05"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-01",
+            "cl-02",
+            "cl-11",
+            "cl-17",
+            "cl-18"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-09",
+            "ent-10",
+            "ent-13"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-01",
+            "faq-04",
+            "faq-07"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "frameworks-roadmap",
+      "purpose": "assessment",
+      "title_hint": "フレームワーク選定と12か月ロードマップ — 抽象度トレードオフと実務指針",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-06",
+            "sec-07",
+            "sec-08"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-03"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "timeline",
+          "ref_ids": [
+            "tl-01",
+            "tl-02"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-12",
+            "cl-13",
+            "cl-15",
+            "cl-16"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-02",
+            "faq-06",
+            "faq-08",
+            "faq-10"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "references",
+      "purpose": "references",
+      "title_hint": "調査根拠・情報ギャップ・免責事項",
+      "content_refs": [
+        {
+          "ref_type": "quality_gaps",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "all_sources",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "disclaimer",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "action",
+          "ref_ids": [
+            "act-01",
+            "act-02",
+            "act-03",
+            "act-04",
+            "act-05",
+            "act-06",
+            "act-07",
+            "act-08",
+            "act-09",
+            "act-10"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-04",
+            "cmp-05",
+            "cmp-07"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-05"
+          ],
+          "ref_id": ""
+        }
+      ]
+    }
+  ],
+  "presentation_rules": {
+    "prefer_table_for_comparisons": true,
+    "prefer_timeline_for_sequences": true,
+    "prefer_cards_for_claims": true,
+    "max_blocks_per_page": 8,
+    "auto_source_list": true,
+    "auto_toc": false,
+    "claim_exposure": {
+      "index": "summary",
+      "detail_pages": "full"
+    }
+  }
+}

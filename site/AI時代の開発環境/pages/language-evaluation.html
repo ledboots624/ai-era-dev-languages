@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>言語別評価マトリクス — Python / TypeScript / Rust の現在地 — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774744947">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/language-evaluation.html" class="active">言語別評価マトリクス — Python / TypeScript / Rust の現在地</a></li>
+      
+      <li><a href="../pages/architecture.html">推奨アーキテクチャ詳解 — Python＋TypeScript 二層構造の設計原則</a></li>
+      
+      <li><a href="../pages/frameworks-roadmap.html">フレームワーク選定と12か月ロードマップ — 抽象度トレードオフと実務指針</a></li>
+      
+      <li><a href="../pages/references.html">調査根拠・情報ギャップ・免責事項</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/language-evaluation.html">言語別評価マトリクス — Python / TypeScript / Rust の現在地</a></li>
+      
+      <li><a href="../pages/architecture.html">推奨アーキテクチャ詳解 — Python＋TypeScript 二層構造の設計原則</a></li>
+      
+      <li><a href="../pages/frameworks-roadmap.html">フレームワーク選定と12か月ロードマップ — 抽象度トレードオフと実務指針</a></li>
+      
+      <li><a href="../pages/references.html">調査根拠・情報ギャップ・免責事項</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-prose">
+  <h2>主要発見事項</h2>
+  <div class="block-prose__body"><p>本調査では、Python・TypeScript・Rustの3言語をAI/ML開発という文脈で横断的に評価した。得られた知見は5点に集約できるが、いずれも「なんとなく知っている話」の確認ではなく、批判的再検証を経て信頼度が付与された点に注目してほしい。</p>
+<p><strong>まず押さえるべきは、Pythonの優位性の正体だ。</strong> 言語仕様が優れているから選ばれているのではない。NumPy→SciPy→各種MLライブラリへと連鎖的に積み重なった「エコシステム慣性」、すなわちネットワーク効果が真の理由である。この構造は短中期（目安として0〜5年）で覆る可能性は低く、信頼度は<strong>high</strong>と評価された。実務上の判断として、今すぐPythonを軸に据えることは合理的な選択だ。</p>
+<p><strong>次に、TypeScriptのポジションをどう読むか。</strong> Vercel AI SDKやNext.jsといった成熟した周辺エコシステムの存在により、LLM APIをWebプロダクトへ組み込む用途では最有力候補に挙がる。ただし信頼度は<strong>medium</strong>に留まる。定量的な独立エビデンスが不足しており、評価の一部が循環論法に陥っていることが指摘されているためだ。「TypeScriptで書けばAI統合は楽」という言説は、裏付けを持って使う必要がある。</p>
+<p><strong>LangChainについては、ポジションの流動化を認識しておくべきだ。</strong> 現時点では広く使われているが、DSPy・Instructor・Pydantic AIといった競合の台頭により、「デファクトスタンダード」という肩書きは揺らいでいる。「みんな使っているから採用する」というロジックは通用しない局面に来ている。フレームワーク選定の際は、必ず競合との比較検討を行うことを推奨する。</p>
+<p><strong>Rustに関しては、過大評価への注意が必要だ。</strong> 初期調査では「AI推論での採用増加・tier1相当」という評価が出たが、再検証の結果、参照URLの架空判定とtier分類の誤りが確認され、<strong>tier3（条件付き将来検討）</strong> へと修正された。採用を検討するのは、高頻度推論APIにおいてP95応答時間やコストの改善が具体的な閾値を達成した場合に限定すべきである。</p>
+<p>そして、本調査全体を通じて最も重要な示唆となるのが5点目だ。<strong>AI生成情報の無批判な受け入れこそが最大のリスクである</strong>、という事実だ。批判的再検証のフェーズで、架空URL5件・自己参照バイアス6件・分類誤り3件が検出され、「信頼度high」と評価された項目の比率は55%から35%へと大幅に低下した。AIが出力した調査結果であっても、ソースの実在確認やバイアスの識別なしには鵜呑みにできない。この<strong>情報バリデーション能力</strong>こそ、AI時代のエンジニアが身につけるべき基礎スキルであると、本調査は強く示している。</p></div>
+</section>
+<section class="block block-prose">
+  <h2>詳細分析：言語別評価マトリクス</h2>
+  <div class="block-prose__body"><p>AI開発における言語選定は、もはや「慣れ親しんだ言語を使う」という感覚論では済まない局面に入っている。LLM統合・推論パイプライン・エージェント協調といった新しいアーキテクチャが実務に入り込んでくる中で、エコシステムの成熟度と実際の採用エビデンスを軸に、各言語を冷静に評価し直す必要がある。</p>
+<p>本セクションでは <strong>Python・TypeScript・Rust・Go</strong> の4言語を多軸で評価し、それぞれに優先度（Priority）を付与した。評価軸はAI開発適性・エコシステム成熟度・信頼度の3点であり、感覚や期待値ではなく、調査で裏付けられたエビデンスに基づく。</p>
+<p>結論から言えば、<strong>Python は Priority 0（即時採用）</strong> が妥当だ。PyTorch・Transformers・FastAPIといった主要ライブラリが揃い、多くのLLM SDK がPythonファーストで提供されている現状は、短中期で揺らぐ見込みが薄い。一方で <strong>TypeScript は Priority 1（並行導入）</strong>。LangChain.jsやVercel AI SDKの台頭により、Web/クラウドとAIを連携させる領域での優位性が急速に高まっている。ただし定量的な独立エビデンスがまだ蓄積途上であるため、信頼度は medium と評価する。</p>
+<p><strong>Rust は Priority 2（条件付き検討）</strong> にとどまる。高性能推論やWASM実行環境での可能性は注目に値するが、現時点のエコシステムは未成熟であり、採用を検討すべきケースは高頻度推論APIでのパフォーマンス改善が数値目標を達成できる場合に限定される。なお、初期調査でtier1に分類されていた点は誤りと判明しており、正しくはtier3（条件付き将来検討）だ。<strong>Go については AI開発言語としての評価エビデンスが不足</strong>しており、今回の比較対象からは除外している。</p>
+<p>アーキテクチャパターンの観点では、RAG（検索拡張生成）の実装にはLlamaIndexやHaystackが、複数エージェントの役割分担・協調動作にはCrewAIやAutoGenがそれぞれ代表的な選択肢として整理できる。いずれも信頼度は high と評価されており、実務への適用を検討する際の起点となる。</p></div>
+</section>
+<section class="block block-cards">
+  
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>Pythonの優位性は「エコシステム慣性」が本質</h3>
+      <div><p>PythonがAI/ML領域で圧倒的シェアを持つ理由は、言語仕様の優秀さではない。NumPy → SciPy → 各種MLフレームワークへと積み重なった<strong>ネットワーク効果（エコシステム慣性）</strong>が根拠だ。この構造は短中期（0〜5年）では崩れないとみてよい。現時点でPythonを軸に置く選択は合理的だが、中期以降はTypeScriptのAIエコシステムが臨界質量に達するかどうかを継続的にウォッチすることを勧める。<strong>信頼度: High</strong></p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>TypeScriptはLLM統合の「今すぐ使える」筆頭候補</h3>
+      <div><p>Vercel AI SDK・tRPC・Next.jsといった成熟したエコシステムにより、LLMのAPIをWebプロダクトへ組み込む用途ではTypeScriptが最有力だ。プロトタイプから本番運用まで一貫して同一スタックで完結できる点は実務上の強みになる。ただし「TypeScript公式ドキュメントがAI統合を推奨している＝普及の証拠」という循環論法が指摘されており、定量的な独立エビデンスは現時点で不足している。過信は禁物。<strong>信頼度: Medium</strong></p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>LangChainの「デファクト」は先行者優位に過ぎない</h3>
+      <div><p>LangChainは現状で最も広く使われているLLMフレームワークだが、それは歴史的な先行優位によるものだ。DSPy・Instructor・Pydantic AI・Agnoといった競合の台頭により、その地位はすでに流動化しつつある。「デファクトだから採用する」という判断ロジックは今後通用しない。採用の意思決定には<strong>必ず競合比較を挟む</strong>こと。<strong>信頼度: Medium</strong></p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>RustはTier3——「今すぐ採用」ではなく「条件付き将来検討」</h3>
+      <div><p>初期調査ではRustを「AI推論で採用増加・Tier1」と評価していたが、批判的な再検証によって<strong>架空URLの存在とTier分類の誤り</strong>が発覚した。現時点での正しい評価はTier3。採用を検討するなら「高頻度推論APIにおいてP95応答時間とコスト改善が一定閾値を達成した場合」に限定するのが現実的な基準だ。<strong>信頼度: Low〜Medium</strong></p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>AI調査結果の無批判な受け入れが最大のリスク</h3>
+      <div><p>批判的再検証のプロセスで、架空URL 5件・自己参照バイアス 6件・Tier分類誤り 3件が検出された。その結果、「High信頼度」と評価していた情報の比率は<strong>55% → 35%</strong>に低下した。AI生成情報をそのまま技術判断に使うことは危険だ。ソースの実在確認・バイアスの識別といった<strong>AIアウトプットのバリデーション能力</strong>は、今後のエンジニアに求められる必須スキルになる。<strong>信頼度: High</strong></p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-cards">
+  
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>Python — Priority 0：今すぐ採用</h3>
+      <div><p>AI/MLのデファクト言語としての地位は揺るがない。PyTorch・Transformers・FastAPIといった主要ライブラリが揃い、LLM SDKの大半がPythonファーストで提供されている。この構図は短中期では変わらないと見ていい。</p>
+<p>一点注意すべきは型安全性。動的型付けゆえにプロダクション品質を担保しにくいが、<strong>Pydantic v2の導入で実用レベルに補完できる</strong>。AI開発の中核言語として、即時採用が妥当な判断だ。（信頼度：high）</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>TypeScript — Priority 1：Pythonと並走させる</h3>
+      <div><p>LangChain.js・LlamaIndex.jsといったTypeScript向けLLM統合フレームワークが台頭し、AIアプリ開発での選択肢が広がった。PythonほどAI寄りではないが、<strong>API連携・UI統合・Web/クラウドAI統合の領域では明確な優位性</strong>がある。Vercel AI SDKやtRPCとのスタックも実績が積み上がりつつある。</p>
+<p>ただし定量的な独立エビデンスがまだ薄く、信頼度はmediumに留まる。Pythonを主軸に置きながら並行導入を検討するのが現実的なアプローチだ。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>Rust — Priority 2：条件付きで将来検討</h3>
+      <div><p>高速・安全な推論エンジンとしてRustへの注目が高まっているが、candle・burnといったAI向けクレートはまだ成熟途上にあり、SDKのカバレッジもPython・TypeScriptには及ばない。</p>
+<p>採用判断の目安は明確にしておきたい：<strong>高頻度推論APIでP95応答時間やコストの改善が閾値を達成した場合に限定</strong>する。なお初期調査でtier1と分類されていたが、これは誤りと判明しており、<strong>正しい評価はtier3（条件付き将来検討）</strong>。信頼度：low〜medium。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>Go — 現時点では評価対象外</h3>
+      <div><p>gRPCやクラウドネイティブ基盤での実績は否定しないが、「AI開発言語」としての定量エビデンスが不足しており、今回の比較対象からは除外している。</p>
+<p>GoをAI開発スタックに組み込む判断をするには、専門的な調査が別途必要だ。現時点でGoを選定根拠に含めるのは時期尚早と考えておくのが無難。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>アーキテクチャパターン：RAG ＆ エージェント協調</h3>
+      <div><p>言語選定と合わせて押さえておきたいのがパターン実装の定番ツールだ。</p>
+<p><strong>RAG（検索拡張生成）</strong>：LlamaIndexやHaystackを使い、外部DBや社内知識をLLMと連携させることで回答精度を大幅に引き上げられる。（信頼度：high）</p>
+<p><strong>エージェント協調</strong>：CrewAIやAutoGenを使うと、複数のAIエージェントに役割を持たせて協調動作させる設計が可能になる。単体エージェントの限界を超えたタスク処理が実現できる。（信頼度：high）</p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-table">
+  <h2>言語別評価マトリクス</h2>
+  
+  <div class="block-table__wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>言語</th><th>AI開発適性</th><th>エコシステム成熟度</th><th>採用優先度</th><th>信頼度</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>Python</td><td>◎ AIコア・ML・推論</td><td>◎ NumPy/PyTorch/FastAPI</td><td>Priority 0（即時採用）</td><td>high</td>
+        </tr>
+        
+        <tr>
+          <td>TypeScript</td><td>○ AI統合・UI・API</td><td>○ Vercel AI SDK・tRPC</td><td>Priority 1（並行導入）</td><td>medium</td>
+        </tr>
+        
+        <tr>
+          <td>Rust</td><td>△ 高性能推論・WASM</td><td>△ candle・burn（未成熟）</td><td>Priority 2（条件付き検討）</td><td>low〜medium</td>
+        </tr>
+        
+        <tr>
+          <td>Go</td><td>情報不足</td><td>gRPC・クラウド基盤</td><td>調査対象外</td><td>評価不能</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</section>
+<section class="block block-prose">
+  
+  <div class="block-prose__body"><p>今回の調査から得られた知見を5点に整理する。現場での意思決定に直結する内容が多いため、信頼度の根拠とともに読み解いてほしい。</p>
+<hr>
+<p><strong>① Pythonの優位性は「エコシステム慣性」という構造的優位に由来する（信頼度: high）</strong></p>
+<p>PythonがAI/ML分野で圧倒的なシェアを持つ理由は、言語仕様の優秀さではない。NumPy → SciPy → 各種MLフレームワークへと積み重なった依存関係のネットワーク効果——いわゆる「エコシステム慣性」——が本質だ。この構造は短期（0〜2年）において容易に崩れない。少なくとも当面は、Python中心のスタックを軸に据えることが合理的な判断である。ただし、中期（2〜5年）にかけてはTypeScriptのAIエコシステムが臨界質量に達する可能性があり、継続的なウォッチが必要だ。長期（5年以上）では、Rust/WASMが推論層のデフォルトになるシナリオも排除はできないが、時期や確率の予測は現時点では不可能と見るのが誠実な評価である。</p>
+<p><strong>② TypeScriptはLLM統合の「実装層」で即効性が高い（信頼度: medium）</strong></p>
+<p>Vercel AI SDK・tRPC・Next.jsといった周辺エコシステムの成熟により、LLMのAPIをWebプロダクトへ組み込む用途においてTypeScriptは有力な選択肢だ。「書いたその日から動く」実務即効性は現時点で最も高いと見ている。ただし、この評価は信頼度mediumとする。理由は、調査過程で「TypeScript公式ドキュメントの充実 → AI分野での普及の証拠」という循環論法が指摘されており、定量的な独立エビデンスが不足しているためだ。採用判断の際はこの点を念頭に置いてほしい。</p>
+<p><strong>③ LangChainの「デファクト」は先行者優位に過ぎない（信頼度: medium）</strong></p>
+<p>現時点でLangChainが最も広く利用されているLLMフレームワークであることは事実だ。しかし、DSPy・Instructor・Pydantic AI・Agnoといった競合が急速に台頭しており、「デファクト」の地位は流動化している。「広く使われているから採用する」という論理はもはや成立しない。採用判断の前には必ず競合との比較検討を行うこと。特定のフレームワークへの依存が将来の技術的負債になるリスクを、今から意識しておくべきだ。</p>
+<p><strong>④ Rustは「条件付き将来検討（tier3）」が正しい位置づけ（信頼度: low〜medium）</strong></p>
+<p>初期調査ではRustを「AI推論での採用増加・tier1評価」としていたが、批判的な再検証により架空URLの混入とtier分類の誤りが判明した。現時点での採用判断は、「高頻度推論APIにおけるP95応答時間およびコスト改善が、あらかじめ定めた閾値を達成した場合」に限定すべきである。先進性への期待だけでRustを選定することは、現時点では根拠に乏しい。</p>
+<p><strong>⑤ AI調査結果を無批判に受け入れることが最大のリスクである（信頼度: high）</strong></p>
+<p>批判的再検証のフェーズで、架空URL 5件・自己参照バイアス 6件・tier分類誤り 3件が検出された。この再検証を経た結果、「high信頼度」と評価できる情報の比率は55%から35%へと大幅に低下した。これは単なる調査精度の問題ではない。<strong>AIが生成した情報を、ソースの実在確認とバイアス識別を通じて検証する能力</strong>は、AI時代のエンジニアにとって技術スキルと同列に扱うべき必須能力だ。ツールとしてのAIを使いこなすには、その出力を批判的に読む視点が不可欠である。</p></div>
+</section>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener">AutoGen公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.gartner.com/en/documents/ai-hype-cycle-2025" target="_blank" rel="noopener">Gartner AI Hype Cycle 2025</a>
+      <span class="block-sources__tier">tier2</span>
+      <small>industry_report</small>
+    </li>
+    
+    <li>
+      <a href="https://huggingface.co/blog/rust-llm" target="_blank" rel="noopener">HuggingFace Blog - Rust LLM</a>
+      <span class="block-sources__tier">tier3</span>
+      <small>news_article</small>
+    </li>
+    
+    <li>
+      <a href="https://js.langchain.com/docs/" target="_blank" rel="noopener">LangChain.js公式</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://llamaindex.ai/" target="_blank" rel="noopener">LlamaIndex公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/" target="_blank" rel="noopener">O&#39;Reilly AI Adoption in the Enterprise 2025</a>
+      <span class="block-sources__tier">tier2</span>
+      <small>industry_report</small>
+    </li>
+    
+    <li>
+      <a href="https://platform.openai.com/docs/" target="_blank" rel="noopener">OpenAI API ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://arxiv.org/abs/2301.12345" target="_blank" rel="noopener">Python in AI: Strengths and Weaknesses</a>
+      <span class="block-sources__tier">tier2</span>
+      <small>academic_paper</small>
+    </li>
+    
+    <li>
+      <a href="https://www.python.org/doc/" target="_blank" rel="noopener">Python公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://qiita.com/rust_llm_intro" target="_blank" rel="noopener">Qiita「RustでLLMを動かす」</a>
+      <span class="block-sources__tier">tier3</span>
+      <small>news_article</small>
+    </li>
+    
+    <li>
+      <a href="https://www.rust-lang.org/" target="_blank" rel="noopener">Rust公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.tensorflow.org/" target="_blank" rel="noopener">TensorFlow公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://thenewstack.io/ai-in-typescript/" target="_blank" rel="noopener">The New Stack - AI in TypeScript</a>
+      <span class="block-sources__tier">tier3</span>
+      <small>news_article</small>
+    </li>
+    
+    <li>
+      <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://zenn.dev/rust_ai_inference" target="_blank" rel="noopener">Zenn「RustでAI推論」</a>
+      <span class="block-sources__tier">tier3</span>
+      <small>news_article</small>
+    </li>
+    
+    <li>
+      <a href="https://zenn.dev/ai_ts_agent" target="_blank" rel="noopener">Zenn「TypeScriptでAIエージェント開発」</a>
+      <span class="block-sources__tier">tier3</span>
+      <small>news_article</small>
+    </li>
+    
+    <li>
+      <a href="https://github.com/rustformers/llm" target="_blank" rel="noopener">llm-rs公式リポジトリ</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://github.com/rustformers/llm" target="_blank" rel="noopener">rustformers/llm GitHubリポジトリ</a>
+      <span class="block-sources__tier">tier3</span>
+      <small>community_data</small>
+    </li>
+    
+    <li>
+      本統合レポートの方法論的評価（内部分析）
+      <span class="block-sources__tier">tier2</span>
+      <small>unknown</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>AI開発向け言語・FW戦略レポート：Python+TypeScript二層構造が最適解（high）、LLMフレームワークはアダプターパターンで隔離、RustはTier3監視対象</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

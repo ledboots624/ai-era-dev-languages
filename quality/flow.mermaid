@@ -1,0 +1,29 @@
+graph TD
+  subgraph P1["Phase 1: 初回調査"]
+    S1["Step 1: 情報収集\ngpt-4.1\n(2m14s)"]
+    S2["Step 2: 深層分析\nclaude-sonnet-4.6\n(3m43s)"]
+    S1 --> S2
+    S3["Step 3: 技術戦略\ngpt-5.3-codex\n(4m25s)"]
+    S2 --> S3
+    S4["Step 4: 再検証\nclaude-sonnet-4.6\n(7m50s)"]
+    S3 --> S4
+    S5["Step 5: 統合レビュー\nclaude-opus-4.6\n(25m20s)"]
+    S4 --> S5
+  end
+  subgraph P3["Phase 3: ファイナライズ"]
+    F0["統合分析"]
+    F1["最終レポート"]
+    F0 --> F1
+    F2["図解・可視化"]
+    F1 --> F2
+    F3["品質検証"]
+    F2 --> F3
+    F4["スライド・サイト"]
+    F3 --> F4
+  end
+  S5 -.-> F0
+  style S1 fill:#3b82f6,color:#fff
+  style S2 fill:#8b5cf6,color:#fff
+  style S3 fill:#3b82f6,color:#fff
+  style S4 fill:#8b5cf6,color:#fff
+  style S5 fill:#f59e0b,color:#fff

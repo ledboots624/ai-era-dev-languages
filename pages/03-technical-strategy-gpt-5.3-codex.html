@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技術戦略ステップ - AI時代の開発言語</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+<style>
+:root, [data-theme="light"], [data-theme="dark"] {
+  --pico-primary: #58a6ff;
+  --pico-primary-hover: #1f6feb;
+  --pico-primary-focus: #58a6ff33;
+  --pico-primary-inverse: #fff;
+}
+/* Hero (custom) */
+.hero {
+  background: linear-gradient(135deg, #0d1117, #161b22, #21262d);
+  color: #e2e8f0;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.hero h1 { font-size: 2rem; margin-bottom: 0.5rem; }
+.hero p { opacity: 0.9; max-width: 700px; margin: 0 auto; }
+.hero .meta { margin-top: 1rem; font-size: 0.85rem; color: #a0aec0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; }
+/* Sub-page header */
+.sub-header {
+  background: linear-gradient(135deg, #0d1117, #161b22, #21262d);
+  color: #e2e8f0;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.sub-header h1 { font-size: 1.2rem; margin: 0; flex: 1; }
+.sub-header a { color: #e2e8f0; opacity: 0.8; text-decoration: none; font-size: 0.9rem; }
+.sub-header a:hover { opacity: 1; }
+/* Nav grid */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.nav-card {
+  display: block;
+  border-radius: var(--pico-border-radius);
+  padding: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.nav-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); color: #fff; }
+.nav-card small { display: block; font-weight: 400; font-size: 0.8em; margin-top: 0.3rem; opacity: 0.9; }
+/* Step cards */
+.step-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.step-badge {
+  background: var(--pico-primary);
+  color: var(--pico-primary-inverse);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--pico-border-radius);
+  white-space: nowrap;
+}
+.step-info h4 { margin: 0; }
+.step-info p { margin: 0.3rem 0 0; font-size: 0.9rem; }
+.step-meta { font-size: 0.8rem; opacity: 0.7; }
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+.gallery-item { overflow: hidden; }
+.gallery-item img { width: 100%; height: auto; cursor: pointer; transition: transform 0.2s; }
+.gallery-item img:hover { transform: scale(1.02); }
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 95%; max-height: 95%; object-fit: contain; }
+/* Chart containers */
+.chart-container { position: relative; max-width: 500px; margin: 0 auto; }
+/* Responsive */
+@media (max-width: 768px) {
+  .hero { padding: 2rem 1rem; }
+  .hero h1 { font-size: 1.5rem; }
+  .nav-grid, .gallery-grid { grid-template-columns: 1fr; }
+  .sub-header { padding: 1rem; flex-wrap: wrap; }
+}
+/* Theme decoration */
+.hero { position: relative; overflow: hidden; }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='40' height='40' fill='none'/%3E%3Cpath d='M0 20 H40 M20 0 V40' stroke='rgba(88,166,255,0.06)' stroke-width='0.5'/%3E%3Ccircle cx='20' cy='20' r='1' fill='rgba(88,166,255,0.1)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='20' width='60' height='60' rx='8' fill='none' stroke='%2358a6ff' stroke-width='2' opacity='0.2'/%3E%3Ctext x='50' y='58' font-size='24' text-anchor='middle' fill='%2358a6ff' opacity='0.25' font-family='monospace'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E") no-repeat center/contain;
+  pointer-events: none;
+}
+
+/* Pygments */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #49483e }
+.highlight { background: #272822; color: #F8F8F2 }
+.highlight .c { color: #959077 } /* Comment */
+.highlight .err { color: #ED007E; background-color: #1E0010 } /* Error */
+.highlight .esc { color: #F8F8F2 } /* Escape */
+.highlight .g { color: #F8F8F2 } /* Generic */
+.highlight .k { color: #66D9EF } /* Keyword */
+.highlight .l { color: #AE81FF } /* Literal */
+.highlight .n { color: #F8F8F2 } /* Name */
+.highlight .o { color: #FF4689 } /* Operator */
+.highlight .x { color: #F8F8F2 } /* Other */
+.highlight .p { color: #F8F8F2 } /* Punctuation */
+.highlight .ch { color: #959077 } /* Comment.Hashbang */
+.highlight .cm { color: #959077 } /* Comment.Multiline */
+.highlight .cp { color: #959077 } /* Comment.Preproc */
+.highlight .cpf { color: #959077 } /* Comment.PreprocFile */
+.highlight .c1 { color: #959077 } /* Comment.Single */
+.highlight .cs { color: #959077 } /* Comment.Special */
+.highlight .gd { color: #FF4689 } /* Generic.Deleted */
+.highlight .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+.highlight .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #F8F8F2 } /* Generic.Error */
+.highlight .gh { color: #F8F8F2 } /* Generic.Heading */
+.highlight .gi { color: #A6E22E } /* Generic.Inserted */
+.highlight .go { color: #66D9EF } /* Generic.Output */
+.highlight .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #959077 } /* Generic.Subheading */
+.highlight .gt { color: #F8F8F2 } /* Generic.Traceback */
+.highlight .kc { color: #66D9EF } /* Keyword.Constant */
+.highlight .kd { color: #66D9EF } /* Keyword.Declaration */
+.highlight .kn { color: #FF4689 } /* Keyword.Namespace */
+.highlight .kp { color: #66D9EF } /* Keyword.Pseudo */
+.highlight .kr { color: #66D9EF } /* Keyword.Reserved */
+.highlight .kt { color: #66D9EF } /* Keyword.Type */
+.highlight .ld { color: #E6DB74 } /* Literal.Date */
+.highlight .m { color: #AE81FF } /* Literal.Number */
+.highlight .s { color: #E6DB74 } /* Literal.String */
+.highlight .na { color: #A6E22E } /* Name.Attribute */
+.highlight .nb { color: #F8F8F2 } /* Name.Builtin */
+.highlight .nc { color: #A6E22E } /* Name.Class */
+.highlight .no { color: #66D9EF } /* Name.Constant */
+.highlight .nd { color: #A6E22E } /* Name.Decorator */
+.highlight .ni { color: #F8F8F2 } /* Name.Entity */
+.highlight .ne { color: #A6E22E } /* Name.Exception */
+.highlight .nf { color: #A6E22E } /* Name.Function */
+.highlight .nl { color: #F8F8F2 } /* Name.Label */
+.highlight .nn { color: #F8F8F2 } /* Name.Namespace */
+.highlight .nx { color: #A6E22E } /* Name.Other */
+.highlight .py { color: #F8F8F2 } /* Name.Property */
+.highlight .nt { color: #FF4689 } /* Name.Tag */
+.highlight .nv { color: #F8F8F2 } /* Name.Variable */
+.highlight .ow { color: #FF4689 } /* Operator.Word */
+.highlight .pm { color: #F8F8F2 } /* Punctuation.Marker */
+.highlight .w { color: #F8F8F2 } /* Text.Whitespace */
+.highlight .mb { color: #AE81FF } /* Literal.Number.Bin */
+.highlight .mf { color: #AE81FF } /* Literal.Number.Float */
+.highlight .mh { color: #AE81FF } /* Literal.Number.Hex */
+.highlight .mi { color: #AE81FF } /* Literal.Number.Integer */
+.highlight .mo { color: #AE81FF } /* Literal.Number.Oct */
+.highlight .sa { color: #E6DB74 } /* Literal.String.Affix */
+.highlight .sb { color: #E6DB74 } /* Literal.String.Backtick */
+.highlight .sc { color: #E6DB74 } /* Literal.String.Char */
+.highlight .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+.highlight .sd { color: #E6DB74 } /* Literal.String.Doc */
+.highlight .s2 { color: #E6DB74 } /* Literal.String.Double */
+.highlight .se { color: #AE81FF } /* Literal.String.Escape */
+.highlight .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+.highlight .si { color: #E6DB74 } /* Literal.String.Interpol */
+.highlight .sx { color: #E6DB74 } /* Literal.String.Other */
+.highlight .sr { color: #E6DB74 } /* Literal.String.Regex */
+.highlight .s1 { color: #E6DB74 } /* Literal.String.Single */
+.highlight .ss { color: #E6DB74 } /* Literal.String.Symbol */
+.highlight .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #A6E22E } /* Name.Function.Magic */
+.highlight .vc { color: #F8F8F2 } /* Name.Variable.Class */
+.highlight .vg { color: #F8F8F2 } /* Name.Variable.Global */
+.highlight .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+.highlight .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+.highlight .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+/* Content styling */
+.md-content h1 { border-bottom: 2px solid var(--pico-primary); padding-bottom: 0.3rem; }
+.md-content h2 { border-bottom: 1px solid var(--pico-muted-border-color); padding-bottom: 0.2rem; }
+.md-content blockquote { border-left: 4px solid var(--pico-primary); padding: 0.8rem 1.2rem; }
+.md-content img { max-width: 100%; border-radius: var(--pico-border-radius); }
+.md-content table { width: 100%; }
+.role-banner { background: var(--pico-card-background-color); border: 1px solid var(--pico-muted-border-color); border-radius: var(--pico-border-radius); padding: 1rem 1.5rem; margin-bottom: 1.5rem; }
+.role-banner h4 { margin: 0 0 0.3rem; }
+.role-banner p { margin: 0; font-size: 0.9rem; opacity: 0.8; }
+.role-meta { display: flex; gap: 0.5rem; margin-top: 0.5rem; flex-wrap: wrap; }
+.role-meta kbd { font-size: 0.8rem; }
+
+</style>
+
+</head>
+<body>
+<div class="sub-header">
+  <a href="../index.html">&larr; トップへ</a>
+  <h1>技術戦略ステップ</h1>
+</div>
+<main class="container"><div class="role-banner">
+  <h4>STEP 3 技術戦略ステップ</h4>
+  <p>調査結果に基づいて実践的な戦略・方針を策定しています。</p>
+  <div class="role-meta"><kbd>gpt-5.3-codex</kbd></div>
+</div>
+<article class="md-content"><h1 id="ai">AI時代の開発言語に関する実践戦略提言（フルスタックエンジニア向け）</h1>
+<h2 id="1">1. 戦略判断（採用原則）</h2>
+<h3 id="1-2pythonaitypescriptui">提言1: 直近2年の標準構成は「Python（AIコア）＋TypeScript（統合/UI）」に固定する</h3>
+<p>AIモデル実装・LLM連携の中核はPythonで進め、プロダクト統合・型安全なWeb実装はTypeScriptに寄せる二層構造が、実装速度と運用品質の両立に最も有効。<br />
+ソース: [official_document/tier1] <a href="https://pytorch.org/">PyTorch公式</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://platform.openai.com/docs/">OpenAI API公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://www.typescriptlang.org/">TypeScript公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://js.langchain.com/docs/">LangChain.js公式ドキュメント</a> (2026-03-28) — primary: true<br />
+信頼度: high</p>
+<h3 id="2-llm">提言2: LLMフレームワークは「固定採用」ではなく「交換可能設計」で導入する</h3>
+<p>LangChain系・LlamaIndex系がPython/TypeScript双方で並行進化しているため、フレームワーク依存をアダプタ層へ隔離し、業務ロジックを非依存化する方針が妥当。<br />
+ソース: [official_document/tier1] <a href="https://python.langchain.com/docs/">LangChain公式ドキュメント（Python）</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://llamaindex.ai/">LlamaIndex公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://js.llamaindex.ai/">LlamaIndex.js公式ドキュメント</a> (2026-03-28) — primary: true / [industry_report/tier2] <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/">O’Reilly AI Adoption in the Enterprise 2025</a> (2026-03-28) — primary: false<br />
+信頼度: medium</p>
+<h3 id="3-rustpoc">提言3: Rustは「全社標準」ではなく「高負荷領域の選択導入（PoC起点）」で進める</h3>
+<p>Rustは性能・安全性の魅力がある一方、学習コストとエコシステム成熟度を踏まえ、低レイテンシ/高コスト領域でのみ段階導入するのが現実的。<br />
+ソース: [official_document/tier1] <a href="https://www.rust-lang.org/">Rust公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://github.com/rustformers/llm">llm-rs（rustformers）</a> (2026-03-28) — primary: true / [industry_report/tier2] <a href="https://survey.stackoverflow.co/2025/">Stack Overflow Developer Survey 2025</a> (2026-03-28) — primary: false / [industry_report/tier2] <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/">O’Reilly AI Adoption in the Enterprise 2025</a> (2026-03-28) — primary: false<br />
+信頼度: medium</p>
+<h2 id="2">2. 優先順位付きアクション案（実現可能性・リスク評価）</h2>
+<table>
+<thead>
+<tr>
+<th>優先度</th>
+<th>期間</th>
+<th>具体アクション</th>
+<th>実現可能性</th>
+<th>主要リスク</th>
+<th>推奨対策</th>
+<th>ソース</th>
+<th>信頼度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P0</td>
+<td>0-2か月</td>
+<td><strong>言語標準化</strong>: AI機能はPythonサービス、アプリ統合はTypeScript BFF/フロントに明確分離</td>
+<td>高</td>
+<td>サービス境界の型不整合</td>
+<td>OpenAPI/JSON Schemaを唯一契約にする</td>
+<td>[official_document/tier1] <a href="https://www.python.org/doc/">Python公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://www.typescriptlang.org/">TypeScript公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://platform.openai.com/docs/">OpenAI API公式ドキュメント</a> (2026-03-28) — primary: true</td>
+<td>high</td>
+</tr>
+<tr>
+<td>P0</td>
+<td>0-2か月</td>
+<td><strong>LLM接続層の共通化</strong>: モデル呼び出しをProvider Adapter化し、OpenAI直結箇所を一点化</td>
+<td>高</td>
+<td>ベンダー依存の固定化</td>
+<td>プロバイダ別実装を同一IFで差し替え可能に維持</td>
+<td>[official_document/tier1] <a href="https://platform.openai.com/docs/">OpenAI API公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://python.langchain.com/docs/">LangChain公式ドキュメント（Python）</a> (2026-03-28) — primary: true</td>
+<td>high</td>
+</tr>
+<tr>
+<td>P0</td>
+<td>1-3か月</td>
+<td><strong>RAG標準テンプレート整備</strong>: インデックス・検索・回答生成を共通コンポーネント化</td>
+<td>高</td>
+<td>データ更新遅延で回答品質が劣化</td>
+<td>インデックス更新SLOと再構築ジョブを標準運用化</td>
+<td>[official_document/tier1] <a href="https://llamaindex.ai/">LlamaIndex公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://python.langchain.com/docs/">LangChain公式ドキュメント（Python）</a> (2026-03-28) — primary: true</td>
+<td>high</td>
+</tr>
+<tr>
+<td>P0</td>
+<td>1-3か月</td>
+<td><strong>入出力の型契約強化</strong>: LLM出力を構造化し、TypeScript型へ厳密変換</td>
+<td>高</td>
+<td>非構造化応答による障害</td>
+<td>構造化出力＋検証失敗時の再試行ポリシーを実装</td>
+<td>[official_document/tier1] <a href="https://platform.openai.com/docs/">OpenAI API公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://www.typescriptlang.org/">TypeScript公式ドキュメント</a> (2026-03-28) — primary: true</td>
+<td>high</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>3-6か月</td>
+<td><strong>エージェント限定導入</strong>: 業務効果が明確な2ユースケースでのみ実運用検証</td>
+<td>中</td>
+<td>期待効果不達・制御難</td>
+<td>単機能エージェントから段階導入し、評価指標を先に定義</td>
+<td>[official_document/tier1] <a href="https://microsoft.github.io/autogen/">AutoGen公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://python.langchain.com/docs/">LangChain公式ドキュメント（Python）</a> (2026-03-28) — primary: true</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>P1</td>
+<td>3-6か月</td>
+<td><strong>フレームワーク可搬性テスト</strong>: LangChain系とLlamaIndex系の入替実験を四半期ごとに実施</td>
+<td>中</td>
+<td>移行コスト増大</td>
+<td>業務ロジックを非依存層へ隔離、抽象境界を固定</td>
+<td>[official_document/tier1] <a href="https://js.langchain.com/docs/">LangChain.js公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://js.llamaindex.ai/">LlamaIndex.js公式ドキュメント</a> (2026-03-28) — primary: true</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>6-12か月</td>
+<td><strong>Rust推論PoC</strong>: 高頻度APIまたは低遅延要件機能1本で性能検証</td>
+<td>中</td>
+<td>学習コストに対し便益不足</td>
+<td>対象を1機能に限定し、性能/コスト閾値で継続判断</td>
+<td>[official_document/tier1] <a href="https://www.rust-lang.org/">Rust公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://github.com/rustformers/llm">llm-rs（rustformers）</a> (2026-03-28) — primary: true / [industry_report/tier2] <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/">O’Reilly AI Adoption in the Enterprise 2025</a> (2026-03-28) — primary: false</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>9-12か月</td>
+<td><strong>採用ゲート運用</strong>: Rust本採用は「遅延・コスト改善」と「運用可能性」達成時のみGo</td>
+<td>中</td>
+<td>技術先行で運用破綻</td>
+<td>Go/No-Goを数値基準化し、未達ならPython/TS最適化を継続</td>
+<td>[industry_report/tier2] <a href="https://www.gartner.com/en/documents/ai-hype-cycle-2025">Gartner AI Hype Cycle 2025</a> (2026-03-28) — primary: false / [industry_report/tier2] <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/">O’Reilly AI Adoption in the Enterprise 2025</a> (2026-03-28) — primary: false</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3">3. リスク評価（優先対応順）</h2>
+<table>
+<thead>
+<tr>
+<th>リスク</th>
+<th>発生可能性</th>
+<th>影響度</th>
+<th>総合優先度</th>
+<th>実務対策</th>
+<th>ソース</th>
+<th>信頼度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLMベンダー依存の固定化</td>
+<td>中</td>
+<td>高</td>
+<td>高</td>
+<td>Provider Adapterを標準化し、呼び出しIFを共通化</td>
+<td>[official_document/tier1] <a href="https://platform.openai.com/docs/">OpenAI API公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://python.langchain.com/docs/">LangChain公式ドキュメント（Python）</a> (2026-03-28) — primary: true</td>
+<td>high</td>
+</tr>
+<tr>
+<td>フレームワーク依存による移行困難</td>
+<td>中</td>
+<td>高</td>
+<td>高</td>
+<td>LangChain/LlamaIndexを業務層から分離して採用</td>
+<td>[official_document/tier1] <a href="https://js.langchain.com/docs/">LangChain.js公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://js.llamaindex.ai/">LlamaIndex.js公式ドキュメント</a> (2026-03-28) — primary: true</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>生成品質の揺らぎ（非構造化出力）</td>
+<td>高</td>
+<td>中</td>
+<td>高</td>
+<td>構造化出力・スキーマ検証・失敗時再試行を標準化</td>
+<td>[official_document/tier1] <a href="https://platform.openai.com/docs/">OpenAI API公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://www.typescriptlang.org/">TypeScript公式ドキュメント</a> (2026-03-28) — primary: true</td>
+<td>high</td>
+</tr>
+<tr>
+<td>推論コストの増大</td>
+<td>中</td>
+<td>高</td>
+<td>高</td>
+<td>モデル選択ポリシーとキャッシュ戦略をKPI運用</td>
+<td>[industry_report/tier2] <a href="https://www.gartner.com/en/documents/ai-hype-cycle-2025">Gartner AI Hype Cycle 2025</a> (2026-03-28) — primary: false / [industry_report/tier2] <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/">O’Reilly AI Adoption in the Enterprise 2025</a> (2026-03-28) — primary: false</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Rust導入時の学習・採用負荷</td>
+<td>中</td>
+<td>中</td>
+<td>中</td>
+<td>高負荷領域に限定したPoCで段階検証</td>
+<td>[official_document/tier1] <a href="https://www.rust-lang.org/">Rust公式ドキュメント</a> (2026-03-28) — primary: true / [industry_report/tier2] <a href="https://survey.stackoverflow.co/2025/">Stack Overflow Developer Survey 2025</a> (2026-03-28) — primary: false</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-12">4. 12か月ロードマップ（意思決定ゲート付き）</h2>
+<table>
+<thead>
+<tr>
+<th>フェーズ</th>
+<th>到達目標</th>
+<th>Go条件</th>
+<th>No-Go時の代替</th>
+<th>ソース</th>
+<th>信頼度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q1（0-3か月）</td>
+<td>Python/TS二層標準化、LLM接続層とRAGテンプレートを稼働</td>
+<td>主要AI機能が標準テンプレートで実装可能</td>
+<td>PoC限定で再設計し、標準化範囲を縮小</td>
+<td>[official_document/tier1] <a href="https://www.python.org/doc/">Python公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://www.typescriptlang.org/">TypeScript公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://llamaindex.ai/">LlamaIndex公式ドキュメント</a> (2026-03-28) — primary: true</td>
+<td>high</td>
+</tr>
+<tr>
+<td>Q2（3-6か月）</td>
+<td>エージェント2ユースケースを本番検証し、効果測定</td>
+<td>品質・コスト・運用負荷の基準を満たす</td>
+<td>ルールベース＋RAG中心へ戻す</td>
+<td>[official_document/tier1] <a href="https://microsoft.github.io/autogen/">AutoGen公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://python.langchain.com/docs/">LangChain公式ドキュメント（Python）</a> (2026-03-28) — primary: true</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Q3（6-9か月）</td>
+<td>フレームワーク可搬性試験と運用KPI定着</td>
+<td>代替フレームワークへの切替が計画時間内で成立</td>
+<td>非依存層の再分離を優先実施</td>
+<td>[official_document/tier1] <a href="https://js.langchain.com/docs/">LangChain.js公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://js.llamaindex.ai/">LlamaIndex.js公式ドキュメント</a> (2026-03-28) — primary: true</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>Q4（9-12か月）</td>
+<td>Rust推論PoCの採用判定（限定本番含む）</td>
+<td>遅延・コスト改善と運用可能性を同時達成</td>
+<td>Rust本採用を見送り、Python/TS最適化継続</td>
+<td>[official_document/tier1] <a href="https://www.rust-lang.org/">Rust公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://github.com/rustformers/llm">llm-rs（rustformers）</a> (2026-03-28) — primary: true / [industry_report/tier2] <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/">O’Reilly AI Adoption in the Enterprise 2025</a> (2026-03-28) — primary: false</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-kpi">5. 実行KPI（優先監視）</h2>
+<table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>評価意図</th>
+<th>判定頻度</th>
+<th>ソース</th>
+<th>信頼度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI機能のリリース所要時間</td>
+<td>Python/TS二層標準化の開発効率効果を検証</td>
+<td>月次</td>
+<td>[industry_report/tier2] <a href="https://www.gartner.com/en/documents/ai-hype-cycle-2025">Gartner AI Hype Cycle 2025</a> (2026-03-28) — primary: false / [industry_report/tier2] <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/">O’Reilly AI Adoption in the Enterprise 2025</a> (2026-03-28) — primary: false</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>構造化出力準拠率</td>
+<td>LLM応答の運用品質と障害予防を評価</td>
+<td>週次</td>
+<td>[official_document/tier1] <a href="https://platform.openai.com/docs/">OpenAI API公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://www.typescriptlang.org/">TypeScript公式ドキュメント</a> (2026-03-28) — primary: true</td>
+<td>high</td>
+</tr>
+<tr>
+<td>RAG回答の根拠提示率</td>
+<td>検索拡張の実効性と説明可能性を評価</td>
+<td>週次</td>
+<td>[official_document/tier1] <a href="https://llamaindex.ai/">LlamaIndex公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://python.langchain.com/docs/">LangChain公式ドキュメント（Python）</a> (2026-03-28) — primary: true</td>
+<td>high</td>
+</tr>
+<tr>
+<td>推論単価（機能別）</td>
+<td>モデル選定・キャッシュ・ルーティング最適化を評価</td>
+<td>月次</td>
+<td>[industry_report/tier2] <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/">O’Reilly AI Adoption in the Enterprise 2025</a> (2026-03-28) — primary: false / [industry_report/tier2] <a href="https://www.gartner.com/en/documents/ai-hype-cycle-2025">Gartner AI Hype Cycle 2025</a> (2026-03-28) — primary: false</td>
+<td>medium</td>
+</tr>
+<tr>
+<td>低遅延機能のP95応答時間</td>
+<td>Rust PoCの採用是非を性能面で判定</td>
+<td>週次（PoC期間）</td>
+<td>[official_document/tier1] <a href="https://www.rust-lang.org/">Rust公式ドキュメント</a> (2026-03-28) — primary: true / [official_document/tier1] <a href="https://github.com/rustformers/llm">llm-rs（rustformers）</a> (2026-03-28) — primary: true</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table></article></main><footer class="container">
+  <small>Generated by AI Research Agent v &mdash;
+  AI生成のため、重要な意思決定には人間による検証を推奨します</small>
+</footer>
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
+<script>
+function openLightbox(el){var lb=document.getElementById('lightbox');document.getElementById('lightbox-img').src=el.src;lb.classList.add('active')}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox()});
+</script>
+</body>
+</html><!-- source: 03-technical-strategy-gpt-5.3-codex.md -->

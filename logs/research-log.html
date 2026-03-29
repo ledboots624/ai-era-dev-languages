@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Log</title>
+<style>
+body { background: #1a1a2e; color: #e2e8f0; font-family: 'Courier New', monospace; margin: 0; padding: 20px; overflow-x: auto; }
+.header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.header h1 { font-size: 1.2rem; margin: 0; }
+.back-btn { color: #4299e1; text-decoration: none; }
+.controls { display: flex; gap: 12px; margin-bottom: 16px; align-items: center; }
+select, input { background: #2d3748; color: #e2e8f0; border: 1px solid #4a5568; padding: 6px 10px; border-radius: 4px; }
+input { flex: 1; max-width: 300px; }
+.log-line { padding: 2px 8px; font-size: 13px; white-space: pre; }
+.log-line:hover { background: rgba(255,255,255,0.05); }
+.ts { color: #718096; }
+.level-info { color: #48bb78; }
+.level-warn { color: #ecc94b; }
+.level-error { color: #fc8181; }
+.level-debug { color: #63b3ed; }
+.model { color: #b794f4; font-weight: bold; }
+.duration { color: #f6ad55; }
+.separator { color: #4a5568; }
+.step-marker { color: #63b3ed; font-weight: bold; }
+.footer { margin-top: 20px; padding-top: 12px; border-top: 1px solid #4a5568; color: #718096; font-size: 12px; }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="header">
+<a href="index.html" class="back-btn">&larr; Back</a>
+<h1>Research Execution Log</h1>
+</div>
+<div class="controls">
+<select id="levelFilter" onchange="filterLogs()">
+<option value="all">All</option>
+<option value="info">INFO</option>
+<option value="warn">WARN</option>
+<option value="error">ERROR</option>
+<option value="debug">DEBUG</option>
+</select>
+<input type="text" id="searchBox" placeholder="Search..." oninput="filterLogs()">
+</div>
+<div id="logContainer">
+<div class="log-line" data-level="info">[0;32m[18:47:34 INFO][0m AI Research Agent v3.0.0</div>
+<div class="log-line" data-level="info">[0;32m[18:47:34 INFO][0m 既存ワークスペース: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program</div>
+<div class="log-line" data-level="info">[0;32m[18:47:34 INFO][0m 調査開始: AI時代の開発言語</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:47:34</span> <span class="level-info">INFO]</span> 調査開始: AI時代の開発言語</div>
+<div class="log-line" data-level="info">[0;32m[18:47:34 INFO][0m モード: full, エコノミー: False</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:47:34</span> <span class="level-info">INFO]</span> モード: full, エコノミー: False</div>
+<div class="log-line" data-level="info">[0;32m[18:47:34 INFO][0m デフォルトプラン生成: default-full (5 steps)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:47:34</span> <span class="level-info">INFO]</span> デフォルトプラン生成: default-full (5 steps)</div>
+<div class="log-line" data-level="info">[0;32m[18:47:34 INFO][0m <span class="separator">━━━</span> <span class="step-marker">Step 1</span>/5: 情報収集 (<span class="model">gpt-4.1</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:47:34</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> <span class="step-marker">Step 1</span>/5: 情報収集 (<span class="model">gpt-4.1</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[18:48:49 INFO][0m <span class="step-marker">Step 1</span>: 出力保存 (6432 chars)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:48:49</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 1</span>: 出力保存 (6432 chars)</div>
+<div class="log-line" data-level="info">[0;32m[18:49:49 INFO][0m <span class="step-marker">Step 1</span>: エビデンス抽出完了 (20 claims)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:49:49</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 1</span>: エビデンス抽出完了 (20 claims)</div>
+<div class="log-line" data-level="info">[0;32m[18:49:49 INFO][0m <span class="step-marker">Step 1</span>: 完了 (<span class="duration">2m14s</span>)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:49:49</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 1</span>: 完了 (<span class="duration">2m14s</span>)</div>
+<div class="log-line" data-level="info">[0;32m[18:49:49 INFO][0m <span class="separator">━━━</span> <span class="step-marker">Step 2</span>/5: 深層分析 (<span class="model">claude-sonnet-4.6</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:49:49</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> <span class="step-marker">Step 2</span>/5: 深層分析 (<span class="model">claude-sonnet-4.6</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[18:52:31 INFO][0m フォーマットチェック: 4件修正適用</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:52:31</span> <span class="level-info">INFO]</span> フォーマットチェック: 4件修正適用</div>
+<div class="log-line" data-level="info">[0;32m[18:52:31 INFO][0m <span class="step-marker">Step 2</span>: 出力保存 (7241 chars)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:52:31</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 2</span>: 出力保存 (7241 chars)</div>
+<div class="log-line" data-level="info">[0;32m[18:53:33 INFO][0m <span class="step-marker">Step 2</span>: エビデンス抽出完了 (14 claims)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:53:33</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 2</span>: エビデンス抽出完了 (14 claims)</div>
+<div class="log-line" data-level="info">[0;32m[18:53:33 INFO][0m <span class="step-marker">Step 2</span>: 完了 (<span class="duration">3m43s</span>)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:53:33</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 2</span>: 完了 (<span class="duration">3m43s</span>)</div>
+<div class="log-line" data-level="info">[0;32m[18:53:33 INFO][0m <span class="separator">━━━</span> <span class="step-marker">Step 3</span>/5: 技術戦略 (<span class="model">gpt-5.3-codex</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:53:33</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> <span class="step-marker">Step 3</span>/5: 技術戦略 (<span class="model">gpt-5.3-codex</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[18:56:13 INFO][0m <span class="step-marker">Step 3</span>: 出力保存 (10118 chars)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:56:13</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 3</span>: 出力保存 (10118 chars)</div>
+<div class="log-line" data-level="info">[0;32m[18:57:58 INFO][0m <span class="step-marker">Step 3</span>: エビデンス抽出完了 (19 claims)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:57:58</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 3</span>: エビデンス抽出完了 (19 claims)</div>
+<div class="log-line" data-level="info">[0;32m[18:57:58 INFO][0m <span class="step-marker">Step 3</span>: 完了 (<span class="duration">4m25s</span>)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:57:58</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 3</span>: 完了 (<span class="duration">4m25s</span>)</div>
+<div class="log-line" data-level="info">[0;32m[18:57:58 INFO][0m <span class="separator">━━━</span> <span class="step-marker">Step 4</span>/5: 再検証 (<span class="model">claude-sonnet-4.6</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 18:57:58</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> <span class="step-marker">Step 4</span>/5: 再検証 (<span class="model">claude-sonnet-4.6</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[19:05:49 INFO][0m <span class="step-marker">Step 4</span>: 出力保存 (12167 chars)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:05:49</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 4</span>: 出力保存 (12167 chars)</div>
+<div class="log-line" data-level="info">[0;32m[19:05:49 INFO][0m <span class="step-marker">Step 4</span>: 完了 (<span class="duration">7m50s</span>)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:05:49</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 4</span>: 完了 (<span class="duration">7m50s</span>)</div>
+<div class="log-line" data-level="info">[0;32m[19:05:49 INFO][0m <span class="separator">━━━</span> <span class="step-marker">Step 5</span>/5: 統合レビュー (<span class="model">claude-opus-4.6</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:05:49</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> <span class="step-marker">Step 5</span>/5: 統合レビュー (<span class="model">claude-opus-4.6</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="warn">[1;33m[19:20:09 WARN][0m 不正な出力を検出 (model=<span class="model">claude-opus-4.6</span>): メタテキストまたは空のMarkdown</div>
+<div class="log-line" data-level="warn"><span class="ts">[2026-03-28 19:20:09</span> <span class="level-warn">WARN]</span> 不正な出力を検出 (model=<span class="model">claude-opus-4.6</span>): メタテキストまたは空のMarkdown</div>
+<div class="log-line" data-level="info">[0;32m[19:20:09 INFO][0m フォールバック: <span class="model">claude-opus-4.6</span> → <span class="model">claude-sonnet-4.6</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:20:09</span> <span class="level-info">INFO]</span> フォールバック: <span class="model">claude-opus-4.6</span> → <span class="model">claude-sonnet-4.6</span></div>
+<div class="log-line" data-level="info">[0;32m[19:28:09 INFO][0m <span class="step-marker">Step 5</span>: 出力保存 (21257 chars)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:28:09</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 5</span>: 出力保存 (21257 chars)</div>
+<div class="log-line" data-level="info">[0;32m[19:31:10 INFO][0m <span class="step-marker">Step 5</span>: エビデンス抽出完了 (12 claims)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:31:10</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 5</span>: エビデンス抽出完了 (12 claims)</div>
+<div class="log-line" data-level="info">[0;32m[19:31:10 INFO][0m <span class="step-marker">Step 5</span>: 完了 (<span class="duration">25m20s</span>)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:31:10</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 5</span>: 完了 (<span class="duration">25m20s</span>)</div>
+<div class="log-line" data-level="info">[0;32m[19:31:10 INFO][0m バリデーション結果: PARTIAL (claims=65, no_evidence=0, no_source=1)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:31:10</span> <span class="level-info">INFO]</span> バリデーション結果: PARTIAL (claims=65, no_evidence=0, no_source=1)</div>
+<div class="log-line" data-level="info">[0;32m[19:31:10 INFO][0m ソースレジストリ生成: 31 sources</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:31:10</span> <span class="level-info">INFO]</span> ソースレジストリ生成: 31 sources</div>
+<div class="log-line" data-level="info">[0;32m[19:31:10 INFO][0m <span class="separator">━━━</span> 調査完了 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:31:10</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> 調査完了 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[19:31:10 INFO][0m ワークスペース: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:31:10</span> <span class="level-info">INFO]</span> ワークスペース: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program</div>
+<div class="log-line" data-level="info">[0;32m[19:31:10 INFO][0m ステップ: 5/5</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:31:10</span> <span class="level-info">INFO]</span> ステップ: 5/5</div>
+<div class="log-line" data-level="info">[0;32m[19:31:10 INFO][0m 所要時間: <span class="duration">43m36s</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:31:10</span> <span class="level-info">INFO]</span> 所要時間: <span class="duration">43m36s</span></div>
+<div class="log-line" data-level="info">[0;32m[19:31:10 INFO][0m バリデーション: PARTIAL</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:31:10</span> <span class="level-info">INFO]</span> バリデーション: PARTIAL</div>
+<div class="log-line" data-level="info">[0;32m[19:37:23 INFO][0m AI Research Agent v3.0.0</div>
+<div class="log-line" data-level="info">[0;32m[19:37:23 INFO][0m ファイナライズ開始: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:37:23</span> <span class="level-info">INFO]</span> ファイナライズ開始: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program</div>
+<div class="log-line" data-level="info">[0;32m[19:37:23 INFO][0m <span class="separator">━━━</span> Phase 1: 統合分析 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:37:23</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> Phase 1: 統合分析 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[19:37:23 INFO][0m <span class="step-marker">Step 1</span>: 統合分析 (<span class="model">claude-opus-4.6</span>)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:37:23</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 1</span>: 統合分析 (<span class="model">claude-opus-4.6</span>)</div>
+<div class="log-line" data-level="info">[0;32m[19:41:04 INFO][0m フォーマットチェック: 2件修正適用</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:41:04</span> <span class="level-info">INFO]</span> フォーマットチェック: 2件修正適用</div>
+<div class="log-line" data-level="info">[0;32m[19:41:04 INFO][0m 統合分析完了</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:41:04</span> <span class="level-info">INFO]</span> 統合分析完了</div>
+<div class="log-line" data-level="info">[0;32m[19:41:04 INFO][0m <span class="step-marker">Step 2</span>: 最終レポート生成 (<span class="model">claude-sonnet-4.6</span>)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:41:04</span> <span class="level-info">INFO]</span> <span class="step-marker">Step 2</span>: 最終レポート生成 (<span class="model">claude-sonnet-4.6</span>)</div>
+<div class="log-line" data-level="info">[0;32m[19:46:33 INFO][0m フォーマットチェック: 2件修正適用</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:46:33</span> <span class="level-info">INFO]</span> フォーマットチェック: 2件修正適用</div>
+<div class="log-line" data-level="info">[0;32m[19:46:33 INFO][0m 最終レポート生成完了</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:46:33</span> <span class="level-info">INFO]</span> 最終レポート生成完了</div>
+<div class="log-line" data-level="info">[0;32m[19:46:48 INFO][0m <span class="separator">━━━</span> Phase 2: サポートファイル再生成 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:46:48</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> Phase 2: サポートファイル再生成 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[19:46:48 INFO][0m バリデーション結果: PARTIAL (claims=65, no_evidence=0, no_source=1)</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:46:48</span> <span class="level-info">INFO]</span> バリデーション結果: PARTIAL (claims=65, no_evidence=0, no_source=1)</div>
+<div class="log-line" data-level="info">[0;32m[19:46:48 INFO][0m ソースレジストリ生成: 31 sources</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:46:48</span> <span class="level-info">INFO]</span> ソースレジストリ生成: 31 sources</div>
+<div class="log-line" data-level="info">[0;32m[19:46:48 INFO][0m README.md 生成完了</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:46:48</span> <span class="level-info">INFO]</span> README.md 生成完了</div>
+<div class="log-line" data-level="info">[0;32m[19:47:48 INFO][0m 図解 XML 生成完了</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:47:48</span> <span class="level-info">INFO]</span> 図解 XML 生成完了</div>
+<div class="log-line" data-level="info">[0;32m[19:48:06 INFO][0m <span class="separator">━━━</span> Phase 3: 可視化生成 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:48:06</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> Phase 3: 可視化生成 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[19:48:18 INFO][0m 可視化タイプ選択: matrix, mindmap, network</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:48:18</span> <span class="level-info">INFO]</span> 可視化タイプ選択: matrix, mindmap, network</div>
+<div class="log-line" data-level="info">[0;32m[19:49:17 INFO][0m 可視化生成完了: matrix</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:49:17</span> <span class="level-info">INFO]</span> 可視化生成完了: matrix</div>
+<div class="log-line" data-level="info">[0;32m[19:50:19 INFO][0m 可視化生成完了: mindmap</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:50:19</span> <span class="level-info">INFO]</span> 可視化生成完了: mindmap</div>
+<div class="log-line" data-level="error">[1;33m[19:51:15 WARN][0m draw.io export failed (svg): [32670:0328/195115.528225:ERROR:components/os_crypt/sync/keychain_password_mac.mm:119] Keychain lookup for suffixed key failed: Error Domain=NSOSStatusErrorDomain Code=-25308 &quot;errKCInteractionNotAllowed / errSecInteractionNotAllowed: / Interaction is not allowed with the Security Server.&quot; (-25308)</div>
+<div class="log-line" data-level="info">Error: Export failed: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/data/network.drawio</div>
+<div class="log-line" data-level="info"></div>
+<div class="log-line" data-level="error"><span class="ts">[2026-03-28 19:51:15</span> <span class="level-warn">WARN]</span> draw.io export failed (svg): [32670:0328/195115.528225:ERROR:components/os_crypt/sync/keychain_password_mac.mm:119] Keychain lookup for suffixed key failed: Error Domain=NSOSStatusErrorDomain Code=-25308 &quot;errKCInteractionNotAllowed / errSecInteractionNotAllowed: / Interaction is not allowed with the Security Server.&quot; (-25308)</div>
+<div class="log-line" data-level="info">Error: Export failed: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/data/network.drawio</div>
+<div class="log-line" data-level="info"></div>
+<div class="log-line" data-level="error">[1;33m[19:51:16 WARN][0m draw.io export failed (png): [32674:0328/195116.055395:ERROR:components/os_crypt/sync/keychain_password_mac.mm:119] Keychain lookup for suffixed key failed: Error Domain=NSOSStatusErrorDomain Code=-25308 &quot;errKCInteractionNotAllowed / errSecInteractionNotAllowed: / Interaction is not allowed with the Security Server.&quot; (-25308)</div>
+<div class="log-line" data-level="info">Error: Export failed: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/data/network.drawio</div>
+<div class="log-line" data-level="info"></div>
+<div class="log-line" data-level="error"><span class="ts">[2026-03-28 19:51:16</span> <span class="level-warn">WARN]</span> draw.io export failed (png): [32674:0328/195116.055395:ERROR:components/os_crypt/sync/keychain_password_mac.mm:119] Keychain lookup for suffixed key failed: Error Domain=NSOSStatusErrorDomain Code=-25308 &quot;errKCInteractionNotAllowed / errSecInteractionNotAllowed: / Interaction is not allowed with the Security Server.&quot; (-25308)</div>
+<div class="log-line" data-level="info">Error: Export failed: /Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/data/network.drawio</div>
+<div class="log-line" data-level="info"></div>
+<div class="log-line" data-level="info">[0;32m[19:51:16 INFO][0m 可視化生成完了: network</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:51:16</span> <span class="level-info">INFO]</span> 可視化生成完了: network</div>
+<div class="log-line" data-level="info">[0;32m[19:51:59 INFO][0m 可視化生成完了: infographic</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:51:59</span> <span class="level-info">INFO]</span> 可視化生成完了: infographic</div>
+<div class="log-line" data-level="info">[0;32m[19:52:14 INFO][0m <span class="separator">━━━</span> Phase 4: 品質メタデータ <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:52:14</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> Phase 4: 品質メタデータ <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[19:52:53 INFO][0m 可視化生成完了: confidence</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:52:53</span> <span class="level-info">INFO]</span> 可視化生成完了: confidence</div>
+<div class="log-line" data-level="info">[0;32m[19:53:35 INFO][0m 可視化生成完了: sources</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:53:35</span> <span class="level-info">INFO]</span> 可視化生成完了: sources</div>
+<div class="log-line" data-level="info">[0;32m[19:53:50 INFO][0m <span class="separator">━━━</span> Phase 5: スライド生成 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:53:50</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> Phase 5: スライド生成 <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info">[0;32m[19:54:44 INFO][0m スライド Markdown 生成完了</div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:54:44</span> <span class="level-info">INFO]</span> スライド Markdown 生成完了</div>
+<div class="log-line" data-level="info">[0;32m[19:54:47 INFO][0m <span class="separator">━━━</span> ファイナライズ完了 (<span class="duration">17m24s</span>) <span class="separator">━━━</span></div>
+<div class="log-line" data-level="info"><span class="ts">[2026-03-28 19:54:47</span> <span class="level-info">INFO]</span> <span class="separator">━━━</span> ファイナライズ完了 (<span class="duration">17m24s</span>) <span class="separator">━━━</span></div>
+</div>
+<div class="footer">
+INFO: 115 | WARN: 6 | ERROR: 4 | Total: 129 lines
+</div>
+<script>
+function filterLogs() {
+  const level = document.getElementById('levelFilter').value;
+  const search = document.getElementById('searchBox').value.toLowerCase();
+  document.querySelectorAll('.log-line').forEach(el => {
+    const matchLevel = level === 'all' || el.dataset.level === level;
+    const matchSearch = !search || el.textContent.toLowerCase().includes(search);
+    el.classList.toggle('hidden', !(matchLevel && matchSearch));
+  });
+}
+</script>
+</body>
+</html>

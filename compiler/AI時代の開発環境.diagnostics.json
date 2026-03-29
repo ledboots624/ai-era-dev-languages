@@ -1,0 +1,27 @@
+{
+  "status": "warning",
+  "errors": [],
+  "warnings": [
+    {
+      "code": "max_blocks_exceeded",
+      "message": "page 'language-evaluation' のブロック数 10 が上限 8 を超過"
+    }
+  ],
+  "repair_actions": [
+    {
+      "code": "truncated_blocks",
+      "target": "9 blocks",
+      "result": "7 blocks"
+    },
+    {
+      "code": "merged_consecutive_prose",
+      "target": "language-evaluation",
+      "result": "merged"
+    }
+  ],
+  "stats": {
+    "blocks": 19,
+    "pages": 5,
+    "auto_source_lists": 4
+  }
+}

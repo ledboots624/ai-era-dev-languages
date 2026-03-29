@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- タイトル -->
+        <mxCell id="2" value="AI時代の開発言語 サマリー" style="text;html=1;fontSize=24;fontColor=#4472C4;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="30" width="700" height="40" as="geometry"/>
+        </mxCell>
+        <!-- セクション1: AI開発の現状概観 -->
+        <mxCell id="3" value="1. AI開発の現状概観" style="rounded=1;fillColor=#4472C4;fontColor=#FFFFFF;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="90" width="320" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="4" value="PythonがAI分野で圧倒的優位。TypeScript・Rustも台頭。&#xa;用途ごとに最適言語が分化。" style="rounded=1;fillColor=#EAF1FB;fontColor=#222222;fontSize=13" vertex="1" parent="1">
+          <mxGeometry x="40" y="135" width="320" height="60" as="geometry"/>
+        </mxCell>
+        <!-- セクション2: 言語別AI対応度マトリクス -->
+        <mxCell id="5" value="2. 言語別AI対応度マトリクス" style="rounded=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="320" height="40" as="geometry"/>
+        </mxCell>
+        <!-- マトリクス表現 -->
+        <mxCell id="6" value="言語 | AIライブラリ | LLM統合 | 型安全性 | パフォーマンス
+--- | --- | --- | --- | ---
+Python | 高 | 高 | 低 | 中
+TypeScript | 中 | 高 | 高 | 中
+Rust | 中 | 中 | 非常に高 | 高" style="rounded=1;fillColor=#F6F9ED;fontColor=#222222;fontSize=12" vertex="1" parent="1">
+          <mxGeometry x="40" y="265" width="320" height="90" as="geometry"/>
+        </mxCell>
+        <!-- セクション3: 推奨アーキテクチャ -->
+        <mxCell id="7" value="3. 推奨アーキテクチャ" style="rounded=1;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="420" y="90" width="320" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="8" value="&lt;b&gt;Python（AIコア）＋TypeScript（統合/UI）&lt;/b&gt;&#xa;Rustは高負荷領域で段階導入" style="rounded=1;fillColor=#FFF3E6;fontColor=#222222;fontSize=13" vertex="1" parent="1">
+          <mxGeometry x="420" y="135" width="320" height="60" as="geometry"/>
+        </mxCell>
+        <!-- セクション4: LLMフレームワーク比較 -->
+        <mxCell id="9" value="4. LLMフレームワーク比較" style="rounded=1;fillColor=#4472C4;fontColor=#FFFFFF;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="420" y="220" width="320" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="10" value="LangChain, LlamaIndex&#xa;Python/TypeScript両対応&#xa;「交換可能設計」が推奨" style="rounded=1;fillColor=#EAF1FB;fontColor=#222222;fontSize=13" vertex="1" parent="1">
+          <mxGeometry x="420" y="265" width="320" height="60" as="geometry"/>
+        </mxCell>
+        <!-- セクション5: 信頼性・バリデーション -->
+        <mxCell id="11" value="5. 信頼性・バリデーション" style="rounded=1;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="230" y="370" width="370" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="12" value="主張数: 65&#xa;High: 34 / Medium: 28 / Low: 3&#xa;全主張にエビデンス付与済&#xa;一部URLの実在性に注意" style="rounded=1;fillColor=#F6F9ED;fontColor=#222222;fontSize=13" vertex="1" parent="1">
+          <mxGeometry x="230" y="415" width="370" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 数値ハイライト: Python, TypeScript, Rust -->
+        <mxCell id="13" value="Python&#xa;AIライブラリ充実度: 高&#xa;LLM統合: 高&#xa;採用例: Google, OpenAI" style="ellipse;fillColor=#4472C4;fontColor=#FFFFFF;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="90" y="570" width="140" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="14" value="TypeScript&#xa;Web/クラウド統合: 高&#xa;型安全性: 高&#xa;採用例: Microsoft" style="ellipse;fillColor=#70AD47;fontColor=#FFFFFF;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="330" y="570" width="140" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="15" value="Rust&#xa;パフォーマンス: 高&#xa;安全性: 非常に高&#xa;採用例: HuggingFace" style="ellipse;fillColor=#ED7D31;fontColor=#FFFFFF;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="570" y="570" width="140" height="80" as="geometry"/>
+        </mxCell>
+        <!-- エッジ: セクションと数値ハイライトの関連 -->
+        <mxCell id="16" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;endFill=1;strokeColor=#4472C4" edge="1" parent="1" source="6" target="13">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="17" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;endFill=1;strokeColor=#70AD47" edge="1" parent="1" source="6" target="14">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;endFill=1;strokeColor=#ED7D31" edge="1" parent="1" source="6" target="15">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <!-- フッター: 免責事項 -->
+        <mxCell id="19" value="※本レポートはAI Research Agentによる自動生成。重要判断は独自検証を推奨。" style="text;html=1;fontSize=10;fontColor=#888888" vertex="1" parent="1">
+          <mxGeometry x="60" y="1080" width="700" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

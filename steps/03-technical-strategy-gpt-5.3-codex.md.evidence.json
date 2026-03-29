@@ -1,0 +1,274 @@
+{
+  "step": 3,
+  "role": "technical-strategy",
+  "model": "gpt-5.3-codex",
+  "extracted_at": "2026-03-28T18:56:13.553519",
+  "claims": [
+    {
+      "claim": "直近2年のAI開発標準構成は「Python（AIコア）＋TypeScript（統合/UI）」二層アーキテクチャが最適",
+      "evidence": "AIモデル実装・LLM連携の中核はPythonで進め、プロダクト統合・型安全なWeb実装はTypeScriptに寄せる二層構造が、実装速度と運用品質の両立に最も有効。PyTorch・OpenAI API・TypeScript・LangChain.jsがいずれも公式サポートを提供し、双方の基盤として確立されている。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "PyTorch公式",
+        "source_locator": "https://pytorch.org/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "LLMフレームワークは「固定採用」ではなく「交換可能設計（アダプタ層隔離）」で導入すべき",
+      "evidence": "LangChain系・LlamaIndex系がPython/TypeScript双方で並行進化しているため、フレームワーク依存をアダプタ層へ隔離し業務ロジックを非依存化する方針が妥当。O'Reilly AI Adoption in the Enterprise 2025もフレームワーク多様化を示唆。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LangChain公式ドキュメント（Python）",
+        "source_locator": "https://python.langchain.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "Rustは全社標準ではなく高負荷・低レイテンシ領域への段階導入（PoC起点）が現実的",
+      "evidence": "Rustは性能・安全性の魅力がある一方、学習コストとエコシステム成熟度を踏まえると、低レイテンシ/高コスト領域でのみ段階導入するのが妥当。Stack Overflow Developer Survey 2025でも採用率の限定性が示されている。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "Rust公式ドキュメント",
+        "source_locator": "https://www.rust-lang.org/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "AI機能はPythonサービス、アプリ統合はTypeScript BFF/フロントに明確分離し、OpenAPI/JSON Schemaを唯一契約とすべき（P0・0-2か月）",
+      "evidence": "サービス境界の型不整合リスクに対し、OpenAPIおよびJSON Schemaを契約仕様として一元化することで不整合を防止できる。実現可能性は高く、Python・TypeScript・OpenAI API公式ドキュメントで裏付けられている。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "OpenAI API公式ドキュメント",
+        "source_locator": "https://platform.openai.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "モデル呼び出しをProvider Adapter化し、OpenAI直結箇所を一点化することでベンダー依存を防止すべき（P0・0-2か月）",
+      "evidence": "プロバイダ別実装を同一インターフェースで差し替え可能に維持することで、LLMベンダー依存の固定化リスクを回避できる。LangChain公式がこのアダプタパターンを推奨している。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LangChain公式ドキュメント（Python）",
+        "source_locator": "https://python.langchain.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "RAGのインデックス・検索・回答生成を共通コンポーネント化し、インデックス更新SLOと再構築ジョブを標準運用化すべき（P0・1-3か月）",
+      "evidence": "データ更新遅延による回答品質劣化リスクへの対策として、LlamaIndexおよびLangChainが共通コンポーネント設計を公式サポートしている。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LlamaIndex公式ドキュメント",
+        "source_locator": "https://llamaindex.ai/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "LLM出力を構造化し、TypeScript型への厳密変換と検証失敗時の再試行ポリシーを実装すべき（P0・1-3か月）",
+      "evidence": "非構造化応答による障害リスクに対し、構造化出力・スキーマ検証・失敗時再試行の組み合わせが有効。OpenAI API公式が構造化出力（Structured Outputs）を公式機能として提供している。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "OpenAI API公式ドキュメント",
+        "source_locator": "https://platform.openai.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "エージェントは業務効果が明確な2ユースケースに限定して本番検証し、単機能から段階導入すべき（P1・3-6か月）",
+      "evidence": "期待効果不達・制御難のリスクがあるため、評価指標を先に定義したうえで単機能エージェントから段階導入することが推奨される。AutoGen・LangChain公式ドキュメントが段階的エージェント設計を支持。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "AutoGen公式ドキュメント",
+        "source_locator": "https://microsoft.github.io/autogen/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "LangChain系とLlamaIndex系の入替実験を四半期ごとに実施し、フレームワーク可搬性を継続検証すべき（P1・3-6か月）",
+      "evidence": "移行コスト増大リスクに対し、業務ロジックを非依存層へ隔離し抽象境界を固定することで、計画時間内でのフレームワーク切替を可能にする。LangChain.js・LlamaIndex.js双方が公式ドキュメントを提供済み。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LangChain.js公式ドキュメント",
+        "source_locator": "https://js.langchain.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "高頻度APIまたは低遅延要件機能1本でRust推論PoCを実施し、性能/コスト閾値で継続判断すべき（P2・6-12か月）",
+      "evidence": "学習コストに対する便益不足リスクがあるため、対象を1機能に限定し数値基準で採用是非を判断する設計が現実的。llm-rs（rustformers）がRustでのLLM推論実装を支援している。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "llm-rs（rustformers）",
+        "source_locator": "https://github.com/rustformers/llm",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "Rust本採用は「遅延・コスト改善」と「運用可能性」の数値基準を同時達成した場合のみGo判定とすべき（P2・9-12か月）",
+      "evidence": "技術先行による運用破綻リスクに対し、Go/No-Goを数値基準化し未達ならPython/TS最適化を継続する判断ゲートが有効。Gartner AI Hype Cycle 2025・O'Reillyレポートが段階的採用の重要性を示している。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Gartner AI Hype Cycle 2025",
+        "source_locator": "https://www.gartner.com/en/documents/ai-hype-cycle-2025",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "LLMベンダー依存の固定化はProvider Adapterの標準化で回避でき、総合優先度は「高」",
+      "evidence": "発生可能性・影響度ともに中〜高であり、OpenAI API公式およびLangChain公式が共通インターフェースによるプロバイダ切替設計を支持している。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "OpenAI API公式ドキュメント",
+        "source_locator": "https://platform.openai.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "LLM生成品質の揺らぎ（非構造化出力）は発生可能性が高く、総合優先度は「高」",
+      "evidence": "構造化出力・スキーマ検証・失敗時再試行の標準化が有効な対策。OpenAI APIが構造化出力機能を公式提供しており、TypeScript型との厳密変換を推奨している。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "OpenAI API公式ドキュメント",
+        "source_locator": "https://platform.openai.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "推論コストの増大リスクに対し、モデル選択ポリシーとキャッシュ戦略をKPI運用で管理すべき",
+      "evidence": "発生可能性・影響度ともに中〜高。Gartner AI Hype Cycle 2025・O'Reilly AI Adoption in the Enterprise 2025がコスト管理の重要性を指摘している。",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "O'Reilly AI Adoption in the Enterprise 2025",
+        "source_locator": "https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "Q1（0-3か月）でPython/TS二層標準化・LLM接続層・RAGテンプレートを稼働させ、主要AI機能が標準テンプレートで実装可能な状態を達成すべき",
+      "evidence": "Go条件は「主要AI機能が標準テンプレートで実装可能」、未達時はPoC限定で再設計し標準化範囲を縮小。Python公式・TypeScript公式・LlamaIndex公式が技術基盤として確立済み。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LlamaIndex公式ドキュメント",
+        "source_locator": "https://llamaindex.ai/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "Q2（3-6か月）でエージェント2ユースケースを本番検証し、品質・コスト・運用負荷の基準を満たさない場合はルールベース＋RAG中心へ戻すべき",
+      "evidence": "AutoGen・LangChain公式ドキュメントが段階的エージェント検証を支持。効果未達時の代替としてルールベース設計が現実的な回帰先となる。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "AutoGen公式ドキュメント",
+        "source_locator": "https://microsoft.github.io/autogen/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "構造化出力準拠率を週次KPIとして監視することで、LLM応答の運用品質と障害予防を継続的に評価できる",
+      "evidence": "OpenAI APIの構造化出力機能とTypeScriptの型検証を組み合わせることで準拠率の測定が可能。週次評価により早期の品質劣化を検出できる。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "OpenAI API公式ドキュメント",
+        "source_locator": "https://platform.openai.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "RAG回答の根拠提示率を週次KPIとして監視することで、検索拡張の実効性と説明可能性を評価できる",
+      "evidence": "LlamaIndex・LangChain公式が根拠付き回答生成（Citation/Source Attribution）をサポートしており、週次モニタリングにより実効性の継続評価が可能。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LlamaIndex公式ドキュメント",
+        "source_locator": "https://llamaindex.ai/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "低遅延機能のP95応答時間をPoC期間中に週次KPIとして計測し、Rust採用の定量的判断基準とすべき",
+      "evidence": "Rust公式ドキュメント・llm-rsがRust推論の性能特性を示しており、P95応答時間の数値化によりPython比較での採用是非を客観的に判断できる。",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "Rust公式ドキュメント",
+        "source_locator": "https://www.rust-lang.org/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    }
+  ]
+}

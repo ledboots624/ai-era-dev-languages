@@ -1,0 +1,63 @@
+{
+  "topic": "AI時代の開発言語",
+  "description": "AI時代の開発言語（フルスタックエンジニアが今後AIを使った開発を効率よく進めて行くための先端開発技術の知識収集）",
+  "generated_by": "default-full",
+  "generated_at": "2026-03-28T18:47:34.458986",
+  "mode": "full",
+  "steps": [
+    {
+      "id": "research",
+      "step": 1,
+      "role": "information-gathering",
+      "model": "gpt-4.1",
+      "prompt_focus": "このテーマについて広範な情報収集を行ってください。公式ドキュメント、学術論文、業界レポート、技術ブログなど多様なソースから情報を集め、各情報にソースと信頼度を付記してください。",
+      "depends_on": []
+    },
+    {
+      "id": "analysis",
+      "step": 2,
+      "role": "deep-analysis",
+      "model": "claude-sonnet-4.6",
+      "prompt_focus": "収集された情報を深く分析してください。主張間の関連性、矛盾点、パターンを特定し、エビデンスに基づいた洞察を導出してください。",
+      "depends_on": [
+        "research"
+      ]
+    },
+    {
+      "id": "strategy",
+      "step": 3,
+      "role": "technical-strategy",
+      "model": "gpt-5.3-codex",
+      "prompt_focus": "分析結果に基づき、このテーマに関する実践的な戦略・提言を策定してください。具体的なアクション案とその実現可能性、優先順位、リスクを評価してください。テーマが技術系でない場合は、活用戦略・普及戦略・価値訴求の観点で提言してください。",
+      "depends_on": [
+        "research",
+        "analysis"
+      ]
+    },
+    {
+      "id": "critic",
+      "step": 4,
+      "role": "critic-review",
+      "model": "claude-sonnet-4.6",
+      "prompt_focus": "これまでの調査結果を批判的に検証してください。論理矛盾、エビデンス不足、バイアス、情報ギャップを特定し、改善提案を行ってください。",
+      "depends_on": [
+        "research",
+        "analysis",
+        "strategy"
+      ]
+    },
+    {
+      "id": "review",
+      "step": 5,
+      "role": "integration-review",
+      "model": "claude-opus-4.6",
+      "prompt_focus": "全ステップの成果を統合し、最終レポートを作成してください。エグゼクティブサマリー、主要発見事項、信頼度分布、矛盾点、制限事項、推奨アクションを含めてください。",
+      "depends_on": [
+        "research",
+        "analysis",
+        "strategy",
+        "critic"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "operations": [
+    {
+      "operation": "finalize",
+      "timestamp": "2026-03-28T19:54:47.316053",
+      "details": {
+        "final_report": "/Users/shige/work/test-claude/remote-test/ai-research-web/ai-program/FINAL_REPORT.md"
+      }
+    }
+  ],
+  "summary": {
+    "models": [
+      "claude-opus-4.6",
+      "claude-sonnet-4.6",
+      "gpt-4.1",
+      "gpt-5.3-codex"
+    ],
+    "total_seconds": 3660,
+    "steps": 5,
+    "ops_count": 1,
+    "last_phase": "finalize",
+    "last_updated": "2026-03-28 19:54",
+    "step_details": [
+      {
+        "step": 1,
+        "role": "情報収集",
+        "model": "gpt-4.1",
+        "elapsed": "2m14s",
+        "size_kb": "9",
+        "summary": "AI時代の開発言語：フルスタックエンジニアのための先端技術知識収集",
+        "filename": "01-information-gathering-gpt-4.1.md",
+        "exists": true
+      },
+      {
+        "step": 2,
+        "role": "深層分析",
+        "model": "claude-sonnet-4.6",
+        "elapsed": "3m43s",
+        "size_kb": "13",
+        "summary": "AI時代の開発言語：深層分析レポート",
+        "filename": "02-deep-analysis-claude-sonnet-4.6.md",
+        "exists": true
+      },
+      {
+        "step": 3,
+        "role": "技術戦略",
+        "model": "gpt-5.3-codex",
+        "elapsed": "4m25s",
+        "size_kb": "14",
+        "summary": "AI時代の開発言語に関する実践戦略提言（フルスタックエンジニア向け）",
+        "filename": "03-technical-strategy-gpt-5.3-codex.md",
+        "exists": true
+      },
+      {
+        "step": 4,
+        "role": "再検証",
+        "model": "claude-sonnet-4.6",
+        "elapsed": "7m50s",
+        "size_kb": "22",
+        "summary": "AI時代の開発言語：批判的再検証レポート",
+        "filename": "04-critic-review-claude-sonnet-4.6.md",
+        "exists": true
+      },
+      {
+        "step": 5,
+        "role": "統合レビュー",
+        "model": "claude-opus-4.6",
+        "elapsed": "25m20s",
+        "size_kb": "34",
+        "summary": "AI時代の開発言語：統合最終レポート",
+        "filename": "05-integration-review-claude-opus-4.6.md",
+        "exists": true
+      }
+    ]
+  }
+}

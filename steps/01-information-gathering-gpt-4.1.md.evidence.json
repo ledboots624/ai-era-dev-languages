@@ -1,0 +1,288 @@
+{
+  "step": 1,
+  "role": "information-gathering",
+  "model": "gpt-4.1",
+  "extracted_at": "2026-03-28T18:48:49.330164",
+  "claims": [
+    {
+      "claim": "AI開発はPythonを中心に進化しつつも、TypeScriptやRustなど新興言語・フレームワークの台頭が著しく、用途ごとに言語選択の最適化が進んでいる",
+      "evidence": "AIの大規模化・多様化に伴い、「AIモデル開発」「Web/クラウド統合」「エージェント開発」など用途ごとに最適な言語が異なるようになっている",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "Python公式ドキュメント",
+        "source_locator": "https://www.python.org/doc/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "LLMやAIエージェントの普及により、型安全性・パフォーマンス・エコシステムの充実度が言語選定の重要指標となっている",
+      "evidence": "API連携・リアルタイム推論・分散処理などの要件増加に伴い、言語選定基準が変化している",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "Gartner AI Hype Cycle 2025",
+        "source_locator": "https://www.gartner.com/en/documents/ai-hype-cycle-2025",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "PythonはAIライブラリ・LLM統合で圧倒的優位だが、型安全性や実行速度は他言語に劣る",
+      "evidence": "PyTorch, TensorFlow, Transformersなど主要AIライブラリが揃い、OpenAI等のLLM API/SDKもPythonファーストで提供されているが、型安全性・実行速度・保守性は弱点",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "PyTorch公式ドキュメント",
+        "source_locator": "https://pytorch.org/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "PythonはAI/ML分野のデファクトスタンダードであり、主要ライブラリ（PyTorch, TensorFlow, Transformers等）が揃っている",
+      "evidence": "PyTorch公式、TensorFlow公式、OpenAI APIがいずれもPythonファーストでSDKを提供している",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "TensorFlow公式ドキュメント",
+        "source_locator": "https://www.tensorflow.org/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "LLM API/SDKの多くがPythonファーストで提供されている",
+      "evidence": "OpenAI APIをはじめとする主要LLMプロバイダーがPythonSDKを最優先でリリースしている",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "OpenAI API ドキュメント",
+        "source_locator": "https://platform.openai.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "TypeScriptはWeb/クラウドAI統合や型安全なエージェント開発で急速に普及している",
+      "evidence": "Node.jsベースでWeb/クラウドAI統合に強みを持ち、LangChain.js・LlamaIndex.jsなどのLLM統合フレームワークも登場している",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "TypeScript公式ドキュメント",
+        "source_locator": "https://www.typescriptlang.org/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "TypeScript向けLLM統合フレームワーク（LangChain.js, LlamaIndex.js等）が登場し、AIアプリ開発の選択肢が拡大している",
+      "evidence": "LangChain.js公式・LlamaIndex.js公式がドキュメントを公開しており、Web/クラウドAIアプリのTypeScript採用が増加",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LangChain.js公式ドキュメント",
+        "source_locator": "https://js.langchain.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "TypeScriptはPythonに比べAIライブラリは少ないが、API連携・UI統合で優位性がある",
+      "evidence": "Web/クラウド向け統合や型安全性においてTypeScriptが強みを発揮する一方、AIライブラリの数ではPythonに及ばない",
+      "source": {
+        "source_type": "news_article",
+        "source_title": "Zenn「TypeScriptでAIエージェント開発」",
+        "source_locator": "https://zenn.dev/ai_ts_agent",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "Rustは高速・安全なAI推論エンジンや分散AIシステムで注目されており、HuggingFaceやAWSがRust製AI推論基盤を公開している",
+      "evidence": "HuggingFace BlogでRust製LLM推論基盤が紹介され、Stack Overflow Developer Survey 2025でもRustの採用増加が確認されている",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "Rust公式ドキュメント",
+        "source_locator": "https://www.rust-lang.org/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "RustのLLM統合は進行中だが、PythonやTypeScriptに比べSDKやエコシステムは限定的",
+      "evidence": "O'Reilly AI Adoption in the Enterprise 2025レポートおよびHuggingFace Blogでの言及による",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "O'Reilly AI Adoption in the Enterprise 2025",
+        "source_locator": "https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "Pythonには多様なLLM統合フレームワーク（LangChain, LlamaIndex, Haystack等）が存在する",
+      "evidence": "LangChain公式ドキュメントおよびLlamaIndex公式がPython向けフレームワークとして公開されている",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LangChain公式ドキュメント",
+        "source_locator": "https://python.langchain.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "Rustにはllmーcandleやburnなどの軽量LLM推論フレームワークが登場している",
+      "evidence": "llm-rs（rustformers/llm）がGitHub上で公開されており、Rust向けLLM推論が現実的な選択肢になりつつある",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "llm-rs公式リポジトリ",
+        "source_locator": "https://github.com/rustformers/llm",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "各LLMフレームワークはAPI連携・RAG・エージェント構築など用途特化型が増加している",
+      "evidence": "AI Infrastructure Alliance 2025レポートで、用途特化型フレームワークの増加が報告されている",
+      "source": {
+        "source_type": "industry_report",
+        "source_title": "AI Infrastructure Alliance 2025",
+        "source_locator": "https://ai-infra-alliance.org/reports/2025",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier2",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "medium"
+    },
+    {
+      "claim": "LangChainはAIエージェント開発のデファクトスタンダードであり、Python/TS両対応でRAGやワークフロー自動化に強い",
+      "evidence": "LangChain公式ドキュメントにPython版・JS版の両実装が存在し、OpenAI・Zapierなどが採用している",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LangChain公式ドキュメント",
+        "source_locator": "https://python.langchain.com/docs/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "LlamaIndexはDB・外部知識統合に特化し、RAG用途で急速に普及している",
+      "evidence": "LlamaIndex公式ドキュメントにRAG・DB連携機能が充実しており、Notion・DataStaxが採用している",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LlamaIndex公式ドキュメント",
+        "source_locator": "https://llamaindex.ai/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "Rust系ツール（llm-rs等）は軽量・高速な推論や組込AIで注目されている",
+      "evidence": "Qiita記事「RustでLLMを動かす」でRustによるLLM推論の実装例が紹介されている",
+      "source": {
+        "source_type": "news_article",
+        "source_title": "Qiita「RustでLLMを動かす」",
+        "source_locator": "https://qiita.com/rust_llm_intro",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "low"
+    },
+    {
+      "claim": "RAG（検索拡張生成）パターンはLlamaIndexやHaystackでDB/外部知識とLLMを連携させることで精度向上を実現する",
+      "evidence": "LlamaIndex公式ドキュメントでRAGアーキテクチャが解説されており、実装パターンとして確立している",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "LlamaIndex公式ドキュメント",
+        "source_locator": "https://llamaindex.ai/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "エージェント協調パターン（CrewAI, AutoGen等）を用いることで、複数エージェントの役割分担・協調動作が設計できる",
+      "evidence": "AutoGen公式ドキュメントにマルチエージェント設計が記載されており、Microsoftが採用している",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "AutoGen公式ドキュメント",
+        "source_locator": "https://microsoft.github.io/autogen/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "high"
+    },
+    {
+      "claim": "RustやGoを用いることで小型LLMを組込・エッジデバイスで動作させる軽量推論エンジンの開発が可能",
+      "evidence": "Zenn記事「RustでAI推論」でエッジデバイス向けAI推論の実装例が紹介されている",
+      "source": {
+        "source_type": "news_article",
+        "source_title": "Zenn「RustでAI推論」",
+        "source_locator": "https://zenn.dev/rust_ai_inference",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier3",
+        "primary_source": false,
+        "community_score": null
+      },
+      "confidence": "low"
+    },
+    {
+      "claim": "フルスタックAI開発の推奨ロードマップは、用途別に「Pythonによるモデル開発」「TypeScriptによるWeb/クラウド統合」「RustによるHigh-performance推論」「LangChain等によるエージェント開発」「LlamaIndex等によるRAG」「Rust/GoによるエッジAI」の6段階で構成される",
+      "evidence": "PyTorch公式・LangChain公式・LlamaIndex公式・The New Stack・O'Reilly 2025レポートを統合した採用ロードマップとして提示されている",
+      "source": {
+        "source_type": "official_document",
+        "source_title": "PyTorch公式ドキュメント",
+        "source_locator": "https://pytorch.org/",
+        "access_date": "2026-03-28",
+        "reliability_tier": "tier1",
+        "primary_source": true,
+        "community_score": null
+      },
+      "confidence": "medium"
+    }
+  ]
+}

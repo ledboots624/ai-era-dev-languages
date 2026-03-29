@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1">
+    <mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <!-- 人物ノード -->
+        <mxCell id="2" value="フルスタックエンジニア" style="ellipse;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F5597;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="100" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="3" value="AIリサーチエージェント" style="ellipse;fillColor=#70AD47;fontColor=#FFFFFF;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="400" y="40" width="100" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="4" value="技術戦略アドバイザー" style="ellipse;fillColor=#ED7D31;fontColor=#FFFFFF;strokeColor=#A04100;" vertex="1" parent="1">
+          <mxGeometry x="400" y="220" width="100" height="100" as="geometry"/>
+        </mxCell>
+        <!-- 組織ノード -->
+        <mxCell id="5" value="Google" style="rectangle;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F5597;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="6" value="OpenAI" style="rectangle;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F5597;" vertex="1" parent="1">
+          <mxGeometry x="220" y="320" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="7" value="Meta" style="rectangle;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F5597;" vertex="1" parent="1">
+          <mxGeometry x="360" y="320" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="8" value="Microsoft" style="rectangle;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F5597;" vertex="1" parent="1">
+          <mxGeometry x="500" y="320" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="9" value="HuggingFace" style="rectangle;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F5597;" vertex="1" parent="1">
+          <mxGeometry x="640" y="320" width="100" height="60" as="geometry"/>
+        </mxCell>
+        <!-- 言語・技術ノード -->
+        <mxCell id="10" value="Python" style="hexagon;fillColor=#4472C4;fontColor=#FFFFFF;strokeColor=#2F5597;" vertex="1" parent="1">
+          <mxGeometry x="220" y="120" width="80" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="11" value="TypeScript" style="hexagon;fillColor=#70AD47;fontColor=#FFFFFF;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="320" y="120" width="80" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="12" value="Rust" style="hexagon;fillColor=#ED7D31;fontColor=#FFFFFF;strokeColor=#A04100;" vertex="1" parent="1">
+          <mxGeometry x="540" y="120" width="80" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="13" value="LLMフレームワーク" style="hexagon;fillColor=#70AD47;fontColor=#FFFFFF;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="220" y="220" width="80" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="14" value="LangChain" style="hexagon;fillColor=#70AD47;fontColor=#FFFFFF;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="320" y="220" width="80" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="15" value="LlamaIndex" style="hexagon;fillColor=#70AD47;fontColor=#FFFFFF;strokeColor=#385723;" vertex="1" parent="1">
+          <mxGeometry x="540" y="220" width="80" height="80" as="geometry"/>
+        </mxCell>
+        <!-- エッジ -->
+        <mxCell id="16" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="2" target="10">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="AIコア開発" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="16">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="17" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#70AD47;" edge="1" parent="1" source="2" target="11">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="Web統合/UI" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="17">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="18" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#ED7D31;" edge="1" parent="1" source="2" target="12">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="高負荷領域PoC" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="18">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="19" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="10" target="13">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="LLM統合" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="19">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="20" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#70AD47;" edge="1" parent="1" source="11" target="14">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="エージェント開発" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="20">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="21" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#ED7D31;" edge="1" parent="1" source="12" target="15">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="推論エンジン" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="21">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="22" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="10" target="5">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="採用事例" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="22">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="23" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="10" target="6">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="採用事例" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="23">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="24" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="10" target="7">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="採用事例" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="24">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="25" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#70AD47;" edge="1" parent="1" source="11" target="8">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="採用事例" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="25">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="26" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#4472C4;" edge="1" parent="1" source="12" target="9">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="採用事例" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="26">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <!-- 主要AIエージェントとの関係 -->
+        <mxCell id="27" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#70AD47;" edge="1" parent="1" source="3" target="2">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="知識提供" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="27">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+        <mxCell id="28" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;strokeColor=#ED7D31;" edge="1" parent="1" source="4" target="2">
+          <mxGeometry relative="1" as="geometry"/>
+          <mxCell value="技術戦略助言" style="text;html=1;strokeColor=none;fillColor=none;" vertex="1" parent="28">
+            <mxGeometry x="0.5" y="0" relative="1" as="geometry"/>
+          </mxCell>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
