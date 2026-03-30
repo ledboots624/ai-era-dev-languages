@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rustは本当に学ぶべきか ─「将来有望」の正体と現時点での採用判断基準 — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774774871">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/executive-summary.html">結論</a></li>
+      
+      <li><a href="../pages/language-comparison.html">言語比較</a></li>
+      
+      <li><a href="../pages/python-dominance.html">Python</a></li>
+      
+      <li><a href="../pages/typescript-position.html">TS戦略</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定表</a></li>
+      
+      <li><a href="../pages/framework-evaluation.html">FW評価</a></li>
+      
+      <li><a href="../pages/rust-assessment.html" class="active">Rust評価</a></li>
+      
+      <li><a href="../pages/learning-roadmap.html">学習計画</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/executive-summary.html">結論</a></li>
+      
+      <li><a href="../pages/language-comparison.html">言語比較</a></li>
+      
+      <li><a href="../pages/python-dominance.html">Python</a></li>
+      
+      <li><a href="../pages/typescript-position.html">TS戦略</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定表</a></li>
+      
+      <li><a href="../pages/framework-evaluation.html">FW評価</a></li>
+      
+      <li><a href="../pages/rust-assessment.html">Rust評価</a></li>
+      
+      <li><a href="../pages/learning-roadmap.html">学習計画</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <aside class="block block-callout block-callout--key">
+  <p>AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート</p>
+</aside>
+<section class="block block-prose">
+  <h2>Rustはいつ、どのような条件で採用を検討すべきか？</h2>
+  <div class="block-prose__body"><p>Rustの採用は厳格な条件付きです。具体的には「高頻度推論APIでP95応答時間・コスト改善が閾値達成した場合」に限定してください。ロードマップ上では月9〜12のPoC判定フェーズで評価します。現時点ではエコシステムが未成熟（tier3評価）であり、Python/TypeScript最適化を優先すべきです。初期のtier1評価は批判的再検証により誤りと判明しています。</p></div>
+</section>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://huggingface.co/blog/rust-llm" target="_blank" rel="noopener">HuggingFace Blog - Rust LLM</a>
+      <span class="block-sources__tier">tier3</span>
+      <small>news_article</small>
+    </li>
+    
+    <li>
+      <a href="https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/" target="_blank" rel="noopener">O&#39;Reilly AI Adoption in the Enterprise 2025</a>
+      <span class="block-sources__tier">tier2</span>
+      <small>industry_report</small>
+    </li>
+    
+    <li>
+      <a href="https://www.rust-lang.org/" target="_blank" rel="noopener">Rust公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://github.com/rustformers/llm" target="_blank" rel="noopener">llm-rs公式リポジトリ</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://github.com/rustformers/llm" target="_blank" rel="noopener">rustformers/llm GitHubリポジトリ</a>
+      <span class="block-sources__tier">tier3</span>
+      <small>community_data</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

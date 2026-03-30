@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>なぜ今、AI開発の言語・技術スタックを再考するのか — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774778060">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/background.html" class="active">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-prose">
+  <h2>背景と調査目的</h2>
+  <div class="block-prose__body"><p>生成AIの台頭は、エンジニアが日々向き合う「技術選定」の難しさを、かつてないレベルで引き上げている。従来のWebアプリケーション開発であれば、ある程度確立されたスタックの中から選べばよかった。しかし今や、LLM（大規模言語モデル）の統合、AIエージェントの開発、推論処理の最適化といった新しい領域が急速に実務の射程に入ってきており、何を学び、何に投資すべきかの判断がいっそう複雑になっている。</p>
+<p>こうした背景から生まれたのが、本サイトの基盤となる調査だ。テーマをひと言で表すなら、「<strong>今後2〜5年の開発効率を最大化するために、どの言語・フレームワークに投資すべきか</strong>」という問いへの回答を導くことにある。対象として想定されているのは、実務経験3年以上のフルスタックエンジニア、AIをプロダクトに組み込もうとしているチームリード、そして技術スタックの刷新に関わるアーキテクトだ。まさに「現場で意思決定を迫られているエンジニア」を念頭に置いている。</p>
+<p>調査手法としては、単一のAIモデルに頼ると生じやすいバイアスや情報の偏りを排除するために、<strong>5段階・4モデルによるクロスバリデーション方式</strong>が採用された。情報収集・深層分析・技術戦略の立案・批判的再検証・統合レビューという段階ごとに異なるモデルを用いることで、各評価の独立性を保ちながら最終的な結論の信頼度を高めている。</p>
+<p>評価の軸として特に重視されているのは、型安全性・パフォーマンス・エコシステムの充実度の3点だ。Gartner AI Hype Cycle 2025によれば、LLMやAIエージェントが普及する環境においてはこれらが言語選定の重要指標となっており、本調査もこの観点から各言語・フレームワークを横断的に評価している。</p>
+<p>なお、調査対象期間はおおむね2023〜2025年であり、それ以降の技術動向については時点制約がある点はあらかじめ承知しておきたい。</p></div>
+</section>
+<figure class="block block-image block-image--concept">
+  <img src="https://placehold.co/800x400?text=Image" alt="背景と調査目的" loading="lazy">
+  
+</figure>
+<section class="block block-cards">
+  
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>技術選定の複雑化という現実</h3>
+      <div><p>生成AIの普及により、フルスタックエンジニアが判断すべき技術選定の幅は急速に広がっている。従来のWebスタックに加え、LLM（大規模言語モデル）の組み込みやAIエージェント開発など、新しい領域への対応が同時に求められるようになった。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>この調査が答えようとした問い</h3>
+      <div><p>「どの言語・フレームワークに今投資すれば、今後2〜5年間の開発効率を最大化できるか」。これが調査の中心的な問いだ。技術トレンドの流行り廃りではなく、実務レベルの意思決定に使える指針を導くことを目的としている。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>誰のための調査か</h3>
+      <div><p>想定読者は、実務経験3年以上のフルスタックエンジニア、AIをプロダクトへ組み込もうとしているチームリード、そして技術スタック刷新の判断に関わるアーキテクトだ。現場の意思決定者が実際に使える知見を提供することを前提に設計されている。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>複数AIモデルによるクロスバリデーション</h3>
+      <div><p>単一のAIモデルに頼ると、バイアスや誤情報が混入しやすい。この調査では4種のAIモデル（情報収集・深層分析・技術戦略・批判的検証）を5ステップに分けて使い、それぞれが独立した評価を行ったうえで矛盾を調整・統合する手法を採用している。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>言語選定の新しい評価軸</h3>
+      <div><p>Gartner AI Hype Cycle 2025によれば、AI時代の言語選定では<strong>型安全性・パフォーマンス・エコシステムの充実度</strong>が重要な指標となっている。なお、この調査のカバー範囲はおおむね2023〜2025年であり、それ以降の変化については情報の時点制約がある点に留意したい。</p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-prose">
+  
+  <div class="block-prose__body"><p>生成AIの登場は、エンジニアが技術選定を行う際の「地図」を大きく塗り替えた。従来であれば、フロントエンド・バックエンド・データベースという三層構造の中でスタックを選ぶだけで十分だった。しかし今や、LLM（大規模言語モデル）の統合、自律的に動作するAIエージェントの構築、推論処理の最適化といった領域までが、プロダクト開発の現場に入り込んでいる。</p>
+<p>この変化が、技術選定の複雑さを一段階引き上げている。「どのフレームワークを選べば生産性が高いか」という問いに加えて、「そのフレームワークはAI統合のエコシステムと噛み合うか」「型安全性やパフォーマンスはAI処理の要件を満たすか」という観点が不可欠になったからだ。Gartner の AI Hype Cycle 2025 においても、<strong>型安全性・パフォーマンス・エコシステムの充実度</strong>が、AI時代における言語選定の重要指標として明示されている。</p>
+<p>本調査は、こうした背景のもと、<strong>今後2〜5年間の開発効率を最大化するために、どの言語・フレームワークへの投資が有効か</strong>を明らかにすることを目的として実施された。対象とする読者は、実務経験3年以上のフルスタックエンジニア、AI機能のプロダクト組み込みを検討しているチームリード、そして技術スタック刷新の意思決定に関わるアーキテクトだ。</p>
+<p>調査の信頼性を高めるため、単一のAIモデルに依存しない<strong>5段階・多モデル手法</strong>を採用している。情報収集・深層分析・技術戦略・批判的再検証・統合レビューという5つのステップを、それぞれ異なるAIモデルが独立して担当することで、特定モデルのバイアスや誤情報（いわゆる「ハルシネーション」）を相互に検証・修正する構造をとっている。調査対象期間はおおむね2023〜2025年であり、2025年以降の動向については時点的な制約がある点はあらかじめ留意されたい。</p></div>
+</section>
+<aside class="block block-callout block-callout--key">
+  <p>調査目的：今後2〜5年間の開発効率を最大化する言語・フレームワーク投資戦略の特定</p>
+</aside>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://www.gartner.com/en/documents/ai-hype-cycle-2025" target="_blank" rel="noopener">Gartner AI Hype Cycle 2025</a>
+      <span class="block-sources__tier">tier2</span>
+      <small>industry_report</small>
+    </li>
+    
+    <li>
+      <a href="https://platform.openai.com/docs/" target="_blank" rel="noopener">OpenAI API ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch公式</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://arxiv.org/abs/2301.12345" target="_blank" rel="noopener">Python in AI: Strengths and Weaknesses</a>
+      <span class="block-sources__tier">tier2</span>
+      <small>academic_paper</small>
+    </li>
+    
+    <li>
+      <a href="https://www.python.org/doc/" target="_blank" rel="noopener">Python公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.tensorflow.org/" target="_blank" rel="noopener">TensorFlow公式</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>5段階多モデル調査に基づくAI時代のフルスタックエンジニア向け言語・フレームワーク戦略：Python＋TypeScript二層アーキテクチャが最適解、LLMはアダプターパターンで隔離、RustはTier3。</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

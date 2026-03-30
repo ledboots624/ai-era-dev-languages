@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>エビデンス品質・情報ギャップ・批判的読み方ガイド — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774778060">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html" class="active">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <aside class="block block-callout block-callout--key">
+  <p>5段階多モデル調査に基づくAI時代のフルスタックエンジニア向け言語・フレームワーク戦略：Python＋TypeScript二層アーキテクチャが最適解、LLMはアダプターパターンで隔離、RustはTier3。</p>
+</aside>
+<section class="block block-cards">
+  <h2>未解決の課題</h2>
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>マルチプロバイダー比較が未整備</h3>
+      <div><p>現状の調査では OpenAI API が事実上の前提となっており、Anthropic Claude・Google Gemini・Mistral などとの横断比較が行われていない。実際のシステム設計で「どのプロバイダーを使うか」を判断するには、それぞれの SDK を実機で検証し、Provider Adapter（複数 LLM を切り替え可能な抽象レイヤー）の具体的な設計仕様を固める必要がある。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>LLMフレームワーク選定の根拠が薄い</h3>
+      <div><p>DSPy・Instructor・Pydantic AI・Agno といったフレームワーク間の比較において、GitHub スター推移や PyPI ダウンロード数などの定量データが揃っていない。「なぜこのフレームワークを選ぶのか」を説明できるだけの客観的な根拠が現時点では不足しており、定期的な比較検証（月 3〜6 回程度）で継続的に補っていく必要がある。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>検証不能なURLが約10%存在</h3>
+      <div><p>全参照ソースのうち約 10% が実在を確認できない URL を含んでいる。これらのリンクに紐づく主張は根拠が宙に浮いた状態であり、信頼できる代替ソース（arXiv の論文や独立した調査レポートなど）への差し替えが完了していない。情報を引用する際は出典の実在確認を徹底することが、調査品質の基本となる。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>TypeScript採用を支える定量調査が不足</h3>
+      <div><p>AI 開発における TypeScript の採用実態を裏付ける独立した定量調査（JetBrains DevEcosystem や Stack Overflow Developer Survey など）が引用されていない。現状では公式ドキュメントが公式ドキュメントを証拠にする「循環論法」に陥っており、TypeScript への投資優先度を判断するには第三者による調査データの参照が欠かせない。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>公式ドキュメント依存による自己参照バイアス</h3>
+      <div><p>「TypeScript 公式ドキュメントが AI 普及を示す証拠」とするような、提供元と証拠が同一の循環した引用が 6 件確認されている。これらは中立的な第三者による検証が未実施のため、主張の独立性が保証されない。技術選定の根拠として公式情報を用いる際は、独立したエビデンスと組み合わせることが重要だ。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>Rust／Go のAI開発評価データが皆無</h3>
+      <div><p>Rust 製推論ライブラリ（candle・burn）の実運用事例やベンチマークデータが存在せず、tier 評価の根拠が弱い。Go についてはさらに状況が厳しく、gRPC やクラウドネイティブ基盤での有用性は言及されているものの、AI 開発への適性を示す具体的なエビデンスがほぼ存在しない。これら言語の選定には追加調査が必要な状態だ。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>情報の鮮度：2025年以降の変化が未反映</h3>
+      <div><p>本調査は 2023〜2025 年の情報をベースとしており、それ以降に登場した新フレームワーク・既存ツールの破壊的変更・LLM モデルの性能向上などは反映されていない可能性がある。AI 領域は変化が極めて速いため、少なくとも 6 か月ごとに情報を再評価することが推奨される。「いつ時点の情報か」を常に意識して読むことが重要だ。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>本番運用に必要な観測ツールが未調査</h3>
+      <div><p>LangSmith・Arize・Langfuse といった「AI システムの動作を可視化・監視するための観測性ツール」については調査が実施されていない。本番環境で AI を安定稼働させるにはこうしたツールスタックの評価が不可欠だが、現時点では空白となっている領域だ。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>マルチエージェントフレームワークの比較が不十分</h3>
+      <div><p>CrewAI・AutoGen・Agno などの「複数 AI エージェントを協調させるフレームワーク」間で、機能・パフォーマンス・成熟度に関する詳細な比較データが揃っていない。エージェント設計の選定を正当化するだけの根拠が現状では弱く、実際の要件に応じた選択判断を下すには追加の比較検証が必要だ。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>GoのAI統合における役割が未評価</h3>
+      <div><p>マイクロサービスアーキテクチャでの AI 統合において Go がどのような役割を果たせるかについて、専門的な評価調査が存在しない。gRPC やクラウドネイティブ基盤での実績は知られているが、AI 開発という文脈での具体的な有用性はまだ未検証の領域として残っている。</p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-cards">
+  <h2>調査アクション</h2>
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>マルチプロバイダーSDKの実機検証</h3>
+      <div><p>現状の調査はOpenAI APIを暗黙の前提としており、Anthropic Claude・Google Gemini・Mistralといった他プロバイダーとの体系的な比較が行われていない。<strong>Provider Adapter設計の具体仕様を確定させるには、各SDKを実際に動かして比較検証することが不可欠</strong>であり、優先度の高いアクションとして位置づけられている。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>LLMフレームワーク選定の定量データ収集</h3>
+      <div><p>DSPy・Instructor・Pydantic AI・Agnoといったフレームワークの選定根拠として、GitHubスター推移やPyPIダウンロード数などの定量データが現時点では不足している。<strong>「なんとなく人気がある」ではなく、数値に基づいた比較検証</strong>を月3〜6回のペースで継続的に実施することで、この情報ギャップを埋めることが求められる。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>情報の鮮度：定期的な再評価の徹底</h3>
+      <div><p>本調査は2023〜2025年の情報を基にしており、その後の急速な変化——新フレームワークの登場・既存フレームワークの破壊的変更・LLMモデルの性能向上——が反映されていない可能性がある。AI関連技術は半年で情勢が大きく変わり得るため、<strong>最低でも6か月ごとに内容を再評価する運用</strong>が必要となる。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>観測性・運用ツールの評価</h3>
+      <div><p>LangSmith・Arize・Langfuseといった観測性（Observability）ツールについては、調査がまだ実施されていない。<strong>本番AIシステムを安定運用するには、モデルの挙動やコストを継続的にモニタリングする仕組みが欠かせない</strong>。この領域の評価は現時点で完全に空白となっており、早期の調査着手が求められる。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>マルチエージェントフレームワークの比較</h3>
+      <div><p>CrewAI・AutoGen・Agnoなど、複数AIエージェントが協調して動くフレームワークについて、機能・パフォーマンス・成熟度を横断的に比較したデータが不足している。<strong>エージェント設計の選定根拠を強化するには、これらの詳細な比較検証</strong>が必要であり、設計判断を裏付けるエビデンスとして整備することが今後の課題となっている。</p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-prose">
+  <h2>このレポートの信頼度はどう評価すればよいか？</h2>
+  <div class="block-prose__body"><p>このレポート全体の<strong>総合エビデンス品質はB−</strong>と評価されている。一口にB−といっても、技術領域によって信頼度にはかなりばらつきがある点に注意したい。</p>
+<p>Python・TypeScriptといった現在の主流技術に関する記述は<strong>B+水準</strong>——実務で活用できる十分な根拠を持つ——と判断できる。一方、RustやGoに関する評価は<strong>C水準</strong>に留まっており、独立した第三者エビデンスが不足している。フレームワーク間の比較についても網羅性が<strong>C+</strong>止まりであり、「主要な選択肢は押さえているが、抜け漏れがある」という状態だ。</p>
+<p>さらに具体的な問題点として、<strong>架空URLが5件・自己参照バイアスが6件</strong>検出されている。架空URLとは、実在しないリンクや出典が混入している状態を指す。自己参照バイアスとは、レポート内の主張が別の主張を根拠として循環してしまっている構造の問題だ。どちらも、情報の一次ソースを別途確認する際に引っかかりやすい落とし穴になる。</p>
+<p>こうした特性を踏まえると、このレポートは<strong>「確定した技術標準」ではなく「信頼度付きの仮説群」</strong>として受け取るのが適切だ。AI関連の開発トレンドは変化が速く、今日の有力説が半年後には書き換えられることも珍しくない。<strong>最低でも6か月ごとに定期的な再評価を行う</strong>ことを前提として、参照・活用してほしい。</p></div>
+</section>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      本統合レポートの方法論的評価（内部分析）
+      <span class="block-sources__tier">tier2</span>
+      <small>unknown</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>5段階多モデル調査に基づくAI時代のフルスタックエンジニア向け言語・フレームワーク戦略：Python＋TypeScript二層アーキテクチャが最適解、LLMはアダプターパターンで隔離、RustはTier3。</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

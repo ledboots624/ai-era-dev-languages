@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLMフレームワーク選定指針 — 抽象度・用途・採用リスクの整理 — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774778060">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html" class="active">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-table">
+  <h2>フレームワーク抽象度別比較</h2>
+  
+  <div class="block-table__wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>抽象度</th><th>ツール例</th><th>メリット</th><th>リスク</th><th>推奨用途</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>高</td><td>LangChain</td><td>迅速なプロトタイピング</td><td>破壊的変更への脆弱性・デバッグ困難</td><td>PoC・初期検証</td>
+        </tr>
+        
+        <tr>
+          <td>中</td><td>LlamaIndex・Pydantic AI</td><td>用途特化の明確さ</td><td>汎用性の制限</td><td>RAG・構造化出力</td>
+        </tr>
+        
+        <tr>
+          <td>低</td><td>Instructor・直接API</td><td>完全な制御・透明性</td><td>ボイラープレート増加</td><td>本番・高信頼性要件</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</section>
+<section class="block block-accordion">
+  <h2>FAQ</h2>
+  
+  <details>
+    <summary>LangChainは今でも採用すべきフレームワークか？</summary>
+    <div><p>PoCや初期検証フェーズにおいては依然として有効な選択肢です。ただし「デファクトスタンダードだから」という理由だけで採用するのは避けてください。現在はDSPy・Instructor・Pydantic AI・Agnoといった競合が台頭しており、用途別の比較検討が欠かせません。</p>
+<p>採用する場合は、<strong>アダプターパターン</strong>を使って業務ロジックとフレームワーク依存のコードを分離しておくことが重要です。これにより、将来フレームワークを乗り換える際のコストを大幅に抑えられます。LLMエコシステムの変化が速い現状を踏まえ、数ヶ月ごとに他フレームワークとの比較・再評価を行うサイクルを設けることを推奨します。</p></div>
+  </details>
+  
+  <details>
+    <summary>RAGを実装するなら、どのフレームワークが最適か？</summary>
+    <div><p>RAG（Retrieval-Augmented Generation：外部知識を検索して回答精度を高める仕組み）の実装には、<strong>LlamaIndex</strong>が現時点での有力候補です。データベースや外部ナレッジベースとの統合に特化した設計となっており、RAG用途での採用事例も急増しています。</p>
+<p>ただし、LlamaIndex・DSPy・Haystackなどフレームワーク間の定量的な比較データはまだ十分に揃っていない点に注意が必要です。GitHubのスター推移やPyPIのダウンロード数といった客観的指標も参照しながら、自社の要件に照らして判断することをお勧めします。構造化出力を扱う場合は、Pydantic v2との組み合わせが実装効率を高めます。</p></div>
+  </details>
+  
+  <details>
+    <summary>LLMからの出力を構造化するために、どのライブラリを使えばよいか？</summary>
+    <div><p>言語ごとに推奨ライブラリが異なります。</p>
+<ul>
+<li><strong>Python</strong>: <code>Pydantic v2</code> を採用してください。FastAPIと組み合わせることでOpenAPI/JSON Schemaの自動生成が可能となり、フロントエンドや他サービスとの型安全な連携が実現します。</li>
+<li><strong>TypeScript</strong>: <code>Zod</code> が定番です。スキーマ定義とランタイムでのバリデーションを一元管理でき、TypeScriptの型システムと自然に統合できます。</li>
+</ul>
+<p>この組み合わせは信頼性が高く、すぐに実務へ導入できる選択肢として広く認識されています。LLMの出力は不定形になりがちなため、こうした構造化ライブラリによる「型の保証」はシステムの堅牢性を高める上で重要な実装指針です。</p></div>
+  </details>
+  
+  <details>
+    <summary>「アダプターパターンで業務ロジックをフレームワークから隔離する」とはどういう意味か？</summary>
+    <div><p>LangChainやLlamaIndexといったLLMフレームワークは、バージョンアップで破壊的変更が入ることが少なくありません。業務ロジックをフレームワークのAPIに直接依存させていると、変更のたびに広範囲な修正が必要になります。</p>
+<p><strong>アダプターパターン</strong>とは、業務ロジックとフレームワークの間に「インターフェース層（アダプター）」を挟み、両者の依存を切り離す設計手法です。</p>
+<pre><code>業務ロジック → アダプター（インターフェース） → LangChain / DSPy / LlamaIndex
+</code></pre>
+<p>この構造にしておくことで、たとえばLangChainからDSPyへ移行する場合でも、アダプター部分の差し替えだけで済み、業務ロジックへの影響を最小限に抑えられます。フレームワーク選定の不確実性が高い現在のLLMエコシステムでは、この隔離設計を最初から組み込んでおくことが、長期的なメンテナンスコスト削減につながります。</p></div>
+  </details>
+  
+</section>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://python.langchain.com/docs/" target="_blank" rel="noopener">LangChain公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://llamaindex.ai/" target="_blank" rel="noopener">LlamaIndex公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>5段階多モデル調査に基づくAI時代のフルスタックエンジニア向け言語・フレームワーク戦略：Python＋TypeScript二層アーキテクチャが最適解、LLMはアダプターパターンで隔離、RustはTier3。</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

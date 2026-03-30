@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>なぜ今、技術選定が難しくなっているのか — AI普及がもたらす複雑化 — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774888325">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/background.html" class="active">背景</a></li>
+      
+      <li><a href="../pages/language-strategy.html">言語戦略</a></li>
+      
+      <li><a href="../pages/two-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/llm-frameworks.html">フレームワーク</a></li>
+      
+      <li><a href="../pages/provider-design.html">プロバイダー</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/research-methodology.html">調査手法</a></li>
+      
+      <li><a href="../pages/evidence-quality.html">信頼性評価</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-strategy.html">言語戦略</a></li>
+      
+      <li><a href="../pages/two-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/llm-frameworks.html">フレームワーク</a></li>
+      
+      <li><a href="../pages/provider-design.html">プロバイダー</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/research-methodology.html">調査手法</a></li>
+      
+      <li><a href="../pages/evidence-quality.html">信頼性評価</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-prose">
+  <h2>2. 背景</h2>
+  <div class="block-prose__body"><p>生成AIの普及は、エンジニアの仕事に新しい可能性をもたらした一方で、技術選定の難しさを一段引き上げた。</p>
+<p>従来のWebアプリ開発であれば、フロントエンド・バックエンド・インフラという軸で技術スタックを比較検討すれば、おおむね判断できた。しかし今や、それに加えて <strong>LLMとの統合方法</strong>、<strong>AIエージェントの開発基盤</strong>、<strong>推論処理の最適化</strong> といった領域への対応まで視野に入れなければならない。しかも、これらの技術は進化が速く、今日の「正解」が半年後には陳腐化しているケースも珍しくない。</p>
+<p>こうした状況の中で問われるのが、<strong>「どの言語・フレームワークに今投資すべきか」</strong> という判断だ。この問いに対して、特定の言語や個人の経験則だけを根拠にした答えでは心許ない。そこで本調査では、単一のAIモデルに頼ることなく、<strong>5段階の多モデル手法</strong>を採用している。複数のAIモデルがそれぞれ独立して評価を行い、最終フェーズで矛盾点を整理しながら信頼度を調整する設計だ。これは、特定のモデルが持つ偏り（バイアス）や、もっともらしい嘘をついてしまう「ハルシネーション」と呼ばれるリスクを軽減するための措置である。</p>
+<p>本調査の知見は、現場で技術判断を担う実務エンジニアはもちろん、チーム全体の技術移行を主導するリードや、組織の技術戦略を描くアーキテクトにも役立てられることを念頭に置いている。「今後2〜5年の開発効率を最大化するための技術選定」という実践的な問いへの答えを、できるだけ客観的な視点から提示することが、この調査の出発点となっている。</p></div>
+</section>
+<section class="block block-image">
+  <figure class="block-image__frame">
+    
+    <div class="block-image__placeholder">
+      <span>Image</span>
+      <small>concept</small>
+    </div>
+    
+    
+  </figure>
+</section>
+<section class="block block-cards">
+  
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>技術選定の複雑さが増している理由</h3>
+      <div><p>生成AIの普及により、従来のWebスタック選定だけでは済まなくなってきました。LLMの組み込み・AIエージェントの開発・推論処理の最適化といった新しい領域への対応が、フルスタックエンジニアにも求められるようになっています。「どの技術を選べば2〜5年後も通用するか」という判断が、かつてないほど難しくなっています。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>単一AIモデルの限界と多モデル手法</h3>
+      <div><p>AIを使った調査には「バイアス」や「ハルシネーション（もっともらしい嘘）」というリスクが伴います。この問題を乗り越えるために採用したのが、5段階の多モデル手法です。複数の異なるAIモデルが独立して評価を行い、最終段階で矛盾を整理・統合することで、より客観的で再現性の高い知見を導き出せる設計になっています。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>この調査が想定している読者層</h3>
+      <div><p>対象は3つの層に分かれます。①現場で技術判断を担う実務経験3年以上のフルスタックエンジニア、②AI機能のプロダクト導入を検討しているチームリード、③スタック刷新の意思決定に関わるアーキテクトです。立場は違っても、共通のゴールは「今後の開発効率を最大化できる技術選定の指針を得ること」です。</p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-prose">
+  
+  <div class="block-prose__body"><p>生成AIが実務に浸透し始めた頃から、多くのエンジニアが感じていることがある。「技術を選ぶのが、以前よりずっと難しくなった」という感覚だ。</p>
+<p>以前であれば、フロントエンドとバックエンドそれぞれの定番スタックを押さえておけば、チームの技術選定はある程度見通しが立った。しかし今は、そこに<strong>LLMの組み込み</strong>・<strong>AIエージェントの開発</strong>・<strong>推論処理の最適化</strong>といった新しい領域が加わり、考慮すべき変数が一気に増えている。しかもこれらは「将来の話」ではなく、すでに現場の意思決定に影響を与えている現在進行形の課題だ。</p>
+<p>特にフルスタックエンジニアにとって、この変化は重くのしかかる。Webアプリケーションの開発スキルに加えて、AI関連の技術動向まで追い続けなければ、適切な技術選定ができない状況になりつつある。「今どの言語やフレームワークに時間を投資すべきか」という問いは、以前よりもはるかに答えにくくなっている。</p>
+<p>この調査は、そうした状況に置かれたエンジニアに向けて、<strong>今後2〜5年の開発効率を最大化するための技術選定指針</strong>を示すことを目的に実施された。対象として想定しているのは、現場で直接技術判断を担う実務エンジニア、AI機能のプロダクト導入を検討しているチームリード、そして組織の技術スタック刷新に関わるアーキテクトという3つの立場だ。</p></div>
+</section>
+<aside class="block block-callout block-callout--key">
+  <p>生成AIの普及でLLM統合・エージェント開発・推論最適化が新たな技術選定領域として浮上し、フルスタックエンジニアの意思決定が複雑化している</p>
+</aside>
+  </main>
+  <footer class="container">
+    <small>AI時代の開発言語</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

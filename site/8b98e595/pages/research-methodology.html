@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5段階多モデル調査手法 — AIによる情報収集の信頼性を高める方法 — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774888325">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-strategy.html">言語戦略</a></li>
+      
+      <li><a href="../pages/two-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/llm-frameworks.html">フレームワーク</a></li>
+      
+      <li><a href="../pages/provider-design.html">プロバイダー</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/research-methodology.html" class="active">調査手法</a></li>
+      
+      <li><a href="../pages/evidence-quality.html">信頼性評価</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-strategy.html">言語戦略</a></li>
+      
+      <li><a href="../pages/two-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/llm-frameworks.html">フレームワーク</a></li>
+      
+      <li><a href="../pages/provider-design.html">プロバイダー</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/research-methodology.html">調査手法</a></li>
+      
+      <li><a href="../pages/evidence-quality.html">信頼性評価</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-prose">
+  <h2>7. 調査手法付録</h2>
+  <div class="block-prose__body"><p>このレポートが「どのように作られたか」を知ることは、その内容をどこまで信頼してよいかを判断するうえで欠かせない視点です。本付録では、リサーチ全体を支えた<strong>5ステップ多モデル調査</strong>の設計思想を公開します。</p>
+<p>調査には4つのAIモデルを役割ごとに分担配置しました。情報収集・深層分析・技術戦略の策定まではそれぞれ異なるモデルが担当し、さらにStep 4では専用の「批判・反論役」として別モデルを投入しています。この批判ステップが重要で、各モデルが前段の主張をそのまま引き継がず、独立した立場から架空URLやバイアス、分類の誤りを洗い出す設計になっています。その結果、当初55%まで膨らんでいた「high信頼度」の比率が35%へと適正化されました。数字が下がることが品質向上を意味する、という点はやや逆説的ですが、根拠のない高評価を排除した結果として捉えてください。</p>
+<p><strong>信頼度の判定</strong>は「複数モデル間での合意の度合い」と「裏付けエビデンスの質」の2軸で行われ、high / medium / low / 評価不能の4段階に整理されています。全ステップが支持し公式ドキュメント等で裏付けられたものだけが high と認定されます。</p>
+<p>本付録の末尾には、調査で参照したフレームワーク・ライブラリの一覧も掲載しています。Python系・TypeScript系を中心に整理されており、Rust系と観測性・運用ツールについては現時点で調査が未完了または将来候補扱いとなっています。調査のスコープと限界を正直に示すことで、読者自身がこのレポートをどう活用するかを判断しやすくすることが、この付録の目的です。</p></div>
+</section>
+<section class="block block-image">
+  <figure class="block-image__frame">
+    
+    <div class="block-image__placeholder">
+      <span>Image</span>
+      <small>concept</small>
+    </div>
+    
+    
+  </figure>
+</section>
+<section class="block block-cards">
+  
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>5段階・4モデルの多段階調査設計</h3>
+      <div><p>この調査では、4つのAIモデル（GPT-4.1、Claude Sonnet 4.6、GPT-5.3 Codex、Claude Opus 4.6）を5つのステップに役割分担して配置しています。情報収集→深層分析→技術戦略→批判的再検証→統合レビューという流れで、単一モデルに頼らず多角的に情報を積み上げる設計です。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>信頼度は「合意数」と「エビデンス質」の2軸で判定</h3>
+      <div><p>各情報には <strong>high / medium / low / 評価不能</strong> の4段階で信頼度が付与されます。<strong>high</strong> は全5ステップが支持し、公式ドキュメントなど1次情報で裏付けられたもの。<strong>low</strong> はステップの支持が少なく、根拠が薄い、もしくは存在しないURLを含むものが対象です。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>Step 4で「あえて反論させる」バイアス除去の仕組み</h3>
+      <div><p>調査の精度を高める鍵は、Step 4にあります。ここではClaude Opus 4.6に前ステップの主張を意図的に批判させ、架空URL・誤分類・思い込みを検出します。この工程を経ることで、high信頼度の比率は55%から35%へと絞り込まれ、過信を防ぐ適正化が実現しました。</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>参照ライブラリは4カテゴリに整理</h3>
+      <div><p>調査で参照したライブラリ群は以下の通りです。<strong>Python系</strong>：FastAPI、Pydantic v2、LlamaIndex、LangChain、DSPy、Instructor、Pydantic AI、AutoGen、PyTorch。<strong>TypeScript系</strong>：Vercel AI SDK、tRPC、Next.js、Zod、LangChain.js、LlamaIndex.js。<strong>Rust系</strong>（将来候補）：candle、burn。<strong>観測性・運用</strong>（LangSmith、Arize、Langfuse）は現時点で調査未完了であり、今後の補完が必要な領域です。</p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-prose">
+  
+  <div class="block-prose__body"><p>このレポートで示した情報が「どのように導き出されたか」を理解しておくことは、結論をそのまま受け取るよりもずっと重要です。AIが生成する情報はときに誤りを含み、単一モデルへの過信は危険です。そこで本調査では、<strong>4つのAIモデルを5つのステップに配置した多段階・多モデル方式</strong>を採用しました。</p>
+<p>各ステップには明確な役割があります。最初のステップでは言語別の比較データや初期ソースの収集を担い、次のステップでエコシステム全体の動向を深く分析します。続くステップでは12か月規模のロードマップや実装パターンの策定へと進み、そこまでの成果物に対して<strong>第4ステップで意図的に批判・反論を行う</strong>設計としました。「前のステップで正しいとされた主張を、あえて疑う役割」を設けることで、思い込みや誇張を除去するのが狙いです。最後のステップで矛盾を解消し、信頼度を最終調整します。</p>
+<p>この手法の効果は数字にも表れています。批判ステップを経る前は「信頼度：高」と分類された情報が全体の55%を占めていましたが、再検証後には35%へと適正化されました。これは情報の「量」が減ったのではなく、<strong>裏付けの弱い情報が正直に格下げされた</strong>ことを意味します。</p>
+<p>信頼度の判定は「複数モデル間での一致度」と「エビデンスの質」という2つの軸で行われます。5ステップすべてが支持し、公式ドキュメントなどで裏付けられた情報だけが <strong>high（高信頼）</strong> に分類されます。一部のステップしか支持しない、あるいはエビデンスが不十分な場合は <strong>medium（中）</strong> または <strong>low（低）</strong> に引き下げられ、調査の範囲外で根拠のないものは「評価不能」として明示されます。</p>
+<p>なお、各モデルは前のステップの出力を参照しながらも、<strong>評価と結論は独立して導く</strong>よう設計されています。同じ前提を渡されても、結論は自分で出す——その原則が、単なる情報の連鎖コピーではなく、真の多角的検証を可能にしています。</p></div>
+</section>
+<aside class="block block-callout block-callout--key">
+  <p>5つのステップに4つのAIモデル（gpt-4.1、claude-sonnet-4.6、gpt-5.3-codex、claude-opus-4.6）を配置した多段階調査手法を採用した</p>
+</aside>
+  </main>
+  <footer class="container">
+    <small>AI時代の開発言語</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

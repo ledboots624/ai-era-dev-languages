@@ -1,0 +1,99 @@
+{
+  "status": "warning",
+  "errors": [],
+  "warnings": [
+    {
+      "code": "empty_faq_answer_skipped",
+      "message": "page 'two-layer-architecture': faq 'faq-01' の answer が空のためスキップ"
+    },
+    {
+      "code": "empty_faq_answer_skipped",
+      "message": "page 'two-layer-architecture': faq 'faq-10' の answer が空のためスキップ"
+    },
+    {
+      "code": "empty_faq_answer_skipped",
+      "message": "page 'llm-frameworks': faq 'faq-08' の answer が空のためスキップ"
+    },
+    {
+      "code": "empty_faq_answer_skipped",
+      "message": "page 'llm-frameworks': faq 'faq-11' の answer が空のためスキップ"
+    },
+    {
+      "code": "empty_faq_answer_skipped",
+      "message": "page 'provider-design': faq 'faq-02' の answer が空のためスキップ"
+    },
+    {
+      "code": "empty_faq_answer_skipped",
+      "message": "page 'provider-design': faq 'faq-12' の answer が空のためスキップ"
+    },
+    {
+      "code": "empty_faq_answer_skipped",
+      "message": "page 'provider-design': faq 'faq-13' の answer が空のためスキップ"
+    },
+    {
+      "code": "empty_faq_answer_skipped",
+      "message": "page 'evidence-quality': faq 'faq-03' の answer が空のためスキップ"
+    },
+    {
+      "code": "empty_faq_answer_skipped",
+      "message": "page 'evidence-quality': faq 'faq-16' の answer が空のためスキップ"
+    },
+    {
+      "code": "missing_section_fallback",
+      "message": "page 'roadmap': section 不在のため claim から cards を補填"
+    },
+    {
+      "code": "missing_section_fallback",
+      "message": "page 'evidence-quality': section 不在のため claim から cards を補填"
+    }
+  ],
+  "repair_actions": [
+    {
+      "code": "generated_cards_from_claims",
+      "target": "roadmap",
+      "result": "2 claims"
+    },
+    {
+      "code": "generated_cards_from_claims",
+      "target": "evidence-quality",
+      "result": "3 claims"
+    },
+    {
+      "code": "merged_consecutive_prose",
+      "target": "background",
+      "result": "merged"
+    },
+    {
+      "code": "merged_consecutive_prose",
+      "target": "language-strategy",
+      "result": "merged"
+    },
+    {
+      "code": "merged_consecutive_prose",
+      "target": "two-layer-architecture",
+      "result": "merged"
+    },
+    {
+      "code": "merged_consecutive_prose",
+      "target": "llm-frameworks",
+      "result": "merged"
+    },
+    {
+      "code": "merged_consecutive_prose",
+      "target": "provider-design",
+      "result": "merged"
+    },
+    {
+      "code": "merged_consecutive_prose",
+      "target": "research-methodology",
+      "result": "merged"
+    }
+  ],
+  "stats": {
+    "blocks": 45,
+    "pages": 10,
+    "auto_source_lists": 1
+  },
+  "_id": "8b98e595",
+  "_label": "楽しく学べるAI時代のシステム開発"
+}

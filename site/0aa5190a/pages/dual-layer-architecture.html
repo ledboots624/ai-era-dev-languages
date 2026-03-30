@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python＋TypeScript 二層アーキテクチャ — 設計根拠と実装パターン — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774779178">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html" class="active">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-image">
+  <figure class="block-image__frame">
+    
+    <div class="block-image__placeholder">
+      <span>Image</span>
+      <small>concept</small>
+    </div>
+    
+    
+  </figure>
+</section>
+<section class="block block-prose">
+  <h2>なぜPythonとTypeScriptを組み合わせる「二層アーキテクチャ」が最適なのか？</h2>
+  <div class="block-prose__body"><p>Pythonは動的型付けと豊富なAIライブラリでプロトタイプ・ML開発に最適だが、本番環境では型安全性が重要になる「型安全性の逆説」が存在する。TypeScriptは静的型付けによりAPIやUI統合の安全性を担保する。FastAPI + Pydantic v2がOpenAPI/JSON SchemaでPython側の出力を型定義し、TypeScript側がそれを受け取ることで、探索フェーズと本番フェーズの利点を両立できる。信頼度high。</p></div>
+</section>
+<section class="block block-prose">
+  <h2>マルチプロバイダー（OpenAI以外）への対応はどう設計すべきか？</h2>
+  <div class="block-prose__body"><p>設計初日から<code>provider: str</code>パラメータを組み込み、Provider Adapterパターンで各プロバイダー（OpenAI・Anthropic・Google Gemini・Mistral等）を等価に扱える抽象層を作ること。本調査はOpenAI偏重であり、マルチプロバイダーSDK比較は重大情報ギャップ（G1）として各SDKの実機検証による追加調査が必須。信頼度medium。</p></div>
+</section>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://js.langchain.com/docs/" target="_blank" rel="noopener">LangChain.js公式</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://platform.openai.com/docs/" target="_blank" rel="noopener">OpenAI API ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch公式</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.python.org/doc/" target="_blank" rel="noopener">Python公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      本統合レポートの方法論的評価（内部分析）
+      <span class="block-sources__tier">tier2</span>
+      <small>unknown</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>5段階多モデル調査に基づくAI時代のフルスタックエンジニア向け言語・フレームワーク戦略：Python＋TypeScript二層アーキテクチャが最適解、LLMはアダプターパターンで隔離、RustはTier3。</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

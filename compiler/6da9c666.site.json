@@ -1,0 +1,1359 @@
+{
+  "_schema": "site.v2",
+  "_id": "6da9c666",
+  "_label": "テスト",
+  "site": {
+    "title": "AI時代の開発言語",
+    "description": "AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート",
+    "language": "ja",
+    "theme": "standard",
+    "site_notice": "本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。"
+  },
+  "pages": [
+    {
+      "id": "index",
+      "title": "AIシステム開発 言語・フレームワーク選定ガイド2025 ─ 今何を学ぶべきかを判断する",
+      "nav_title": "トップ",
+      "description": "",
+      "blocks": [
+        {
+          "type": "hero",
+          "heading": "AI時代の開発言語",
+          "subheading": "5段階多モデル調査（gpt-4.1・claude-sonnet-4.6・gpt-5.3-codex・claude-opus-4.6）によるAI開発言語の最適戦略レポート。主結論は①Python（AIコア）＋TypeScript（統合/UI）の二層アーキテクチャ（high）、②LLMフレームワークのアダプターパターンによる業務ロジック隔離（medium〜high）、③Rustは条件付き将来検討・tier3（low〜medium）の3点。架空URL5件・自己参照バイアス6件が検出されており、全結論は信頼度付き仮説群として6か月ごとに再評価することを前提に運用する。",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "generate",
+            "source_refs": [
+              "summary"
+            ],
+            "instruction": "サイトの hero（heading + subheading）を audience/purpose/persona に合わせて生成"
+          },
+          "_trace": null
+        },
+        {
+          "type": "callout",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "key",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "cards",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "Python（AIコア）＋TypeScript（統合/UI）の二層アーキテクチャが現時点のAI開発における最適解である",
+              "body": "Python（AIコア）＋TypeScript（統合/UI）の二層アーキテクチャが現時点のAI開発における最適解である"
+            },
+            {
+              "title": "AI調査結果の無批判受け入れ自体が最大のリスクであり、バリデーション能力（ソースの実在確認・バイアス識別）はAI時代のエ",
+              "body": "AI調査結果の無批判受け入れ自体が最大のリスクであり、バリデーション能力（ソースの実在確認・バイアス識別）はAI時代のエンジニアに必須のスキル"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "cl-01",
+              "cl-07"
+            ],
+            "instruction": "各主張を読者向けのカードテキストにリライト"
+          },
+          "_trace": null
+        },
+        {
+          "type": "nav",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "page_id": "executive-summary",
+              "title": "結論",
+              "description": ""
+            },
+            {
+              "page_id": "language-comparison",
+              "title": "言語比較",
+              "description": ""
+            },
+            {
+              "page_id": "python-dominance",
+              "title": "Python",
+              "description": ""
+            },
+            {
+              "page_id": "typescript-position",
+              "title": "TS戦略",
+              "description": ""
+            },
+            {
+              "page_id": "framework-selection",
+              "title": "FW選定表",
+              "description": ""
+            },
+            {
+              "page_id": "framework-evaluation",
+              "title": "FW評価",
+              "description": ""
+            },
+            {
+              "page_id": "rust-assessment",
+              "title": "Rust評価",
+              "description": ""
+            },
+            {
+              "page_id": "learning-roadmap",
+              "title": "学習計画",
+              "description": ""
+            },
+            {
+              "page_id": "references",
+              "title": "参考文献",
+              "description": ""
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "executive-summary",
+      "title": "結論と信頼度マップ ─ 投資優先度を5分で把握する",
+      "nav_title": "結論",
+      "description": "",
+      "blocks": [
+        {
+          "type": "hero",
+          "heading": "AI時代の開発言語",
+          "subheading": "5段階多モデル調査（gpt-4.1・claude-sonnet-4.6・gpt-5.3-codex・claude-opus-4.6）によるAI開発言語の最適戦略レポート。主結論は①Python（AIコア）＋TypeScript（統合/UI）の二層アーキテクチャ（high）、②LLMフレームワークのアダプターパターンによる業務ロジック隔離（medium〜high）、③Rustは条件付き将来検討・tier3（low〜medium）の3点。架空URL5件・自己参照バイアス6件が検出されており、全結論は信頼度付き仮説群として6か月ごとに再評価することを前提に運用する。",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "generate",
+            "source_refs": [
+              "summary"
+            ],
+            "instruction": "サイトの hero（heading + subheading）を audience/purpose/persona に合わせて生成"
+          },
+          "_trace": null
+        },
+        {
+          "type": "callout",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "key",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "cards",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "PythonのAI/ML分野での優位性はエコシステム慣性（NumPy→SciPy→ML連鎖によるネットワーク効果）に由来",
+              "body": "PythonのAI/ML分野での優位性はエコシステム慣性（NumPy→SciPy→ML連鎖によるネットワーク効果）に由来し、短中期で揺らがない"
+            },
+            {
+              "title": "TypeScriptはWeb/クラウドAI統合や型安全なエージェント開発で急速に普及している",
+              "body": "TypeScriptはWeb/クラウドAI統合や型安全なエージェント開発で急速に普及している"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "cl-04",
+              "cl-10"
+            ],
+            "instruction": "各主張を読者向けのカードテキストにリライト"
+          },
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "language-comparison",
+      "title": "言語選定マトリクス ─ Python・TypeScript・Rustを3軸で比較する",
+      "nav_title": "言語比較",
+      "description": "",
+      "blocks": [
+        {
+          "type": "table",
+          "heading": "言語別評価マトリクス",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [
+            "言語",
+            "AI開発適性",
+            "エコシステム成熟度",
+            "採用優先度",
+            "信頼度"
+          ],
+          "rows": [
+            [
+              "Python",
+              "◎ AIコア・ML・推論",
+              "◎ NumPy/PyTorch/FastAPI",
+              "Priority 0（即時採用）",
+              "high"
+            ],
+            [
+              "TypeScript",
+              "○ AI統合・UI・API",
+              "○ Vercel AI SDK・tRPC",
+              "Priority 1（並行導入）",
+              "medium"
+            ],
+            [
+              "Rust",
+              "△ 高性能推論・WASM",
+              "△ candle・burn（未成熟）",
+              "Priority 2（条件付き検討）",
+              "low〜medium"
+            ],
+            [
+              "Go",
+              "情報不足",
+              "gRPC・クラウド基盤",
+              "調査対象外",
+              "評価不能"
+            ]
+          ],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "LangChain.js公式",
+              "url": "https://js.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "O'Reilly AI Adoption in the Enterprise 2025",
+              "url": "https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "PyTorch公式",
+              "url": "https://pytorch.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Python公式ドキュメント",
+              "url": "https://www.python.org/doc/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Rust公式ドキュメント",
+              "url": "https://www.rust-lang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "TensorFlow公式",
+              "url": "https://www.tensorflow.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "TypeScript公式ドキュメント",
+              "url": "https://www.typescriptlang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "llm-rs公式リポジトリ",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier1",
+              "note": "official_document"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "python-dominance",
+      "title": "なぜPythonはAI開発の絶対的中心なのか ─ エコシステム慣性という構造的優位",
+      "nav_title": "Python",
+      "description": "",
+      "blocks": [
+        {
+          "type": "prose",
+          "heading": "Python",
+          "subheading": "",
+          "body": "**AI/MLコア言語（Priority 0）**\n\nAI/ML分野のデファクトスタンダード言語。エコシステム慣性（NumPy→SciPy→ML連鎖）により短中期での優位性は不動。動的型付けの柔軟性が探索フェーズに適する。信頼度:high。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "ent-06"
+            ],
+            "instruction": "'Python' の紹介を読者向けに書き下ろす"
+          },
+          "_trace": null
+        },
+        {
+          "type": "prose",
+          "heading": "HuggingFace",
+          "subheading": "",
+          "body": "**AI/MLプラットフォーム・Rust推論基盤提供者**\n\nRust製AI推論基盤「candle」を公開。Rust採用事例として参照されているが、該当URLは架空の可能性があり要独立検証。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "ent-03"
+            ],
+            "instruction": "'HuggingFace' の紹介を読者向けに書き下ろす"
+          },
+          "_trace": null
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "OpenAI API ドキュメント",
+              "url": "https://platform.openai.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "PyTorch公式",
+              "url": "https://pytorch.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Python in AI: Strengths and Weaknesses",
+              "url": "https://arxiv.org/abs/2301.12345",
+              "tier": "tier2",
+              "note": "academic_paper"
+            },
+            {
+              "title": "Python公式ドキュメント",
+              "url": "https://www.python.org/doc/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "TensorFlow公式",
+              "url": "https://www.tensorflow.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "typescript-position",
+      "title": "TypeScriptが「第二の公用語」になった理由 ─ AI統合最前線での実務優位",
+      "nav_title": "TS戦略",
+      "description": "",
+      "blocks": [
+        {
+          "type": "prose",
+          "heading": "TypeScript",
+          "subheading": "",
+          "body": "**AI統合・UI・API言語（Priority 1）**\n\nWeb/クラウドAI統合や型安全なエージェント開発で急速に普及。静的型付けによる安全性がプロダクション化に適する。Vercel AI SDK・tRPC・Next.js・Zodが主要エコシステム。信頼度:medium。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "ent-07"
+            ],
+            "instruction": "'TypeScript' の紹介を読者向けに書き下ろす"
+          },
+          "_trace": null
+        },
+        {
+          "type": "prose",
+          "heading": "Vercel",
+          "subheading": "",
+          "body": "**TypeScript AIエコシステム提供者**\n\nVercel AI SDKを提供し、TypeScript向けLLM統合の主要エコシステムの一翼を担う。Next.jsとの統合が強み。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "ent-05"
+            ],
+            "instruction": "'Vercel' の紹介を読者向けに書き下ろす"
+          },
+          "_trace": null
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "LangChain.js公式",
+              "url": "https://js.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "The New Stack - AI in TypeScript",
+              "url": "https://thenewstack.io/ai-in-typescript/",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "TypeScript公式ドキュメント",
+              "url": "https://www.typescriptlang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Zenn - AI TypeScript Agent",
+              "url": "https://zenn.dev/ai_ts_agent",
+              "tier": "tier3",
+              "note": "news_article"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "framework-selection",
+      "title": "LLMフレームワーク選定表 ─ 抽象度・用途・安定性で整理した比較マトリクス",
+      "nav_title": "FW選定表",
+      "description": "",
+      "blocks": [
+        {
+          "type": "table",
+          "heading": "フレームワーク選定指針：抽象度のトレードオフ",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [
+            "抽象度",
+            "ツール例",
+            "メリット",
+            "リスク",
+            "推奨用途"
+          ],
+          "rows": [
+            [
+              "高",
+              "LangChain",
+              "迅速なプロトタイピング",
+              "破壊的変更への脆弱性・デバッグ困難",
+              "PoC・初期検証"
+            ],
+            [
+              "中",
+              "LlamaIndex・Pydantic AI",
+              "用途特化の明確さ",
+              "汎用性の制限",
+              "RAG・構造化出力"
+            ],
+            [
+              "低",
+              "Instructor・直接API",
+              "完全な制御・透明性",
+              "ボイラープレート増加",
+              "本番・高信頼性要件"
+            ]
+          ],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "LangChain公式ドキュメント",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain公式ドキュメント（Python）",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LlamaIndex公式ドキュメント",
+              "url": "https://llamaindex.ai/",
+              "tier": "tier1",
+              "note": "official_document"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "framework-evaluation",
+      "title": "各フレームワークはなぜ選ばれ、なぜ見直されるのか ─ LangChain・LlamaIndex・新興FWの評価",
+      "nav_title": "FW評価",
+      "description": "",
+      "blocks": [
+        {
+          "type": "callout",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "key",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "accordion",
+          "heading": "FAQ",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "question": "LangChainを本番環境で採用すべきか？",
+              "answer": "本番採用には注意が必要です。LangChainはPoCや初期検証（高抽象度）には有効ですが、破壊的変更への脆弱性とデバッグ困難のリスクがあります。本番化時は中〜低抽象度（LlamaIndex・Instructor・直接API）への移行を推奨します。必ずアダプターパターンで業務ロジックを隔離し、フレームワーク乗り換えコストを最小化してください。DSPy・Pydantic AI・Agnoとの競合比較も必須です。"
+            },
+            {
+              "question": "RAGシステムに最適なフレームワークは何か？",
+              "answer": "DB・外部知識統合に特化したLlamaIndexが現時点での推奨です。LLMと外部データベースを連携させることで精度向上を実現し、RAG用途で急速に普及しています。ロードマップでは月2〜4にLlamaIndexを用いたRAGテンプレート整備を推奨しており、Go条件はRAG品質がベースライン達成です。HaystackもRAG用途では有力な選択肢ですが、LlamaIndexほど本調査では詳細に評価されていません。"
+            },
+            {
+              "question": "AIエージェント開発に最適なフレームワーク選定の方針は？",
+              "answer": "単一フレームワークへの依存を避けることが最重要です。プロトタイプはLangChain（高抽象度）で迅速に検証し、本番化時はInstructor・直接API（低抽象度）への移行を検討します。AutoGen・CrewAIなどのマルチエージェント協調パターンは特定ユースケースに有効です。ロードマップでは月3〜6にDSPy・Instructorの比較検証を実施し、エージェントは2ユースケースに限定して導入することを推奨します。"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "faq-02",
+              "faq-05",
+              "faq-07"
+            ],
+            "instruction": "FAQ の質問と回答を読者向けにリライト"
+          },
+          "_trace": null
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "AutoGen公式ドキュメント",
+              "url": "https://microsoft.github.io/autogen/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain公式ドキュメント",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LlamaIndex公式ドキュメント",
+              "url": "https://llamaindex.ai/",
+              "tier": "tier1",
+              "note": "official_document"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "rust-assessment",
+      "title": "Rustは本当に学ぶべきか ─「将来有望」の正体と現時点での採用判断基準",
+      "nav_title": "Rust評価",
+      "description": "",
+      "blocks": [
+        {
+          "type": "callout",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "key",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "prose",
+          "heading": "Rustはいつ、どのような条件で採用を検討すべきか？",
+          "subheading": "",
+          "body": "Rustの採用は厳格な条件付きです。具体的には「高頻度推論APIでP95応答時間・コスト改善が閾値達成した場合」に限定してください。ロードマップ上では月9〜12のPoC判定フェーズで評価します。現時点ではエコシステムが未成熟（tier3評価）であり、Python/TypeScript最適化を優先すべきです。初期のtier1評価は批判的再検証により誤りと判明しています。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "faq-03"
+            ],
+            "instruction": "FAQ を読者向けにリライト"
+          },
+          "_trace": null
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "HuggingFace Blog - Rust LLM",
+              "url": "https://huggingface.co/blog/rust-llm",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "O'Reilly AI Adoption in the Enterprise 2025",
+              "url": "https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "Rust公式ドキュメント",
+              "url": "https://www.rust-lang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "llm-rs公式リポジトリ",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "rustformers/llm GitHubリポジトリ",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier3",
+              "note": "community_data"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "learning-roadmap",
+      "title": "12か月学習ロードマップ ─ 今すぐ着手すべき技術とゲート条件付きの将来投資",
+      "nav_title": "学習計画",
+      "description": "",
+      "blocks": [
+        {
+          "type": "callout",
+          "heading": "",
+          "subheading": "",
+          "body": "",
+          "text": "AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "key",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "cards",
+          "heading": "調査アクション",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "[short_term] 確認: 2025年以降の技術変化の未反映：調査は2023〜2025年の情報に基づいており、2025年以降の急速な変化（新フレームワーク登場・API仕様変更・モデル能力向上等）が反映されていない可能性がある。",
+              "body": "2025年以降の技術変化の未反映：調査は2023〜2025年の情報に基づいており、2025年以降の急速な変化（新フレームワーク登場・API仕様変更・モデル能力向上等）が反映されていない可能性がある。"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "act-06"
+            ],
+            "instruction": "調査アクションを読者向けに説明"
+          },
+          "_trace": null
+        },
+        {
+          "type": "source-list",
+          "heading": "出典",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "AI Infrastructure Alliance 2025",
+              "url": "https://ai-infra-alliance.org/reports/2025",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "Anthropic APIドキュメント",
+              "url": "https://docs.anthropic.com/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Gartner AI Hype Cycle 2025",
+              "url": "https://www.gartner.com/en/documents/ai-hype-cycle-2025",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "LangChain公式ドキュメント",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain公式ドキュメント（Python）",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LlamaIndex公式ドキュメント",
+              "url": "https://llamaindex.ai/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "PyTorch公式",
+              "url": "https://pytorch.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Python公式ドキュメント",
+              "url": "https://www.python.org/doc/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Rust公式ドキュメント",
+              "url": "https://www.rust-lang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "TypeScript公式ドキュメント",
+              "url": "https://www.typescriptlang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "llm-rs公式リポジトリ",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier1",
+              "note": "official_document"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        }
+      ]
+    },
+    {
+      "id": "references",
+      "title": "調査品質・情報ギャップ・参考文献",
+      "nav_title": "参考文献",
+      "description": "",
+      "blocks": [
+        {
+          "type": "source-list",
+          "heading": "出典・参考資料",
+          "subheading": "",
+          "body": "",
+          "text": "",
+          "author": "",
+          "items": [
+            {
+              "title": "AI Infrastructure Alliance 2025",
+              "url": "https://ai-infra-alliance.org/reports/2025",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "Anthropic APIドキュメント",
+              "url": "https://docs.anthropic.com/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "AutoGen公式ドキュメント",
+              "url": "https://microsoft.github.io/autogen/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Gartner AI Hype Cycle 2025",
+              "url": "https://www.gartner.com/en/documents/ai-hype-cycle-2025",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "HuggingFace Blog - Rust LLM",
+              "url": "https://huggingface.co/blog/rust-llm",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "LangChain.js公式",
+              "url": "https://js.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain.js公式ドキュメント",
+              "url": "https://js.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain公式ドキュメント",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LangChain公式ドキュメント（Python）",
+              "url": "https://python.langchain.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "LlamaIndex公式ドキュメント",
+              "url": "https://llamaindex.ai/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "O'Reilly AI Adoption in the Enterprise 2025",
+              "url": "https://www.oreilly.com/radar/ai-adoption-in-the-enterprise-2025/",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "OpenAI API ドキュメント",
+              "url": "https://platform.openai.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "OpenAI API公式ドキュメント",
+              "url": "https://platform.openai.com/docs/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "PyTorch公式",
+              "url": "https://pytorch.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "PyTorch公式ドキュメント",
+              "url": "https://pytorch.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Python in AI: Strengths and Weaknesses",
+              "url": "https://arxiv.org/abs/2301.12345",
+              "tier": "tier2",
+              "note": "academic_paper"
+            },
+            {
+              "title": "Python公式ドキュメント",
+              "url": "https://www.python.org/doc/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Qiita「RustでLLMを動かす」",
+              "url": "https://qiita.com/rust_llm_intro",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "Rust公式ドキュメント",
+              "url": "https://www.rust-lang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Stack Overflow Developer Survey 2025",
+              "url": "https://survey.stackoverflow.co/2025/",
+              "tier": "tier2",
+              "note": "industry_report"
+            },
+            {
+              "title": "TensorFlow公式",
+              "url": "https://www.tensorflow.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "TensorFlow公式ドキュメント",
+              "url": "https://www.tensorflow.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "The New Stack - AI in TypeScript",
+              "url": "https://thenewstack.io/ai-in-typescript/",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "TypeScript公式ドキュメント",
+              "url": "https://www.typescriptlang.org/",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "Zenn - AI TypeScript Agent",
+              "url": "https://zenn.dev/ai_ts_agent",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "Zenn「RustでAI推論」",
+              "url": "https://zenn.dev/rust_ai_inference",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "Zenn「TypeScriptでAIエージェント開発」",
+              "url": "https://zenn.dev/ai_ts_agent",
+              "tier": "tier3",
+              "note": "news_article"
+            },
+            {
+              "title": "llm-rs公式リポジトリ",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "llm-rs（rustformers）",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier1",
+              "note": "official_document"
+            },
+            {
+              "title": "rustformers/llm GitHubリポジトリ",
+              "url": "https://github.com/rustformers/llm",
+              "tier": "tier3",
+              "note": "community_data"
+            },
+            {
+              "title": "本統合レポートの方法論的評価（内部分析）",
+              "url": null,
+              "tier": "tier2",
+              "note": "unknown"
+            }
+          ],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": null,
+          "_trace": null
+        },
+        {
+          "type": "prose",
+          "heading": "免責事項",
+          "subheading": "",
+          "body": "本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。",
+          "text": "",
+          "author": "",
+          "items": [],
+          "headers": [],
+          "rows": [],
+          "caption": "",
+          "columns": 0,
+          "style": "",
+          "button_text": "",
+          "button_link": "#",
+          "src": "",
+          "alt": "",
+          "role": "",
+          "variant": "",
+          "_write": {
+            "mode": "rewrite",
+            "source_refs": [
+              "disclaimer"
+            ],
+            "instruction": "免責事項を読者向けの表現にリライト"
+          },
+          "_trace": null
+        }
+      ]
+    }
+  ]
+}

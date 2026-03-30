@@ -1,0 +1,365 @@
+{
+  "strategy": {
+    "audience": "システムエンジニア",
+    "purpose": "学習",
+    "depth": "standard",
+    "tone": "neutral",
+    "tone_detail": "",
+    "persona": "システム開発系出版社の執筆者と現役エンジニアの共同",
+    "goal": "AI時代の開発方法を事前学習",
+    "focus": [],
+    "exclude": [],
+    "knowledge_level": "general",
+    "title_override": "",
+    "page_strategy": "multi_page"
+  },
+  "pages": [
+    {
+      "id": "index",
+      "purpose": "overview",
+      "title_hint": "AI時代の開発言語・アーキテクチャ選定ガイド — 概要",
+      "nav_title": "概要",
+      "content_refs": [
+        {
+          "ref_type": "summary",
+          "ref_ids": [],
+          "ref_id": "short"
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-01",
+            "cl-05",
+            "cl-08"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "navigation",
+          "ref_ids": [],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "background",
+      "purpose": "narrative",
+      "title_hint": "なぜ今、AI開発の言語・技術スタックを再考するのか",
+      "nav_title": "背景",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-02"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-04",
+            "cl-07",
+            "cl-19"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-09"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "language-evaluation",
+      "purpose": "analysis",
+      "title_hint": "言語別評価マトリクス — Python・TypeScript・Rust の適用領域と限界",
+      "nav_title": "言語評価",
+      "content_refs": [
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-02"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-06",
+            "cl-10",
+            "cl-13"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-01",
+            "ent-02",
+            "ent-03"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-03"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "dual-layer-architecture",
+      "purpose": "analysis",
+      "title_hint": "Python＋TypeScript 二層アーキテクチャ — 設計根拠と実装パターン",
+      "nav_title": "二層設計",
+      "content_refs": [
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-01",
+            "cl-15",
+            "cl-21"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-06",
+            "ent-07",
+            "ent-08"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-01",
+            "faq-04"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "framework-selection",
+      "purpose": "analysis",
+      "title_hint": "LLMフレームワーク選定指針 — 抽象度・用途・採用リスクの整理",
+      "nav_title": "FW選定",
+      "content_refs": [
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-03"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-02",
+            "cl-11",
+            "cl-12"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-04",
+            "ent-05",
+            "ent-09",
+            "ent-10",
+            "ent-11"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-02",
+            "faq-06",
+            "faq-07",
+            "faq-08"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "design-patterns",
+      "purpose": "analysis",
+      "title_hint": "実践設計パターン — RAG・マルチエージェント・アダプター層の構成",
+      "nav_title": "設計指針",
+      "content_refs": [
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-16",
+            "cl-17",
+            "cl-20"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "entity",
+          "ref_ids": [
+            "ent-12",
+            "ent-13",
+            "ent-14"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-04"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "roadmap",
+      "purpose": "assessment",
+      "title_hint": "12か月ゲート付き実行ロードマップ — 段階的な習得と検証の進め方",
+      "nav_title": "ロードマップ",
+      "content_refs": [
+        {
+          "ref_type": "timeline",
+          "ref_ids": [
+            "tl-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-08"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-05"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-22"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "evidence-and-gaps",
+      "purpose": "assessment",
+      "title_hint": "エビデンス品質・情報ギャップ・批判的読み方ガイド",
+      "nav_title": "品質・課題",
+      "content_refs": [
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-18"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-04",
+            "cmp-05",
+            "cmp-07"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "action",
+          "ref_ids": [
+            "act-01",
+            "act-02",
+            "act-07",
+            "act-08",
+            "act-09"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "quality_gaps",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-05"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "references",
+      "purpose": "references",
+      "title_hint": "調査手法・出典一覧・免責事項",
+      "nav_title": "参考文献",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-06",
+            "sec-07"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-06"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "all_sources",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "disclaimer",
+          "ref_ids": [],
+          "ref_id": ""
+        }
+      ]
+    }
+  ],
+  "presentation_rules": {
+    "prefer_table_for_comparisons": true,
+    "prefer_timeline_for_sequences": true,
+    "prefer_cards_for_claims": true,
+    "max_blocks_per_page": 8,
+    "auto_source_list": true,
+    "auto_toc": false,
+    "claim_exposure": {
+      "index": "summary",
+      "detail_pages": "full"
+    }
+  },
+  "_id": "2835f5b2",
+  "_label": "テスト2"
+}

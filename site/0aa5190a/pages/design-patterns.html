@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>実践設計パターン — RAG・マルチエージェント・アダプター層の構成 — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774779178">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html" class="active">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-prose">
+  <h2>詳細分析：言語別評価・推奨アーキテクチャ・フレームワーク選定・マルチプロバイダー対応</h2>
+  <div class="block-prose__body"><p>言語別評価マトリクス、Python＋TypeScript二層アーキテクチャの構造的根拠、フレームワーク抽象度トレードオフ、マルチプロバイダー対応指針、残存する重大情報ギャップを詳述。</p></div>
+</section>
+<section class="block block-image">
+  <figure class="block-image__frame">
+    
+    <div class="block-image__placeholder">
+      <span>Image</span>
+      <small>concept</small>
+    </div>
+    
+    
+  </figure>
+</section>
+<section class="block block-cards">
+  
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>Python Priority 0（即時採用）/ TypeScript Priority 1（並行導入）/ Rust Priority 2（条件付き）/ Go 評価不能</h3>
+      
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>型安全性の逆説：Python（探索・動的型）→FastAPI/Pydantic v2（API境界）→TypeScript（本番・静的型）</h3>
+      
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>フレームワーク抽象度：高（PoC・LangChain）→中（RAG・LlamaIndex）→低（本番・Instructor）の段階的移行</h3>
+      
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>アダプターパターンによる業務ロジックのフレームワーク隔離が必須設計（medium〜high）</h3>
+      
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>OpenAI偏重バイアスあり。provider抽象層を設計初日から組み込むこと（medium）</h3>
+      
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>重大情報ギャップ4件（G1〜G4）が特定済み。追加調査が必須</h3>
+      
+    </article>
+    
+  </div>
+</section>
+<section class="block block-prose">
+  
+  <div class="block-prose__body"><h2>言語別評価マトリクス</h2>
+<p>PythonはAI開発適性◎・エコシステム成熟度◎でPriority 0（即時採用）、信頼度high。NumPy/PyTorch/FastAPIからなる成熟したエコシステムが強み。TypeScriptはAI開発適性○・エコシステム成熟度○でPriority 1（並行導入）、信頼度medium。Vercel AI SDK・tRPCが実用的なAI統合を支援。RustはAI開発適性△・エコシステム成熟度△（candle・burnは未成熟）でPriority 2（条件付き検討）、信頼度low〜medium。GoはAI開発における評価不能（エビデンス不足のため比較対象外）。</p>
+<h2>推奨アーキテクチャ：Python＋TypeScript二層構造（信頼度: high）</h2>
+<p>動的型付けのPythonがAIデファクトである一方、プロダクション化では型安全性が重要になるという「<strong>型安全性の逆説</strong>」が、この二層アーキテクチャの構造的根拠である。</p>
+<pre><code>【探索フェーズ】      【API境界】                   【プロダクションフェーズ】
+Python           →   OpenAPI / JSON Schema    →   TypeScript
+（動的型・柔軟性）     （FastAPI + Pydantic v2）      （静的型・安全性）
+</code></pre>
+<p>FastAPI + Pydantic v2がこの境界を架橋する「接着剤」として機能する。この組み合わせの習得は<strong>最もROIの高い技術投資</strong>とされる。</p>
+<h2>フレームワーク選定指針：抽象度のトレードオフ（信頼度: medium）</h2>
+<p>高抽象度（LangChain）はPoC・初期検証向けで迅速なプロトタイピングが可能だが、破壊的変更への脆弱性・デバッグ困難リスクあり。中抽象度（LlamaIndex・Pydantic AI）はRAG・構造化出力向けで用途特化の明確さが利点だが汎用性に制限あり。低抽象度（Instructor・直接API）は本番・高信頼性要件向けで完全な制御・透明性が得られるがボイラープレートが増加する。</p>
+<p><strong>最適戦略</strong>：プロトタイプは高抽象度で素早く検証し、本番化時に中〜低抽象度に移行する。移行コストを最小化するためにアダプターパターンで業務ロジックをフレームワークから隔離する設計が必須（信頼度: medium〜high）。</p>
+<h2>マルチプロバイダー対応（信頼度: medium）</h2>
+<p>本調査はOpenAI APIを事実上のデフォルトとして参照しており、Anthropic Claude・Google Gemini・Mistral等の比較は不十分である。実務指針として、<code>provider: str</code>パラメータを設計初日から組み込み、Provider Adapterパターンにより各プロバイダーを等価に扱える構造にすること。マルチプロバイダーSDK比較は重大情報ギャップ（G1）として追加調査が必須。</p>
+<h2>残存する重大情報ギャップ</h2>
+<p>G1：マルチプロバイダーSDK比較の欠如（Provider Adapter設計の具体仕様に影響）。G2：DSPy・Instructor・Pydantic AIの比較データ不足（LLMフレームワーク選定根拠が弱い）。G3：TypeScript AI採用の定量エビデンス不足（TypeScript投資優先度の根拠が循環論法に依存）。G4：架空URL5件の代替ソース未確定（関連主張の根拠が未回復）。</p></div>
+</section>
+<aside class="block block-callout block-callout--key">
+  <p>Python Priority 0（即時採用）/ TypeScript Priority 1（並行導入）/ Rust Priority 2（条件付き）/ Go 評価不能</p>
+</aside>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://microsoft.github.io/autogen/" target="_blank" rel="noopener">AutoGen公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://python.langchain.com/docs/" target="_blank" rel="noopener">LangChain公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://llamaindex.ai/" target="_blank" rel="noopener">LlamaIndex公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>5段階多モデル調査に基づくAI時代のフルスタックエンジニア向け言語・フレームワーク戦略：Python＋TypeScript二層アーキテクチャが最適解、LLMはアダプターパターンで隔離、RustはTier3。</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

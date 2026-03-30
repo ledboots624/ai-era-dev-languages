@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "errors": [],
+  "warnings": [],
+  "repair_actions": [],
+  "stats": {
+    "blocks": 28,
+    "pages": 10,
+    "auto_source_lists": 8
+  },
+  "_id": "136bbcd2",
+  "_label": "AI時代の開発環境デザイン変更"
+}

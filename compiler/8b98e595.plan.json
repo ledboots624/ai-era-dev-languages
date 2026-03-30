@@ -1,0 +1,384 @@
+{
+  "strategy": {
+    "audience": "現役プログラマー",
+    "purpose": "AI時代のシステム開発学習",
+    "depth": "detailed",
+    "tone": "neutral",
+    "tone_detail": "やさしく",
+    "persona": "システム開発系出版社の執筆者と現役エンジニアの共同",
+    "goal": "AI時代の開発方法を事前収集",
+    "focus": [
+      "分かりやすく解説。構造的に説明。書籍の様に流れるように読みやすく。"
+    ],
+    "exclude": [],
+    "knowledge_level": "general",
+    "title_override": "",
+    "page_strategy": "multi_page"
+  },
+  "pages": [
+    {
+      "id": "index",
+      "purpose": "overview",
+      "title_hint": "AI時代のシステム開発 — 現役プログラマーのための技術選定ガイド",
+      "nav_title": "トップ",
+      "content_refs": [
+        {
+          "ref_type": "summary",
+          "ref_ids": [],
+          "ref_id": "short"
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-06",
+            "cl-07",
+            "cl-10",
+            "cl-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "navigation",
+          "ref_ids": [],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "background",
+      "purpose": "narrative",
+      "title_hint": "なぜ今、技術選定が難しくなっているのか — AI普及がもたらす複雑化",
+      "nav_title": "背景",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-02"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-06",
+            "cl-07",
+            "cl-10"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-05",
+            "faq-06"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "language-strategy",
+      "purpose": "analysis",
+      "title_hint": "言語戦略の全体像 — Python・TypeScript・Rustをどう位置づけるか",
+      "nav_title": "言語戦略",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-03"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-02",
+            "cmp-04"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "timeline",
+          "ref_ids": [
+            "tl-02"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-11",
+            "cl-12",
+            "cl-13"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "two-layer-architecture",
+      "purpose": "analysis",
+      "title_hint": "Python＋TypeScript二層アーキテクチャ — AI開発の現時点の最適解",
+      "nav_title": "二層設計",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-04"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-01",
+            "cl-25",
+            "cl-26",
+            "cl-32"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-01",
+            "faq-10"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "llm-frameworks",
+      "purpose": "analysis",
+      "title_hint": "LLMフレームワーク選定 — LangChain・DSPy・Instructorの使い分け",
+      "nav_title": "フレームワーク",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-04"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-03",
+            "cmp-05"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-16",
+            "cl-27",
+            "cl-28"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-08",
+            "faq-11"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "provider-design",
+      "purpose": "analysis",
+      "title_hint": "マルチプロバイダー設計 — OpenAI依存を避けるアダプターパターン",
+      "nav_title": "プロバイダー",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-04"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-02",
+            "cl-29",
+            "cl-35"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-02",
+            "faq-12",
+            "faq-13"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "roadmap",
+      "purpose": "assessment",
+      "title_hint": "12か月実践ロードマップ — 段階的にAI開発スタックを習得する",
+      "nav_title": "ロードマップ",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-05"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "timeline",
+          "ref_ids": [
+            "tl-03"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-01"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-34",
+            "cl-46"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "research-methodology",
+      "purpose": "narrative",
+      "title_hint": "5段階多モデル調査手法 — AIによる情報収集の信頼性を高める方法",
+      "nav_title": "調査手法",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-07"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-08",
+            "cmp-09"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-08",
+            "cl-09"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-04"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "evidence-quality",
+      "purpose": "assessment",
+      "title_hint": "情報の信頼性を見極める — エビデンス品質と注意すべき限界",
+      "nav_title": "信頼性評価",
+      "content_refs": [
+        {
+          "ref_type": "section",
+          "ref_ids": [
+            "sec-06"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "comparison",
+          "ref_ids": [
+            "cmp-06",
+            "cmp-07"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "claim",
+          "ref_ids": [
+            "cl-19",
+            "cl-20",
+            "cl-46"
+          ],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "faq",
+          "ref_ids": [
+            "faq-03",
+            "faq-16"
+          ],
+          "ref_id": ""
+        }
+      ]
+    },
+    {
+      "id": "references",
+      "purpose": "references",
+      "title_hint": "参考文献・情報ギャップ・免責事項",
+      "nav_title": "参考文献",
+      "content_refs": [
+        {
+          "ref_type": "all_sources",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "quality_gaps",
+          "ref_ids": [],
+          "ref_id": ""
+        },
+        {
+          "ref_type": "disclaimer",
+          "ref_ids": [],
+          "ref_id": ""
+        }
+      ]
+    }
+  ],
+  "presentation_rules": {
+    "prefer_table_for_comparisons": true,
+    "prefer_timeline_for_sequences": true,
+    "prefer_cards_for_claims": true,
+    "max_blocks_per_page": 8,
+    "auto_source_list": true,
+    "auto_toc": false,
+    "claim_exposure": {
+      "index": "summary",
+      "detail_pages": "full"
+    }
+  },
+  "_id": "8b98e595",
+  "_label": "楽しく学べるAI時代のシステム開発"
+}

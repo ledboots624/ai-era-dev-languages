@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python＋TypeScript 二層アーキテクチャ — 設計根拠と実装パターン — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="../css/theme.css?v=1774778060">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="../index.html">トップ</a></li>
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html" class="active">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="../index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="../pages/background.html">背景</a></li>
+      
+      <li><a href="../pages/language-evaluation.html">言語評価</a></li>
+      
+      <li><a href="../pages/dual-layer-architecture.html">二層設計</a></li>
+      
+      <li><a href="../pages/framework-selection.html">FW選定</a></li>
+      
+      <li><a href="../pages/design-patterns.html">設計指針</a></li>
+      
+      <li><a href="../pages/roadmap.html">ロードマップ</a></li>
+      
+      <li><a href="../pages/evidence-and-gaps.html">品質・課題</a></li>
+      
+      <li><a href="../pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-prose">
+  <h2>なぜPythonとTypeScriptを組み合わせる「二層アーキテクチャ」が最適なのか？</h2>
+  <div class="block-prose__body"><p>PythonとTypeScriptを組み合わせる理由を一言で言えば、「AIシステムの開発フェーズと本番フェーズには、それぞれ異なる武器が必要だから」です。</p>
+<p>Pythonは動的型付け言語であり、その柔軟さゆえに機械学習ライブラリのエコシステムが豊富に揃っています。試行錯誤を繰り返すプロトタイプ段階や、モデル開発・実験の局面では、Pythonの生産性は他の追随を許しません。しかし、その同じ柔軟さが本番環境では弱点に転じることがあります。型が明示されていないコードは、システムが複雑化するにつれてバグの温床になりやすく、特にAPIの入出力が曖昧になると、チーム全体の保守コストが跳ね上がります。これはいわば<strong>「型安全性の逆説」</strong>と呼ぶべき構造的な問題です。</p>
+<p>一方、TypeScriptは静的型付けによってコードの意図を明示し、コンパイル時点でのエラー検出を可能にします。APIとUIの統合層において型の整合性を保つことができるため、本番運用に求められる信頼性と保守性を担保しやすくなります。</p>
+<p>この二つの言語の強みをつなぐ役割を果たすのが、<strong>FastAPI + Pydantic v2</strong> の組み合わせです。Python側でFastAPIとPydanticを使うと、APIの仕様がOpenAPIおよびJSON Schemaとして自動生成されます。TypeScript側はそのスキーマ定義を受け取り、型安全なクライアントコードを構築できます。つまり、探索・実験フェーズはPythonの柔軟性を活かし、本番統合フェーズはTypeScriptの厳密さで品質を担保する——この役割分担こそが、二層アーキテクチャの本質的な価値です。</p></div>
+</section>
+<section class="block block-prose">
+  <h2>マルチプロバイダー（OpenAI以外）への対応はどう設計すべきか？</h2>
+  <div class="block-prose__body"><p>マルチプロバイダー対応を後から追加しようとすると、コードの大規模な改修が避けられない。OpenAI前提で書かれた呼び出しロジックが各所に散在していると、Anthropicや Google Gemini に切り替えようとした瞬間に「影響範囲が読めない」という状態に陥る。これを防ぐには、<strong>設計の初日から</strong>プロバイダーを差し替え可能な構造にしておくことが重要だ。</p>
+<p>具体的には、リクエストのパラメータに <code>provider: str</code> のような指定フィールドを設け、呼び出し元のコードはプロバイダーの違いを意識しないように設計する。各プロバイダー固有の実装は <strong>Provider Adapter パターン</strong>（各サービスへのアクセスを共通インターフェースで包む設計手法）によって抽象化し、OpenAI・Anthropic・Google Gemini・Mistral といった選択肢を「等価なもの」として扱える層を用意する。これにより、新しいプロバイダーが登場したときも、既存コードに触れずアダプターを追加するだけで対応できる。</p>
+<p>ただし、<strong>現時点では注意が必要な点</strong>もある。各プロバイダーのSDKは仕様・挙動・エラーハンドリングの面で細かな差異があり、設計段階で「どのプロバイダーも同じように動く」と仮定するのは危険だ。OpenAI以外のSDKについては、実機での動作検証を経て初めて信頼できる比較情報が得られる。現状ではOpenAI偏重の情報が多く、マルチプロバイダー対応の設計パターンには<strong>検証が必要な情報ギャップが存在する</strong>ことを念頭に置いておきたい。</p>
+<p>まずは「切り替えられる構造」を先に作り、各プロバイダーの実装は検証しながら段階的に拡充していくアプローチが現実的だろう。</p></div>
+</section>
+<section class="block block-sources">
+  <h2>出典</h2>
+  <ol class="block-sources__list">
+    
+    <li>
+      <a href="https://js.langchain.com/docs/" target="_blank" rel="noopener">LangChain.js公式</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://platform.openai.com/docs/" target="_blank" rel="noopener">OpenAI API ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://pytorch.org/" target="_blank" rel="noopener">PyTorch公式</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.python.org/doc/" target="_blank" rel="noopener">Python公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript公式ドキュメント</a>
+      <span class="block-sources__tier">tier1</span>
+      <small>official_document</small>
+    </li>
+    
+    <li>
+      本統合レポートの方法論的評価（内部分析）
+      <span class="block-sources__tier">tier2</span>
+      <small>unknown</small>
+    </li>
+    
+  </ol>
+</section>
+  </main>
+  <footer class="container">
+    <small>5段階多モデル調査に基づくAI時代のフルスタックエンジニア向け言語・フレームワーク戦略：Python＋TypeScript二層アーキテクチャが最適解、LLMはアダプターパターンで隔離、RustはTier3。</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>

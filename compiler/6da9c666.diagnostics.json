@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "errors": [],
+  "warnings": [],
+  "repair_actions": [],
+  "stats": {
+    "blocks": 28,
+    "pages": 10,
+    "auto_source_lists": 8
+  },
+  "_id": "6da9c666",
+  "_label": "テスト"
+}

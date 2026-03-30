@@ -1,0 +1,24 @@
+{
+  "status": "ok",
+  "errors": [],
+  "warnings": [],
+  "repair_actions": [
+    {
+      "code": "merged_consecutive_prose",
+      "target": "background",
+      "result": "merged"
+    },
+    {
+      "code": "merged_consecutive_prose",
+      "target": "design-patterns",
+      "result": "merged"
+    }
+  ],
+  "stats": {
+    "blocks": 37,
+    "pages": 9,
+    "auto_source_lists": 8
+  },
+  "_id": "0aa5190a",
+  "_label": "テスト3"
+}

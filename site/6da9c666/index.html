@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIシステム開発 言語・フレームワーク選定ガイド2025 ─ 今何を学ぶべきかを判断する — AI時代の開発言語</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="./css/theme.css?v=1774774871">
+  <style>
+    /* ===== ヘッダー（Pico CSS から完全独立） ===== */
+    .site-header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--theme-surface, #fff);
+      border-bottom: 1px solid var(--theme-border, #e2e8f0);
+      padding: 0.35rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .site-header__left { display: flex; align-items: center; gap: 0.5rem; }
+    .site-header__title { font-weight: 700; font-size: 0.85rem; color: var(--theme-accent, #3b82f6); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 60vw; }
+    .site-header__nav { display: flex; gap: 0.3rem; list-style: none; margin: 0; padding: 0; }
+    .site-header__nav a { font-size: 0.75rem; padding: 0.2rem 0.5rem; text-decoration: none; color: var(--theme-text, #333); border-radius: 4px; white-space: nowrap; }
+    .site-header__nav a:hover { background: var(--theme-primary-light, #f0f0f0); }
+
+    /* ハンバーガーボタン */
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; line-height: 0; }
+    .menu-btn svg { width: 20px; height: 20px; stroke: var(--theme-text, #333); fill: none; stroke-width: 2.5; stroke-linecap: round; }
+
+    /* サイドメニュー */
+    .side-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 199; }
+    .side-overlay.open { display: block; }
+    .side-menu { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--theme-surface, #fff); z-index: 200; transition: left 0.25s ease; overflow-y: auto; padding: 1.2rem; box-shadow: 4px 0 16px rgba(0,0,0,0.12); }
+    .side-menu.open { left: 0; }
+    .side-menu__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--theme-border, #e2e8f0); }
+    .side-menu__head strong { font-size: 0.9rem; }
+    .side-menu__close { background: none; border: none; cursor: pointer; font-size: 1.3rem; opacity: 0.5; padding: 0; }
+    .side-menu__close:hover { opacity: 1; }
+    .side-menu__links { list-style: none; padding: 0; margin: 0; }
+    .side-menu__links a { display: block; padding: 0.5rem 0.7rem; border-radius: 6px; text-decoration: none; color: inherit; font-size: 0.85rem; }
+    .side-menu__links a:hover { background: var(--theme-primary-light, #f0f0f0); }
+    .side-menu__links a.active { background: var(--theme-primary-light, #f0f0f0); font-weight: 700; color: var(--theme-accent, #3b82f6); }
+
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .site-header__nav { display: none; }
+      .site-header__title { max-width: 70vw; }
+    }
+  </style>
+</head>
+<body>
+  <!-- サイドメニュー -->
+  <div class="side-overlay" id="sideOverlay" onclick="closeMenu()"></div>
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu__head">
+      <strong>AI時代の開発言語</strong>
+      <button class="side-menu__close" onclick="closeMenu()">&times;</button>
+    </div>
+    <ul class="side-menu__links">
+      <li><a href="./index.html" class="active">トップ</a></li>
+      
+      <li><a href="./pages/executive-summary.html">結論</a></li>
+      
+      <li><a href="./pages/language-comparison.html">言語比較</a></li>
+      
+      <li><a href="./pages/python-dominance.html">Python</a></li>
+      
+      <li><a href="./pages/typescript-position.html">TS戦略</a></li>
+      
+      <li><a href="./pages/framework-selection.html">FW選定表</a></li>
+      
+      <li><a href="./pages/framework-evaluation.html">FW評価</a></li>
+      
+      <li><a href="./pages/rust-assessment.html">Rust評価</a></li>
+      
+      <li><a href="./pages/learning-roadmap.html">学習計画</a></li>
+      
+      <li><a href="./pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </aside>
+
+  <!-- ヘッダー（Pico の header/nav を使わない） -->
+  <div class="site-header">
+    <div class="site-header__left">
+      <button class="menu-btn" onclick="openMenu()" aria-label="メニュー">
+        <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <a href="./index.html" class="site-header__title">AI時代の開発言語</a>
+    </div>
+    <ul class="site-header__nav">
+      
+      <li><a href="./pages/executive-summary.html">結論</a></li>
+      
+      <li><a href="./pages/language-comparison.html">言語比較</a></li>
+      
+      <li><a href="./pages/python-dominance.html">Python</a></li>
+      
+      <li><a href="./pages/typescript-position.html">TS戦略</a></li>
+      
+      <li><a href="./pages/framework-selection.html">FW選定表</a></li>
+      
+      <li><a href="./pages/framework-evaluation.html">FW評価</a></li>
+      
+      <li><a href="./pages/rust-assessment.html">Rust評価</a></li>
+      
+      <li><a href="./pages/learning-roadmap.html">学習計画</a></li>
+      
+      <li><a href="./pages/references.html">参考文献</a></li>
+      
+    </ul>
+  </div>
+
+  <main class="container">
+    <section class="block block-hero">
+  <h1>AI時代の開発言語</h1>
+  <div><p>5段階多モデル調査（gpt-4.1・claude-sonnet-4.6・gpt-5.3-codex・claude-opus-4.6）によるAI開発言語の最適戦略レポート。主結論は①Python（AIコア）＋TypeScript（統合/UI）の二層アーキテクチャ（high）、②LLMフレームワークのアダプターパターンによる業務ロジック隔離（medium〜high）、③Rustは条件付き将来検討・tier3（low〜medium）の3点。架空URL5件・自己参照バイアス6件が検出されており、全結論は信頼度付き仮説群として6か月ごとに再評価することを前提に運用する。</p></div>
+</section>
+<aside class="block block-callout block-callout--key">
+  <p>AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート</p>
+</aside>
+<section class="block block-cards">
+  
+  <div class="block-cards__grid">
+    
+    <article class="block-cards__item">
+      <h3>Python（AIコア）＋TypeScript（統合/UI）の二層アーキテクチャが現時点のAI開発における最適解である</h3>
+      <div><p>Python（AIコア）＋TypeScript（統合/UI）の二層アーキテクチャが現時点のAI開発における最適解である</p></div>
+    </article>
+    
+    <article class="block-cards__item">
+      <h3>AI調査結果の無批判受け入れ自体が最大のリスクであり、バリデーション能力（ソースの実在確認・バイアス識別）はAI時代のエ</h3>
+      <div><p>AI調査結果の無批判受け入れ自体が最大のリスクであり、バリデーション能力（ソースの実在確認・バイアス識別）はAI時代のエンジニアに必須のスキル</p></div>
+    </article>
+    
+  </div>
+</section>
+<section class="block block-nav">
+  <div class="block-nav__grid">
+    
+    <a href="./pages/executive-summary.html" class="block-nav__link">
+      <span class="block-nav__title">結論</span>
+      
+    </a>
+    
+    <a href="./pages/language-comparison.html" class="block-nav__link">
+      <span class="block-nav__title">言語比較</span>
+      
+    </a>
+    
+    <a href="./pages/python-dominance.html" class="block-nav__link">
+      <span class="block-nav__title">Python</span>
+      
+    </a>
+    
+    <a href="./pages/typescript-position.html" class="block-nav__link">
+      <span class="block-nav__title">TS戦略</span>
+      
+    </a>
+    
+    <a href="./pages/framework-selection.html" class="block-nav__link">
+      <span class="block-nav__title">FW選定表</span>
+      
+    </a>
+    
+    <a href="./pages/framework-evaluation.html" class="block-nav__link">
+      <span class="block-nav__title">FW評価</span>
+      
+    </a>
+    
+    <a href="./pages/rust-assessment.html" class="block-nav__link">
+      <span class="block-nav__title">Rust評価</span>
+      
+    </a>
+    
+    <a href="./pages/learning-roadmap.html" class="block-nav__link">
+      <span class="block-nav__title">学習計画</span>
+      
+    </a>
+    
+    <a href="./pages/references.html" class="block-nav__link">
+      <span class="block-nav__title">参考文献</span>
+      
+    </a>
+    
+  </div>
+</section>
+  </main>
+  <footer class="container">
+    <small>AI時代フルスタック開発の最適言語戦略：Python＋TypeScript二層アーキテクチャを5段階多モデル調査で検証し信頼度付き仮説群として提示した技術戦略レポート</small>
+    <small class="site-notice">本資料はAI生成による学習目的の資料です。法的判断・投資判断には専門家の見解を取得してください。</small>
+  </footer>
+  <script>
+    function openMenu(){document.getElementById('sideMenu').classList.add('open');document.getElementById('sideOverlay').classList.add('open')}
+    function closeMenu(){document.getElementById('sideMenu').classList.remove('open');document.getElementById('sideOverlay').classList.remove('open')}
+  </script>
+</body>
+</html>
